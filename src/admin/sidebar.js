@@ -53,7 +53,7 @@ const Sidebar = () => {
         <div className="sidebar-brand-text mx-3">Audio</div>
       </div>
       <li className="nav-item">
-          <Link className="nav-link text-white" to="/admin/Audio">
+          <Link className="nav-link text-white" to="/admin/ListAudio">
               <i className="fas fa-music"></i>
             <span> Audio</span>
           </Link>
@@ -109,6 +109,21 @@ const Sidebar = () => {
             <span> View Category</span>
           </Link>
       </li> */}
+      <div className="sb-sidenav-menu-heading bg-primary text-white text-center">
+        <div className="sidebar-brand-text mx-3">Tag</div>
+      </div>
+      <li className="nav-item">
+          <Link className="nav-link text-white" to="/admin/AddTag">
+              <i className="fas fa-photo-video"></i>
+            <span> Add Tag</span>
+          </Link>
+      </li>
+      <li className="nav-item">
+          <Link className="nav-link text-white" to="/admin/ViewTag">
+              <i className="fas fa-upload"></i>
+            <span> View Tag</span>
+          </Link>
+      </li>
       <div className="sb-sidenav-menu-heading bg-primary text-white text-center">
         <div className="sidebar-brand-text mx-3">Cast & Crew</div>
       </div>
