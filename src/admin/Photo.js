@@ -4,7 +4,7 @@ import axios from 'axios';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
-
+import "../css/Sidebar.css";
 const Photo = () => {
   
   //.....................................Admin Function............................................
@@ -153,7 +153,7 @@ const Photo = () => {
     return tag ? tag.tag_name : '';
   };
   return (
-    <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem"}}>
+    <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
     <div className="container-fluid px-4">
       <Navbar />
       <Sidebar />

@@ -1,0 +1,31 @@
+/* Sidebar.css */
+@media (max-width: 768px) {
+    .navbar-nav.sidebar {
+      position: fixed;
+      height: 100%;
+      top: 0;
+      left: -250px; /* Hide the sidebar by default */
+      overflow-x: hidden;
+      transition: all 0.3s;
+      z-index: 999;
+    }
+  
+    .navbar-nav.sidebar.active {
+      left: 0; /* Show the sidebar when active */
+    }
+   .samp{
+    margin-left: 0 !important;
+   }
+}
+  
+  .toggle-button {
+    display: block;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+  

@@ -6,7 +6,7 @@ import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import AudioPlayer from 'react-audio-player';
-
+import "../css/Sidebar.css";
 const Audio = () => {
   // ...................................Admin Functions.............................................
 
@@ -124,7 +124,7 @@ const Audio = () => {
   //   return tag ? tag.tag_name : '';
   // };
   return (
-    <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem"}}>
+    <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
     <div className="container-fluid px-4">
       <Navbar />
       <Sidebar />

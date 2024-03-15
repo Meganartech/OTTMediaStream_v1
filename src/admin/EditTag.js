@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { useLocation , Link} from 'react-router-dom';
-
+import "../css/Sidebar.css";
 
 const EditTag = () => {
 
@@ -59,7 +59,7 @@ const EditTag = () => {
   
   
   return (
-    <div id="content-wrapper" className="d-flex flex-column" style={{ marginLeft: "13rem"}}>
+    <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
     <div className="container-fluid px-4">
       <Navbar />
       <Sidebar />

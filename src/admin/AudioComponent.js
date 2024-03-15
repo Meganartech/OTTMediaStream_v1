@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
+import "../css/Sidebar.css";
 // import { useHistory } from 'react-router-dom';
 
 const AudioComponent = () => {
@@ -11,7 +12,7 @@ const AudioComponent = () => {
   };
 
   return (
-    <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem"}}>
+    <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
     <div className="container-fluid px-4">
       <Navbar />
       <Sidebar />

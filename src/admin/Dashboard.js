@@ -5,6 +5,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import UserList from './UserList';
 import App2 from './App2.js';
+import "../css/Sidebar.css";
 
 
 const Dashboard = () => {
@@ -20,7 +21,7 @@ const Dashboard = () => {
   console.log('Retrieved username:', username);
 
   return (
-    <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem"}}>
+    <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
     <div className="container-fluid px-4">
       <Navbar />
       {/* <App2 /> */}

@@ -2,15 +2,23 @@ import React from 'react';
 // import '../App.css';
 import { Link } from 'react-router-dom';
 import Navbar from './navbar';
-
-
+import { useState } from 'react';
+import "../css/Sidebar.css";
 const Sidebar = () => {
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsActive(!isActive);
+  };
   const name=sessionStorage.getItem('username');
   const b=3;
   // alert(name);
   return (
-    
-    <ul className="navbar-nav  sidebar sidebar-dark accordion" id="content-wrapper">
+    <div>
+       <button className="toggle-button" onClick={toggleSidebar}>
+        Toggle Sidebar
+      </button>
+      <ul className={`navbar-nav sidebar sidebar-dark accordion ${isActive ? 'active' : ''}`} id="content-wrapper">
      
       <div className="sb-sidenav-menu-heading bg-primary text-white text-center">
         <div className="sidebar-brand-text mx-3">Menu </div>
@@ -192,7 +200,7 @@ const Sidebar = () => {
       
     </ul>
 
-  
+  </div>
     
   );
 };

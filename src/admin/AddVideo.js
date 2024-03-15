@@ -263,7 +263,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
 import Employee from './Employee';
-
+import "../css/Sidebar.css";
 const AddVideo = () => {
   const [file, setFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -320,7 +320,7 @@ const AddVideo = () => {
 
   return (
 
-    <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem" }}>
+    <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem" }}>
       <div className='container-fluid px-4'>
         <Navbar />
         <Sidebar />
