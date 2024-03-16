@@ -40,6 +40,7 @@ import ViewAudio from "./admin/ViewAudio";
 import ViewCertificate from "./admin/ViewCertificate";
 import Editaudio1 from "./admin/Editaudio1";
 import ListAudio from "./admin/ListAudio";
+import AddMovie from "./admin/AddMovie";
 import EditAudio from "./admin/EditAudio";
 import EditTag from "./admin/EditTag";
 import ViewTag from "./admin/ViewTag";
@@ -116,7 +117,7 @@ const App = () => {
             <Route path='ViewTag' element={< ViewTag />} />
             <Route path='AddTag' element={< AddTag />} />
             <Route path='EditLanguage' element={< EditLanguage />} />
-           
+            <Route path='AddMovie' element={< AddMovie  />} />
             {/* <Route path='EditComponent' element={< EditComponent />} /> */}
             {/* <Route path='Navbar' element={< Navbar />} /> */}
             {/* 
