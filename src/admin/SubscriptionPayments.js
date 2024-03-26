@@ -5,7 +5,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import axios from 'axios';
 import Sample from './Sample';
-
+import "../css/Sidebar.css";
 const SubscriptionPayments = () => {
 
   
@@ -152,7 +152,7 @@ const SubscriptionPayments = () => {
 
   return (
 
-    <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem" }}>
+    <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem" }}>
       <div className="container-fluid px-4"   >
         <Navbar />
         <Sidebar />

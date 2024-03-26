@@ -4,7 +4,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
 import AudioPlayer from 'react-audio-player';
-
+import "../css/Sidebar.css";
 const ListAudio = () => {
   const [image, setImage] = useState([]);
   // const [audios, setAudios] = useState([]);
@@ -101,7 +101,7 @@ const ListAudio = () => {
   // };
 
   return (
-    <div id="content-wrapper" className="d-flex flex-column" style={{ marginLeft: '13rem' }}>
+    <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: '13rem' }}>
       <div className="container-fluid px-4">
         <Navbar />
         <Sidebar />

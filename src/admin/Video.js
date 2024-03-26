@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import EditVideo from './EditVideo';
 // import '../csstemp/VideoStyle.css';
-
+import "../css/Sidebar.css";
 const Video = () => {
   // ------------------------------ Admin Functions  -----------------------------------------
   const [videos, setVideos] = useState([]);
@@ -86,7 +86,7 @@ const Video = () => {
 
   return (
    
-  <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem"}}>
+  <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
     <div className="container-fluid px-4">
       <Navbar />
       <Sidebar />

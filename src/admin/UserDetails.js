@@ -5,7 +5,7 @@ import Sidebar from './sidebar';
 import ImageComponent from './ImageComponent';
 import VideoComponent from './VideoComponent';
 import AudioComponent from './AudioComponent';
-
+import "../css/Sidebar.css";
 const UserDetails = ({ userId }) => {
   const [activeFolder, setActiveFolder] = useState(null);
   const [folderClicked, setFolderClicked] = useState(false);
@@ -44,7 +44,7 @@ const UserDetails = ({ userId }) => {
     }
   };
   return (
-    <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem"}}>
+    <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
     <div className="container-fluid px-4" >
       <Navbar />
       <Sidebar />

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { useLocation, Link } from 'react-router-dom';
-
+import "../css/Sidebar.css";
 function EditComponent() {
   const location = useLocation();
   const { user } = location.state;
@@ -113,7 +113,7 @@ function EditComponent() {
   
 
   return (
-    <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem"}}>
+    <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
     <div className="container-fluid px-4">
       <Navbar />
       <Sidebar />

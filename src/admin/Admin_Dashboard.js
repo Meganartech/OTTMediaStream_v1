@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../Admin/Admin_Navbar';
 import Sidebar from '../Admin/Admin_Sidebar';
-
+import "../css/Sidebar.css";
 
 const Admin_Dashboard = () => {
   //..............................Admin Functions..........................................
@@ -17,7 +17,7 @@ const Admin_Dashboard = () => {
 //   console.log('Retrieved username:', username);
 
   return (
-    <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem"}}>
+    <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
     <div className="container-fluid px-4">
       <Navbar />
       <Sidebar />

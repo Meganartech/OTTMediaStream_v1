@@ -4,7 +4,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 // import '../csstemp/addPhoto.css';
 import { Link } from 'react-router-dom';
-
+import "../css/Sidebar.css";
 const AddPhoto = () => {
    //.....................................Admin Function............................................
    const name=sessionStorage.getItem('username');
@@ -115,7 +115,7 @@ const AddPhoto = () => {
   };
 
   return (
-    <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem"}}>
+    <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
     <div className='container-fluid px-4'>
       <Navbar />
       <Sidebar />

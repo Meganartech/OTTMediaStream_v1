@@ -3,7 +3,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { useLocation,Link} from 'react-router-dom';
 import axios from 'axios';
-
+import "../css/Sidebar.css";
 const EditAudio = () => {
 
   const location = useLocation();
@@ -81,7 +81,7 @@ const EditAudio = () => {
 
   
   return (
-    <div id="content-wrapper" className="d-flex flex-column" style={{ marginLeft: "13rem"}}>
+    <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
     <div className="container-fluid px-4">
       <Navbar />
       <Sidebar />

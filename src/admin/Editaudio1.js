@@ -4,6 +4,7 @@ import Sidebar from './sidebar';
 import { useLocation,Link} from 'react-router-dom';
 import axios from 'axios';
 import AudioPlayer from 'react-audio-player';
+import "../css/Sidebar.css";
 
 const Editaudio1 = () => {
     const location = useLocation();
@@ -196,7 +197,7 @@ fetchAudio(); // Replace 'yourDefaultFileName' with the desired default file nam
 
 
   return (
-    <div id="content-wrapper" className="d-flex flex-column" style={{ marginLeft: "13rem"}}>
+    <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
     <div className="container-fluid px-4">
       <Navbar />
       <Sidebar />
