@@ -44,6 +44,7 @@ import AddMovie from "./admin/AddMovie";
 import EditAudio from "./admin/EditAudio";
 import EditTag from "./admin/EditTag";
 import ViewTag from "./admin/ViewTag";
+import Licence from "./admin/Licence";
 import EditComponent from "./admin/EditComponent";
 import VideoPlayer from "./admin/VideoPlayer";
 import usersidebar from "./user/usersidebar";
@@ -58,7 +59,9 @@ import Playback from "./user/Playback";
 import movie from "./sample/Movie";
 import Home from "./user/Screens/HomeScreen";
 import EditLanguage from "./admin/EditLanguage";
+import EditVideo from "./admin/EditVideo";
 import AddTag from "./admin/AddTag";
+import AddAud from "./admin/AddAud";
 import MoviesPage from "./user/Screens/Movies";
 import Watch from './admin/player';
 
@@ -118,6 +121,9 @@ const App = () => {
             <Route path='AddTag' element={< AddTag />} />
             <Route path='EditLanguage' element={< EditLanguage />} />
             <Route path='AddMovie' element={< AddMovie  />} />
+            <Route path='AddAud' element={< AddAud  />} />
+            <Route path='EditVideo' element={<EditVideo />} />
+            <Route path='Licence' element={<Licence />} />
             {/* <Route path='EditComponent' element={< EditComponent />} /> */}
             {/* <Route path='Navbar' element={< Navbar />} /> */}
             {/* 

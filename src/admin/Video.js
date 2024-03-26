@@ -4,7 +4,9 @@ import axios from 'axios';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ReactPlayer from 'react-player';
+import EditVideo from './EditVideo';
 // import '../csstemp/VideoStyle.css';
 
 const Video = () => {
@@ -13,53 +15,74 @@ const Video = () => {
   const [selectedVideo, setSelectedVideo] = useState(null);
   const userid = parseInt(sessionStorage.getItem('id'), 10); // Get user ID from session storage
   const name = sessionStorage.getItem('username');
+  const [users, setUsers] = useState([]);
+  let Id;
+  const navigate = useNavigate();
+  const [dataToSend, setDataToSend] = useState('');
+  const [items, setItems] = useState([]);
+
+
+
+
 
   useEffect(() => {
     // Fetch videos from the backend API
-    const fetchVideos = async () => {
+    const fetchUsers = async () => {
       try {
-        const response = await axios.get(`http://localhost/mediareact/src/php/getVideos.php`);
-        setVideos(response.data);
+        const response = await axios.get('http://localhost:8080/api/videogetall');
+        setUsers(response.data);
       } catch (error) {
-        console.error('Error:', error);
+        console.log('Error fetching users:', error);
       }
     };
-    fetchVideos();
+    
+    fetchUsers();
   }, []);
-  
-  const openVideoModal = (video) => {
-    const videoLocation = `${video.file_location}`;
-    setSelectedVideo({ ...video, file_location: videoLocation });
-  };
-  const closeVideoModal = () => {
-    setSelectedVideo(null);
-  };
-// ------------------------------ User Functions ----------------------------------------------
-  useEffect(() => {
-  // console.log('Fetching videos...');
-  const fetchVideos_u = async () => {
+
+  const fetchUsers = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost/mediareact/src/php/getUserVideos.php?userid=${userid}`
-      );
-      console.log('API response:', response.data);
-      setVideos(response.data); // Update this line to setVideos(response.data) instead of setVideos(response.data.videos)
+      const response = await axios.get('http://localhost:8080/api/videogetall');
+      setUsers(response.data);
     } catch (error) {
-      console.error('Error fetching videos:', error);
-      setVideos([]);
+      console.log('Error fetching users:', error);
     }
   };
-  fetchVideos_u();
-}, []);
-
-// console.log('Videos:', videos);
-const openVideoModal_u = (video) => {
-  const videoLocation = `${video.file_location}`;
-  setSelectedVideo({ ...video, file_location: videoLocation });
-};
-const closeVideoModal_u = () => {
-  setSelectedVideo(null);
-};
+  const handleDelete = async (audioId) => {
+    const  audId=audioId
+    console.log(audId)
+    try {
+      const response = await fetch(`http://localhost:8080/api/video/${audId}`);
+  
+      if (response.ok) {
+        // fetchAudios();
+        // setDeleteStatus('Audio deleted successfully');
+      // setGetall((prevGetAll) => {
+      //   const updatedGetAll = [...prevGetAll];
+      //   updatedGetAll.splice(index, 1);
+      //   return updatedGetAll;
+      // });
+      fetchUsers();
+        console.log('deleteStatus');
+       
+      } else {
+        // setDeleteStatus('Error deleting audio');
+        console.log('deleteStatus');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      // setDeleteStatus('Error deleting audio');
+      console.log("deleteStatus");
+    }
+    
+  };
+  const handlEdit = async (audioId) => {
+    localStorage.setItem('items', audioId);
+    navigate('/admin/EditVideo');
+  };
+  
+  
+// ------------------------------ User Functions ----------------------------------------------
+ 
 
   return (
    
@@ -73,105 +96,109 @@ const closeVideoModal_u = () => {
         </li>
         <li className="breadcrumb-item active">Videos</li>
       </ol>
-      {name==='admin'?
-      <div>
-      <div className="video-grid">
-  {videos.length > 0 ? (
-    videos.map((video) => (
-      <div
-        className="video-item"
-        key={video.id}
-        onClick={() => openVideoModal(video)}
-      >
-        <div className="video-thumbnail">
-          <img src={video.thumbnail} alt={video.video_title} />
-          <div className='play-button'></div>
-        </div>
-        <h3 className="video-title">{video.video_title}</h3> {/* Display video title here */}
-        
-      </div>
-    ))
-  ) : (
-    <p>No videos found.</p>
-  )}
-      </div>  
-{selectedVideo && (
-  <div className='video-modal'>
-    <div className='video-modal-content'>
-      <div className='selected-video-container'>
-        <ReactPlayer
-          url={selectedVideo.file_location}
-          controls
-          className='selected-video'
-          width='100%'
-          height='100%'
-        />
-      </div>
-      
-      <div className='video-details'>
-        <h3 className='video-title'>Video ID: {selectedVideo.id}</h3>
-        <p className='video-details'>User: {selectedVideo.user}</p>
-        <p className='video-details'>Category: {selectedVideo.category}</p>
-        <p className='video-details'>Tag: {selectedVideo.tag}</p>
-        <p className='video-details'>Name: {selectedVideo.video_title}</p>
-      </div>
-      <div className='close-icon' onClick={closeVideoModal}>
-        X
-      </div>
-    </div>
-  </div>
-)}
-</div>
-:
-<div>
-      <div className="video-grid">
-      {Array.isArray(videos) && videos.length > 0 ? (
-        videos.map((video) => (
-          <div
-            className="video-item"
-            key={video.id}
-            onClick={() => openVideoModal_u(video)}
-          >
-            <div className="video-thumbnail">
-              <img src={video.thumbnail} alt={video.video_title} />
-              <div className='play-button'></div>
-            </div>
-            <h3 className="video-title">{video.video_title}</h3>
+      <div className="card-1 mb-4">
+          <div className="card-header">
+            <i className="fas fa-table me-1"></i>
+            Registered User Details
           </div>
-        ))
-      )  : (
-        <p>Error: Unable to fetch videos.</p>
-      )}
-      </div>
-      {selectedVideo && (
-  <div className='video-modal'>
-    <div className='video-modal-content'>
-      <div className='selected-video-container'>
-        <ReactPlayer
-          url={selectedVideo.file_location}
-          controls
-          className='selected-video'
-          width='100%'
-          height='100%'
-        />
-      </div>
-      
-      
-      <div className='video-details'>
-        <h3 className='video-title'>Video ID: {selectedVideo.id}</h3>
-        <p className='video-details'>User: {selectedVideo.user}</p>
-        <p className='video-details'>Category: {selectedVideo.category}</p>
-        <p className='video-details'>Tag: {selectedVideo.tag}</p>
-        <p className='video-details'>Name: {selectedVideo.video_title}</p>
-      </div>
-      <div className='close-icon' onClick={closeVideoModal_u}>
-        X
-      </div>
+          {/* {name === 'admin' 
+          ? */}
+            <div className="card-body profile-card-body">
+              <table id="datatablesSimple">
+                <thead>
+                  <tr>
+                    <th>S.No</th>
+                    <th>moviename</th>
+                    <th>description</th>
+                    <th>tags</th>
+                    <th>category</th>
+                    <th>certificate</th>
+                    <th> language</th>
+                    <th>duration</th>
+                    <th>year</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  {users.map((user, index) => (
+                    <tr key={user.id}>
+                      <td>{index + 1}</td>
+                      <td>{user.moviename}</td>
+                      <td>{user.description}</td>
+                      <td>{user.tags}</td>
+                      <td>{user.category}</td>
+                      <td>{user.certificate}</td>
+                      <td>{user.language}</td>
+                      <td>{user.duration}</td>
+                      <td>{user.year}</td>
+                      <td>
+                        {/* <Link
+                          to={{
+                            pathname: `/admin/EditVideo`,
+                            state: { user },
+                          }}
+                        >
+                          <i className="fas fa-edit"></i>
+                        </Link> */}
+                        <button onClick={() => handlEdit(user.id)} >
+                          <i className="fas fa-edit" aria-hidden="true"></i>
+                        </button>
+                        <button onClick={() => handleDelete(user.id)} >
+                          <i className="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                        
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div> 
+          {/* : 
+          <div className="card-body">
+          <form onSubmit={handleSubmit} method='POST'>
+            <div className="user-details">
+              <label>User ID:</label>
+              <span>{id}</span>
+            </div>
+            <div className="user-details">
+              <label>Username:</label>
+              <input type="text" name="username" value={username} onChange={handleChange} />
+            </div>
+            <div className="user-details">
+              <label>Mobile Number:</label>
+              <input type="text" name="mobnum" value={mobnum} onChange={handleChange} />
+            </div>
+            <div className="user-details">
+              <label>Address:</label>
+              <input type="text" name="address" value={address} onChange={handleChange} />
+            </div>
+            <div className="user-details">
+              <label>Pincode:</label>
+              <input type="text" name="pincode" value={pincode} onChange={handleChange} />
+            </div>
+            <div className="user-details">
+              <label>Email:</label>
+              <input type="text" name="email" value={email} onChange={handleChange} />
+            </div>
+            <div className="user-details">
+              <label>Company Name:</label>
+              <input type="text" name="compname" value={compname} onChange={handleChange} />
+            </div>
+            <div className="user-details">
+              <label>Country:</label>
+              <input type="text" name="country" value={country} onChange={handleChange} />
+            </div>
+            <div className="user-details">
+              <label>Password:</label>
+              <input type="password" name="password" value={password} onChange={handleChange} />
+            </div>
+            <button type="submit" className="btn btn-info">Save Changes</button>
+          </form>
+        </div>
+          } */}
+        </div>
     </div>
-  </div>
-      )}
-      </div> }
-    </div>
+    <EditVideo receivedData={dataToSend} />
     </div>
   );
 };
