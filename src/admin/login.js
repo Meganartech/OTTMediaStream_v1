@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Outlet, useLocation,useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
   const [user, setUser] = useState({ username: '', password: '' });
   const [samp1, setsamp] = useState(1);
+  const [users, setUsers] = useState([]);
+  let value=1;
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
+  
+    fetchUsers();
+
     if (location.pathname === '/admin') {
       setsamp(0);
     } else {
@@ -17,17 +23,55 @@ const Login = () => {
 
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
+    // fetchUsers();
+
+
+
+    
   };
 
   const hide = () => {
     setsamp(1);
   };
-  const Submit =(e)=>{
-    e.preventDefault();
-    if(user.username=='admin' && user.password=='admin'){
-      // navigate('Dashboard'); 
-      navigate('/admin/Dashboard', { state: { username: user.username, password: user.password } });
+
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get('http://localhost:8080/api/v2/GetAllUser');
+      setUsers(response.data);
+      // After setting the users state, check if the username exists
+      // const userFound = response.data.find(userData => userData.username === user.username);
+    } catch (error) {
+      console.log('Error fetching users:', error);
     }
+
+  }
+  
+ 
+  const Submit =(e)=>{  
+    e.preventDefault(); 
+    fetchUsers();
+    
+    const userFound = users.find(userData => (
+      user.username === userData.username && user.password === userData.password
+    ));
+    
+if (userFound) {
+  navigate('/admin/Dashboard');
+  // If needed, perform navigation or any other action here
+} else {
+  alert("Invalid username or password");
+}
+    // if(
+    //   // user.username==users.username
+    //   //  && 
+    //    user.password==users.password
+    //    ){
+    //   // navigate('Dashboard'); 
+    //   navigate('/admin/Dashboard', { state: { username: user.username, password: user.password } });
+    // }
+    // else{
+    //   alert("invalid");
+    // }
 
   }
   return (
@@ -39,7 +83,7 @@ const Login = () => {
               <div className="card shadow-lg border-0 rounded-lg mt-5">
                 <div className="bg-image" style={{ backgroundImage: "url('img/bg.jpg')" }}>
                   <div className="card-header">
-                    <h3 className="text-center text-black font-weight-light my-4">Admin Login </h3>
+                    <h3 className="text-center text-black font-weight-light my-4">Login </h3>
                   </div>
                   <div className="card-body">
                     <form onSubmit={Submit}>

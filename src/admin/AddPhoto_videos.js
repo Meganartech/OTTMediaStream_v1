@@ -102,7 +102,7 @@ const AddPhoto_videos = () => {
                     /> */} 
                     <br></br>
                     <input type="file" accept="video/*" onChange={handleFileChange} />
-                    <button className='text-center btn btn-info' onClick={save}>Add_Details</button>{/*handleUpload*/}&nbsp;&nbsp;
+                    {/* <button className='text-center btn btn-info' onClick={save}>Add_Details</button>handleUpload&nbsp;&nbsp; */}
                     <button className='text-center btn btn-info' onClick={handleUpload}>Upload</button>{/**/}&nbsp;&nbsp;
                     {/* <button className='text-center btn btn-info' > */}
                     <Link to="/admin/Watch" className="btn btn-info">Play</Link>
