@@ -7,8 +7,11 @@ const Login = () => {
   const [samp1, setsamp] = useState(1);
   const [users, setUsers] = useState([]);
   let value=1;
+  const [isEmpty, setisEmpty] = useState();
+  // var isEmpty;
   const location = useLocation();
   const navigate = useNavigate();
+  
 
   useEffect(() => {
   
@@ -37,7 +40,9 @@ const Login = () => {
   const fetchUsers = async () => {
     try {
       const response = await axios.get('http://localhost:8080/api/v2/GetAllUser');
-      setUsers(response.data);
+      setUsers(response.data.userList);
+      setisEmpty(response.data.empty);
+      console.log(isEmpty);
       // After setting the users state, check if the username exists
       // const userFound = response.data.find(userData => userData.username === user.username);
     } catch (error) {
@@ -55,11 +60,15 @@ const Login = () => {
       user.username === userData.username && user.password === userData.password
     ));
     
-if (userFound) {
+if (userFound && !isEmpty) {
   navigate('/admin/Dashboard');
+  sessionStorage.setItem('mySessionData', true);
   // If needed, perform navigation or any other action here
-} else {
-  alert("Invalid username or password");
+} else if(isEmpty){
+  navigate('/admin/licence');
+}
+  else{
+    alert("Invalid username or password");
 }
     // if(
     //   // user.username==users.username
