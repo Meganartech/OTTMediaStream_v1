@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 // import { Switch, Route } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Link, Outlet, useLocation,useNavigate } from 'react-router-dom';
 import Dashboard from "./admin/Dashboard";
 import "./App.css";
 import "./css/sb-admin-2.css";
@@ -69,10 +70,24 @@ import WatchPage from './user/Screens/WatchPage';
 
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
+  const location = useLocation();
+  const navigate = useNavigate();
+  const storedData = sessionStorage.getItem('mySessionData')
+  useEffect(() => {
+    // if (location.pathname != '/admin' && storedData !='true' )
+    // // if (storedData ==='true')
+    //  {
+    //   console.log("no_admin");
+    //   console.log("data="+storedData);
+    //   navigate('/admin');
+    // } else {
+    //   console.log("admin");
+    //   console.log("data="+storedData);
+    // }
+  }, [location.pathname]);
+  // const handleLogin = () => {
+  //   setIsLoggedIn(true);
+  // };
   return (
 
     <div >
