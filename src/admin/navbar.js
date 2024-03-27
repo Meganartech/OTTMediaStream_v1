@@ -21,7 +21,7 @@ function Navbar() {
 
   return (
     <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-      <a className="navbar-brand ps-3" href="index.html">{name=="admin"?"Admin Panel":"User Panel"}</a>
+      <a className="navbar-brand ps-3" href="./Dashboard.js" style={{margin:'0px', padding:'0px'}}>Admin Panel</a>
       <button className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
         <i className="fas fa-bars"></i>
       </button>
@@ -41,6 +41,7 @@ function Navbar() {
                 Change Password
               </a>
             </li>
+            
             <li>
               <button className="dropdown-item" onClick={handleLogout} style={{ cursor: 'pointer' }}>
                 Logout
