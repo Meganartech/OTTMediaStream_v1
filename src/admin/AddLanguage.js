@@ -93,9 +93,11 @@ const AddLanguage = () => {
 
   return (
     <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
+
     
     <Sidebar />
     <div className='container-fluid'>      
+
       <h1 className="mt-4 text-white">Add Language</h1>
           <ol className="breadcrumb mb-4">
           <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>

@@ -1,9 +1,11 @@
 /* Sidebar.css */
 @media (max-width: 768px) {
+
    *{
       margin: 0px;
       padding: 0px;
     }
+
     .navbar-nav.sidebar {
       position: fixed;
       height: 100%;
@@ -13,12 +15,14 @@
       transition: all 0.3s;
       z-index: 999;
     }
+
   .container-fluid {
       padding:20px !important;
     }
     .navbar{
       position: relative;
     }
+
   
     .navbar-nav.sidebar.active {
       left: 0; /* Show the sidebar when active */
@@ -27,6 +31,7 @@
     margin-left: 0 !important;
    }
 }
+
 
 /* Style for sidebar */
 #sidebar {
@@ -48,3 +53,4 @@ main {
   margin-left: 200px; /* Adjust main content when sidebar is shown */
 }
    
+

@@ -83,10 +83,10 @@ const EditAudio = () => {
   
   return (
     <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
+
      <Sidebar />
     <div className="container-fluid">
   
-     
       {/* <h1 className="mt-4 text-black">{updatedget.categories}'s Profile</h1> */}
 
       <ol className="breadcrumb mb-4">

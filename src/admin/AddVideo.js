@@ -5,7 +5,9 @@ import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
 import Employee from './Employee';
 import "../css/Sidebar.css";
+
 import "../App.css"
+
 import React, { useState, useEffect } from 'react';
 const AddVideo = () => {
   const [file, setFile] = useState(null);
@@ -192,10 +194,13 @@ const AddVideo = () => {
   return (
 
     <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem" }}>
+      <div className='container-fluid px-4'>
+        <Navbar />
         <Sidebar />
+
       <div className='container-fluid'>
         
-      
+
         <div>
           {/* <h1 className="mt-4 text-white">Add Video</h1> */}
           <ol className="breadcrumb mb-4">

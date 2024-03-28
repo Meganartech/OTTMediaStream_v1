@@ -189,10 +189,12 @@ const SEO_setting = () => {
   return (
 
     <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem" }}>
+
       
         <Sidebar />
       <div className="container-fluid"   >
      
+
         {/* <Sample /> */}
         <h1 className="mt-4 text-white">Setting</h1>
         <ol className="breadcrumb mb-4">
