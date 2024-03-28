@@ -13,7 +13,6 @@ const VideoComponent = () => {
   return (
     
     <div>
-      <Navbar />
       <Sidebar />
       <h2 className="text-white">Video Component</h2>
       {/* Display video component content */}
