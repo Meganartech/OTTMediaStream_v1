@@ -422,6 +422,7 @@ const AddVideo = () => {
         </div>
       </div>
     </div>
+    </div>
   );
 }
 

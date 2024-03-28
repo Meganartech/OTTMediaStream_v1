@@ -5,7 +5,7 @@ import Navbar from './navbar';
 import { useState } from 'react';
 import "../css/Sidebar.css";
 const Sidebar = () => {
-<<<<<<< HEAD
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   // const history = useHistory();
 
@@ -19,8 +19,7 @@ const Sidebar = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
-=======
->>>>>>> 223a955bc7865ac7e8254e536e2bc2881313a885
+
   const [isActive, setIsActive] = useState(false);
 
   const toggleSidebar = () => {
