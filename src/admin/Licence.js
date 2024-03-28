@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
-// import '../csstemp/addAudio.css';
-import { Link } from 'react-router-dom';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 const Licence = () => {
     //.....................................Admin Function............................................
  
@@ -14,6 +13,7 @@ const Licence = () => {
   const [categoryId, setCategoryId] = useState('');
   const [audioFile, setAudioFile] = useState(null);
   const [thumbnail, setThumbnail] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,6 +67,7 @@ const Licence = () => {
     setCategoryId('')
     setAudioFile(null)
     setThumbnail(null)
+    navigate('/admin');
   };
 
     const validateForm = () => {
