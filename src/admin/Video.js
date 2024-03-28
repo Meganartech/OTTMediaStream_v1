@@ -198,7 +198,6 @@ const Video = () => {
           } */}
         </div>
     </div>
-    <EditVideo receivedData={dataToSend} />
     </div>
   );
 };
