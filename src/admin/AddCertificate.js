@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import "../css/Sidebar.css";
 
 
+
 const AddCertificate = () => {
   const [certificateName, setCertificateName] = useState(null);
   const [SuccessMessage , setSuccessMessage] = useState(null);
@@ -79,9 +80,9 @@ const AddCertificate = () => {
 
   return (
     <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-           <Sidebar />
+<Sidebar />
     <div className='container-fluid'>
- 
+
       <h1 className="mt-4 text-white">Add certificate</h1>
           <ol className="breadcrumb mb-4">
           <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>

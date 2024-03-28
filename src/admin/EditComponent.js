@@ -3,6 +3,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { useLocation, Link } from 'react-router-dom';
 import "../css/Sidebar.css";
+
 function EditComponent() {
   const location = useLocation();
   const { user } = location.state;
@@ -114,8 +115,9 @@ function EditComponent() {
 
   return (
     <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-      <Sidebar />
+    <Sidebar />
     <div className="container-fluid">
+    
       
       <h1 className="mt-4 text-white">{updatedUser.username}'s Profile</h1>
       <ol className="breadcrumb mb-4">

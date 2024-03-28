@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
+
 import { useLocation,Link} from 'react-router-dom';
 import axios from 'axios';
 import "../css/Sidebar.css";
@@ -82,9 +83,10 @@ const EditAudio = () => {
   
   return (
     <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-        <Sidebar />
+     <Sidebar />
     <div className="container-fluid">
-    
+  
+     
       {/* <h1 className="mt-4 text-black">{updatedget.categories}'s Profile</h1> */}
 
       <ol className="breadcrumb mb-4">

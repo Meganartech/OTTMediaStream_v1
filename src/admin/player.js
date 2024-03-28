@@ -7,18 +7,18 @@ const VideoPlayer = () => {
 
   useEffect(() => {
     // Fetch video URL from the API
-    fetch('http://localhost:8080/api/play/1')
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.text(); // Assuming the response is a direct link
-      })
-      .then(url => {
-        setVideoUrl(url);
-        console.log(videoUrl);
-      })
-      .catch(error => console.error('Error fetching video:', error));
+    // fetch('http://localhost:8080/api/play/1')
+    //   .then(response => {
+    //     if (!response.ok) {
+    //       throw new Error('Network response was not ok');
+    //     }
+    //     return response.text(); // Assuming the response is a direct link
+    //   })
+    //   .then(url => {
+    //     setVideoUrl(url);
+    //     console.log(videoUrl);
+    //   })
+    //   .catch(error => console.error('Error fetching video:', error));
   }, []); // Empty dependency array indicates this effect runs only once
 
   return (
@@ -27,7 +27,7 @@ const VideoPlayer = () => {
           <source src="./src/img/Color Burst.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video> */}
-        <ReactPlayer controls={true} url='http://localhost:8080/api/play/1'  config={{ file: { 
+        <ReactPlayer controls={true} url='http://localhost:8080/api/play/5'  config={{ file: { 
             attributes: {
               controlsList: 'nodownload'
             }

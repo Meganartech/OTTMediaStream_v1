@@ -18,7 +18,6 @@ const Sidebar = () => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
-
   const [isActive, setIsActive] = useState(false);
 
   const toggleSidebar = () => {
@@ -29,7 +28,7 @@ const Sidebar = () => {
   // alert(name);
   return (
     <div>
-       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+ <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
       <a className="navbar-brand ps-3" href="./Dashboard.js" style={{margin:'0px', padding:'0px'}}>Admin Panel</a>
       <button className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!" onClick={toggleSidebar}>
         <i className="fas fa-bars"></i>
@@ -59,6 +58,7 @@ const Sidebar = () => {
         </li>
       </ul>
     </nav>
+      
       <ul className={`navbar-nav sidebar sidebar-dark accordion ${isActive ? 'active' : ''}`} id="content-wrapper">
      
       <div className="sb-sidenav-menu-heading bg-primary text-white text-center">

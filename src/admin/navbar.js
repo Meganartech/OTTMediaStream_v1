@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
+import { Link, Outlet, useLocation,useNavigate } from 'react-router-dom';
 // import { useHistory } from 'react-router-dom';
 // import '../App.css';
 
 function Navbar() {
+  const navigate = useNavigate();
 
   const name=sessionStorage.getItem('username');
     const [dropdownOpen, setDropdownOpen] = useState(false);
   // const history = useHistory();
 
   const handleLogout = () => {
+    sessionStorage.setItem('mySessionData', false);
+    navigate('/admin');
     // Perform any necessary logout actions (e.g., clearing session, removing tokens, etc.)
     // ...
     // After the logout actions are performed, redirect the user to the login page
@@ -21,7 +25,7 @@ function Navbar() {
 
   return (
     <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-      <a className="navbar-brand ps-3" href="./Dashboard.js" style={{margin:'0px', padding:'0px'}}>Admin Panel</a>
+      <a className="navbar-brand ps-3" href="index.html">{name=="admin"?"Admin Panel":"User Panel"}</a>
       <button className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
         <i className="fas fa-bars"></i>
       </button>
@@ -41,7 +45,6 @@ function Navbar() {
                 Change Password
               </a>
             </li>
-            
             <li>
               <button className="dropdown-item" onClick={handleLogout} style={{ cursor: 'pointer' }}>
                 Logout

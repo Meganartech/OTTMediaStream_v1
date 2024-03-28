@@ -272,6 +272,7 @@ button,
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
+  
 }
 
 button:not(:disabled),
@@ -4102,7 +4103,7 @@ input[type="button"].btn-block {
 }
 
 .navbar {
-  /* position: relative; */
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

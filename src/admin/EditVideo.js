@@ -1,14 +1,14 @@
-// import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
 import Employee from './Employee';
-import "../css/Sidebar.css";
-import "../App.css"
+
 import React, { useState, useEffect } from 'react';
-const AddVideo = () => {
-  const [file, setFile] = useState(null);
+
+const EditVideo = (receivedData) => {
+
+    const [file, setFile] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [categories, setCategories] = useState([]);
   const [errors, setErrors] = useState({});
@@ -20,12 +20,17 @@ const AddVideo = () => {
   const [Tag, setTag] = useState([]);
   const [TagId, setTagId] = useState('');
   const [thumbnail, setThumbnail] = useState(null);
+  const [updatedata, setUpdatedata] = useState([]);
+  const id=localStorage.getItem('items');
 
   // const fetchData = async () => {
     useEffect(() => {
    
+        console.log("EditVideo="+id);
     
     fetch('http://localhost:8080/api/v2/GetAllCategories')
+
+    
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -34,6 +39,23 @@ const AddVideo = () => {
       })
       .then(data => {
         setCategories(data);
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+
+      fetch(`http://localhost:8080/api/GetvideoDetail/${id}`)
+
+    
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setUpdatedata(data);
+        console.log(updatedata);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -121,7 +143,7 @@ const AddVideo = () => {
     setFile(event.target.files[0]);
   };
 
-  const Upload = async () => {
+  const Upload = async (props) => {
     try {
       const formData = new FormData();
       formData.append('video', file);
@@ -143,6 +165,7 @@ const AddVideo = () => {
       console.error('Error uploading file:', error);
     }
   };
+  
   
   
 
@@ -189,13 +212,14 @@ const AddVideo = () => {
     // })
   }
 
-  return (
 
-    <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem" }}>
+
+
+  return (
+    <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem" }}>
+      <div className='container-fluid px-4'>
+        <Navbar />
         <Sidebar />
-      <div className='container-fluid'>
-        
-      
         <div>
           {/* <h1 className="mt-4 text-white">Add Video</h1> */}
           <ol className="breadcrumb mb-4">
@@ -221,7 +245,7 @@ const AddVideo = () => {
                       // className={`form-control ${errors.confirmPassword ? 'error' : ''}`}
                       className="form-control"
                       onChange={changeMovie_name}
-                      value={Movie_name}
+                      value={updatedata.moviename}
                     />
                     </div>
                     <div className='col-lg-6'>
@@ -232,7 +256,7 @@ const AddVideo = () => {
                       // className={`form-control ${errors.confirmPassword ? 'error' : ''}`}
                       className="form-control"
                       onChange={changeYear}
-                      value={Year}
+                      value={updatedata.year}
                     />
                     </div>
                     </div>
@@ -243,7 +267,7 @@ const AddVideo = () => {
                       <select
                   className='form-control'
                   name='category'
-                  value={TagId}
+                  value={updatedata.tags}
                   onChange={(e) => setTagId(e.target.value)}
                 >
                 <option value=''>Select Tag</option>
@@ -261,7 +285,7 @@ const AddVideo = () => {
                     <select
                   className='form-control'
                   name='category'
-                  value={categoryId}
+                  value={updatedata.category}
                   onChange={(e) => setCategoryId(e.target.value)}
                 >
                 <option value=''>Select Category</option>
@@ -282,7 +306,7 @@ const AddVideo = () => {
                       <select
                   className='form-control'
                   name='category'
-                  value={certificateId}
+                  value={updatedata.certificate}
                   onChange={(e) => setCertificateId(e.target.value)}
                 >
                 <option value=''>Select Certificate</option>
@@ -300,7 +324,7 @@ const AddVideo = () => {
                       <select
                   className='form-control'
                   name='category'
-                  value={LanguageId}
+                  value={updatedata.language}
                   onChange={(e) => setLanguageId(e.target.value)}
                 >
                 <option value=''>Select Language</option>
@@ -324,7 +348,7 @@ const AddVideo = () => {
                       // className={`form-control ${errors.confirmPassword ? 'error' : ''}`}
                       className="form-control"
                       onChange={changeDuration}
-                      value={Duration}
+                      value={updatedata.duration}
                     />
                     </div>
                     <div className='col-lg-6'>
@@ -335,7 +359,7 @@ const AddVideo = () => {
                       // className={`form-control ${errors.confirmPassword ? 'error' : ''}`}
                       className="form-control"
                       onChange={changeCast_Crew}
-                      value={Cast_Crew}
+                      value={""}
                     />
                     </div>
                     </div>
@@ -349,7 +373,7 @@ const AddVideo = () => {
                       // className={`form-control ${errors.confirmPassword ? 'error' : ''}`}
                       className="form-control"
                       onChange={changeDescription}
-                      value={Description}
+                      value={updatedata.description}
                     />
                     </div>
                     {/* <div className='col-lg-6'>
@@ -383,7 +407,7 @@ const AddVideo = () => {
                       onChange={''}
                       value={'categoryName'}
                     /> */} 
-                    <label >Thumbnail</label>
+                    {/* <label >Thumbnail</label>
                     <br></br>
                     <input
           type='file'
@@ -391,19 +415,20 @@ const AddVideo = () => {
           placeholder='Choose Thumbnail'
           name='thumbnail'
           onChange={(e) => setThumbnail(e.target.files[0])}
-        />
-        <label >AddMovie</label>
+        /> */}
+        {/* <label >AddMovie</label> */}
          <br></br>
-                    <input type="file" accept="video/*" onChange={handleFile} />
-                    {uploadProgress > 0 && <p>Upload Progress: {uploadProgress}%</p>}
+                    {/* <input type="file" accept="video/*" onChange={handleFile} />
+                    {uploadProgress > 0 && <p>Upload Progress: {uploadProgress}%</p>} */}
                     <br></br>
-                    <br></br>
-                    <button className='text-center btn btn-info' onClick={save}>Add_Details</button>{/*handleUpload*/}&nbsp;&nbsp;
+                    {/* <br></br>
+                    <button className='text-center btn btn-info' onClick={save}>Add_Details</button>&nbsp;&nbsp; */}
                     {/* <Link to="/admin/AddMovie" className="btn btn-info">Add</Link>&nbsp;&nbsp; */}
                     {/* <button className='text-center btn btn-info' onClick={Upload}>Upload</button>&nbsp;&nbsp; */}
                    
                     {/* <button className='text-center btn btn-info' > */}
-                    <Link to="/admin/Watch" className="btn btn-info">Play</Link>
+                    {/* <Link to="/admin/Watch" className="btn btn-info">Play</Link> */}
+                    <Link to="#" className="btn btn-info">Save</Link>
                     {/* </button> */}
                     {/* {uploadProgress > 0 && <p>Upload Progress: {uploadProgress}%</p>} */}
 
@@ -417,11 +442,7 @@ const AddVideo = () => {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default AddVideo;
-
-
-
-
+export default EditVideo

@@ -3,6 +3,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { useLocation , Link} from 'react-router-dom';
 import "../css/Sidebar.css";
+
 const EditCategory = () => {
 
   const location = useLocation();
@@ -49,9 +50,10 @@ const EditCategory = () => {
 
   return (
     <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-      <Sidebar />
+          <Sidebar />
     <div className="container-fluid">
-      
+    
+
       <h1 className="mt-4 text-white">{updatedcategory.categories}'s Profile</h1>
       <ol className="breadcrumb mb-4">
         <li className="breadcrumb-item">
