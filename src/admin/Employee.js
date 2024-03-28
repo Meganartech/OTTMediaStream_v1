@@ -49,11 +49,6 @@ class Employee{
     setSiteSetting( sitesetting){
         return axios.post(SiteSetting,sitesetting);
     }
-    setSite( ){
-        // let [samp, setSamp] = useState(false);
-        let data=true;
-        return (data);
-    }
 
 }
 export default new Employee()

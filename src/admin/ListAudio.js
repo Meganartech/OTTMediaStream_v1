@@ -102,9 +102,9 @@ const ListAudio = () => {
 
   return (
     <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: '13rem' }}>
-         <Sidebar />
-      <div className="container-fluid">
-     
+      <div className="container-fluid px-4">
+        <Navbar />
+        <Sidebar />
         <h1 className="mt-4 text-white">Audios</h1>
         <ol className="breadcrumb mb-4">
           <li className="breadcrumb-item">
