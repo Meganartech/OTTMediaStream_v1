@@ -92,15 +92,8 @@ const AddCategory = () => {
 
   return (
     <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-<<<<<<< HEAD
     <Sidebar />
     <div className='container-fluid'>
-  
-=======
-    <div className='container-fluid px-4'>
-      <Navbar />
-      <Sidebar />
->>>>>>> 223a955bc7865ac7e8254e536e2bc2881313a885
       <h1 className="mt-4 text-white">Add Category</h1>
           <ol className="breadcrumb mb-4">
           <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>
