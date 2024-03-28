@@ -194,12 +194,12 @@ const AddVideo = () => {
   return (
 
     <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem" }}>
-      <div className='container-fluid'>
-     
-        <Sidebar />
+             <Sidebar />
 
       <div className='container-fluid'>
-        
+     
+ 
+   
 
         <div>
           {/* <h1 className="mt-4 text-white">Add Video</h1> */}
@@ -422,7 +422,7 @@ const AddVideo = () => {
         </div>
       </div>
     </div>
-    </div>
+    
   );
 }
 
