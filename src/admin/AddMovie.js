@@ -11,8 +11,8 @@ import Employee from './Employee';
 const AddMovie = () => {
   return (
     <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem" }}>
-    <div className='container-fluid px-4'>
-      <Navbar />
+    <div className='container-fluid'>
+
       <Sidebar />
       <div>
         {/* <h1 className="mt-4 text-white">Add Video</h1> */}

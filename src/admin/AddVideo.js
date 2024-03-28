@@ -194,8 +194,8 @@ const AddVideo = () => {
   return (
 
     <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem" }}>
-      <div className='container-fluid px-4'>
-        <Navbar />
+      <div className='container-fluid'>
+     
         <Sidebar />
 
       <div className='container-fluid'>
