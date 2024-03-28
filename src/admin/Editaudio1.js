@@ -198,8 +198,8 @@ fetchAudio(); // Replace 'yourDefaultFileName' with the desired default file nam
 
   return (
     <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-    <div className="container-fluid px-4">
-      <Navbar />
+    <div className="container-fluid">
+     
       <Sidebar />
       {/* <h1 className="mt-4 text-black">{updatedget.categories}'s Profile</h1> */}
 

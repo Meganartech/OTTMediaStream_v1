@@ -101,9 +101,12 @@ const AddAudio = () => {
   
   return (
     <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-    <div className='container-fluid px-4'>
-      <Navbar />
-      <Sidebar />
+
+ <Sidebar />
+    <div className='container-fluid'>
+    
+     
+
       <h1 className="mt-4 text-white">Add Audio</h1>
           <ol className="breadcrumb mb-4">
           <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>

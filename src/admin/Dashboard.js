@@ -22,10 +22,12 @@ const Dashboard = () => {
 
   return (
     <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-    <div className="container-fluid px-4">
-      <Navbar />
+
+ <Sidebar />
+    <div className="container-fluid">
+   
       {/* <App2 /> */}
-      <Sidebar />
+
       <h1 className="mt-4 text-white">Dashboard</h1>
       <ol className="breadcrumb mb-4">
         <li className="breadcrumb-item active">Dashboard</li>
