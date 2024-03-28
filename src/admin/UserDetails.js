@@ -45,9 +45,9 @@ const UserDetails = ({ userId }) => {
   };
   return (
     <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-            <Sidebar />
-    <div className="container-fluid" >
-
+    <div className="container-fluid px-4" >
+      <Navbar />
+      <Sidebar />
       <h2 className="text-white">User Details</h2>
       <div className="folder-container">
         <ul className="folder-list">

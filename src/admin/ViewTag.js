@@ -128,9 +128,9 @@ const ViewTag = () => {
   return (
       
   <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-      <Sidebar />
-        <div className="container-fluid">
-        
+        <div className="container-fluid px-4">
+          <Navbar />
+          <Sidebar />
           <h1 className="mt-4 text-white">View Tags</h1>
           <ol className="breadcrumb mb-4">
           <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>

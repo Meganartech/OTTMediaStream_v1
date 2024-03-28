@@ -28,6 +28,7 @@ const ImageComponent = () => {
 
   return (
     <div>
+      <Navbar />
       <Sidebar />
       <h2 className="text-white">Image Component</h2>
       {/* Display image component content */}
