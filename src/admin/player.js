@@ -27,7 +27,7 @@ const VideoPlayer = () => {
           <source src="./src/img/Color Burst.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video> */}
-        <ReactPlayer controls={true} url='http://localhost:8080/api/play/5'  config={{ file: { 
+        <ReactPlayer controls={true} url='http://localhost:8080/api/play/1'  config={{ file: { 
             attributes: {
               controlsList: 'nodownload'
             }

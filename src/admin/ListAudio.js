@@ -7,11 +7,12 @@ import AudioPlayer from 'react-audio-player';
 import "../css/Sidebar.css";
 const ListAudio = () => {
   const [image, setImage] = useState([]);
+  const [vimage, setvImage] = useState([]);
   // const [audios, setAudios] = useState([]);
   const [deleteStatus, setDeleteStatus] = useState(null);
   const [filename, setFilename] = useState(null);
   const [getall, setGetall] = useState(null);
-
+  const [all, setall] = useState(null);
   useEffect(() => {
     fetchData();
   }, [deleteStatus]);
@@ -32,6 +33,9 @@ const ListAudio = () => {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
+
+    
+
   }, []);
 
   
@@ -49,12 +53,15 @@ const ListAudio = () => {
 
       if (data && Array.isArray(data)) {
         setImage(data);
+        console.log(image);
       } else {
         console.error('Invalid or empty data received:', data);
       }
     } catch (error) {
       console.error('Error fetching or processing image data:', error);
     }
+
+   
   };
 
  
@@ -221,6 +228,7 @@ const ListAudio = () => {
     <p>No audios found.admin</p>
   )}
    </div>
+
 
 
 
