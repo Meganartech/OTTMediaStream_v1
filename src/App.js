@@ -66,7 +66,7 @@ import AddAud from "./admin/AddAud";
 import MoviesPage from "./user/Screens/Movies";
 import Watch from './admin/player';
 
-import WatchPage from './user/Screens/WatchPage';
+import VideoHomescreen from './user/VideoHomescreen';
 
 
 const App = () => {
@@ -94,7 +94,7 @@ const App = () => {
        {/* <Router> */}
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='movies' element={<MoviesPage />} />
+          <Route path='VideoHomescreen' element={<VideoHomescreen />} />
           <Route path='Admin' element={< Login />} >
             <Route path='dashboard' element={< Dashboard />} />
             <Route path='addUser' element={< AddUser/>} />

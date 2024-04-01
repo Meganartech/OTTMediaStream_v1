@@ -26,6 +26,7 @@ const EditVideo = (receivedData) => {
     useEffect(() => {
    
         console.log("EditVideo="+id);
+        
     
     fetch('http://localhost:8080/api/v2/GetAllCategories')
 
@@ -43,22 +44,23 @@ const EditVideo = (receivedData) => {
         console.error('Error fetching data:', error);
       });
 
-      fetch(`http://localhost:8080/api/GetvideoDetail/${id}`)
+      // fetch(`http://localhost:8080/api/GetvideoDetail/${id}`)
 
     
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        setUpdatedata(data);
-        console.log(updatedata);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+      // .then(response => {
+      //   if (!response.ok) {
+      //     throw new Error('Network response was not ok');
+      //   }
+      //   return response.json();
+      // })
+      // .then(data => {
+      //   setUpdatedata(data);
+        
+      //   console.log(updatedata);
+      // })
+      // .catch(error => {
+      //   console.error('Error fetching data:', error);
+      // });
 
     fetch('http://localhost:8080/api/v2/GetAllCertificate')
       .then(response => {
@@ -102,11 +104,50 @@ const EditVideo = (receivedData) => {
         console.error('Error fetching data:', error);
       });
 
+      const fetchData = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/api/GetvideoDetail/${id}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            
+            const data = await response.json();
+            setUpdatedata(data);
+            setMovie_name(data.moviename);
+            setCategoryId(data.category);
+            setCertificateId(data.certificate);
+            setDescription(data.description);
+            setDuration(data.duration);
+            setLanguageId(data.language)
+            setTagId(data.tags);
+            setYear(data.year);
+        // Log the movie name here
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    fetchData();
+  
+    
+
+      
 
 
     }, []);
 
   // fetchData();
+  const handleFileChange = (event) => {
+
+
+   
+    // changeCast_Crew();
+    // changeDescription();
+    // changeDuration();
+    // changeYear();
+    // changeMovie_name();
+
+  };
   const [Movie_name, setMovie_name] = useState('');
   const changeMovie_name = (event) => {
     const newValue = event.target.value;
@@ -133,10 +174,14 @@ const EditVideo = (receivedData) => {
     setCast_Crew(newValue); // Updating the state using the setter function
   };
 
-  const handleFileChange = (event) => {
-    // setThumbnail(event.target.files[0]);
-    // setFile(event.target.files[0]);
-  };
+  // const handleFileChange = (event) => {
+  //   // changeCast_Crew();
+  //   // changeDescription();
+  //   // changeDuration();
+  //   // changeYear();
+  //   // changeMovie_name();
+
+  // };
   const handleFile = (event) => {
     // setThumbnail(event.target.files[0]);
     setFile(event.target.files[0]);
@@ -171,15 +216,18 @@ const EditVideo = (receivedData) => {
   const save = async (e) => {
     e.preventDefault();
 
+
+
+
     try {
     const formData = new FormData();
-    const audioData = {
+    // const audioData = {
         
-      thumbnail: thumbnail,
-    };
-    console.log("audioData")
-    console.log(audioData)
-    const Addvideo = { Movie_name: Movie_name, tags: TagId, description: Description,category: categoryId,certificate: certificateId,Language: LanguageId,Duration:Duration,Year:Year,thumbnail:thumbnail,video:file};
+    //   thumbnail: thumbnail,
+    // };
+    // console.log("audioData")
+    // console.log(audioData)
+    const Addvideo = { Movie_name: Movie_name, tags: TagId, description: Description,category: categoryId,certificate: certificateId,Language: LanguageId,Duration:Duration,Year:Year,id:updatedata.id};
     console.log(Addvideo);
 
 
@@ -187,9 +235,9 @@ const EditVideo = (receivedData) => {
       formData.append(key, Addvideo[key]);
     }
 
-    const response = await axios.post('http://localhost:8080/api/uploaddescriprion', formData, {
+    const response = await axios.post('http://localhost:8080/api/updatedescriprion', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'form-data',
         },
         onUploadProgress: (progressEvent) => {
           const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
@@ -197,7 +245,7 @@ const EditVideo = (receivedData) => {
         }
       });
         console.log(response.data);
-      console.log("video updated successfully");
+      console.log("updated successfully");
     } catch (error) {
       console.error('Error uploading audio:', error);
       // Handle error, e.g., show an error message to the user
@@ -244,7 +292,7 @@ const EditVideo = (receivedData) => {
                       // className={`form-control ${errors.confirmPassword ? 'error' : ''}`}
                       className="form-control"
                       onChange={changeMovie_name}
-                      value={updatedata.moviename}
+                      value={Movie_name}
                     />
                     </div>
                     <div className='col-lg-6'>
@@ -255,7 +303,7 @@ const EditVideo = (receivedData) => {
                       // className={`form-control ${errors.confirmPassword ? 'error' : ''}`}
                       className="form-control"
                       onChange={changeYear}
-                      value={updatedata.year}
+                      value={Year}
                     />
                     </div>
                     </div>
@@ -266,7 +314,7 @@ const EditVideo = (receivedData) => {
                       <select
                   className='form-control'
                   name='category'
-                  value={updatedata.tags}
+                  value={TagId}
                   onChange={(e) => setTagId(e.target.value)}
                 >
                 <option value=''>Select Tag</option>
@@ -284,7 +332,7 @@ const EditVideo = (receivedData) => {
                     <select
                   className='form-control'
                   name='category'
-                  value={updatedata.category}
+                  value={categoryId}
                   onChange={(e) => setCategoryId(e.target.value)}
                 >
                 <option value=''>Select Category</option>
@@ -305,7 +353,7 @@ const EditVideo = (receivedData) => {
                       <select
                   className='form-control'
                   name='category'
-                  value={updatedata.certificate}
+                  value={certificateId}
                   onChange={(e) => setCertificateId(e.target.value)}
                 >
                 <option value=''>Select Certificate</option>
@@ -323,7 +371,7 @@ const EditVideo = (receivedData) => {
                       <select
                   className='form-control'
                   name='category'
-                  value={updatedata.language}
+                  value={LanguageId}
                   onChange={(e) => setLanguageId(e.target.value)}
                 >
                 <option value=''>Select Language</option>
@@ -347,7 +395,7 @@ const EditVideo = (receivedData) => {
                       // className={`form-control ${errors.confirmPassword ? 'error' : ''}`}
                       className="form-control"
                       onChange={changeDuration}
-                      value={updatedata.duration}
+                      value={Duration}
                     />
                     </div>
                     <div className='col-lg-6'>
@@ -358,7 +406,7 @@ const EditVideo = (receivedData) => {
                       // className={`form-control ${errors.confirmPassword ? 'error' : ''}`}
                       className="form-control"
                       onChange={changeCast_Crew}
-                      value={""}
+                      value={Cast_Crew}
                     />
                     </div>
                     </div>
@@ -372,7 +420,7 @@ const EditVideo = (receivedData) => {
                       // className={`form-control ${errors.confirmPassword ? 'error' : ''}`}
                       className="form-control"
                       onChange={changeDescription}
-                      value={updatedata.description}
+                      value={Description}
                     />
                     </div>
                     {/* <div className='col-lg-6'>
@@ -427,9 +475,10 @@ const EditVideo = (receivedData) => {
                    
                     {/* <button className='text-center btn btn-info' > */}
                     {/* <Link to="/admin/Watch" className="btn btn-info">Play</Link> */}
-                    <Link to="#" className="btn btn-info">Save</Link>
+                    {/* <Link to="#" className="btn btn-info"></Link> */}
+                    <button className='text-center btn btn-info' onClick={save}>Save</button>
                     {/* </button> */}
-                    {/* {uploadProgress > 0 && <p>Upload Progress: {uploadProgress}%</p>} */}
+                    {uploadProgress > 0 && <p>Updating Progress: {uploadProgress}%</p>}
 
                   </div>
 
