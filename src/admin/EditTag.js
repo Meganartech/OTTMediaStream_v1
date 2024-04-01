@@ -60,9 +60,12 @@ const EditTag = () => {
   
   return (
     <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-    <div className="container-fluid px-4">
-      <Navbar />
+    <div className="container-fluid">
+  
       <Sidebar />
+
+    <div className="container-fluid">
+
       <h1 className="mt-4 text-white">{UpdatedTag.tag}'s Profile</h1>
       <ol className="breadcrumb mb-4">
         <li className="breadcrumb-item">
@@ -103,6 +106,7 @@ const EditTag = () => {
       </div>
     </div>
   </div>
+</div>
   );
 };
 

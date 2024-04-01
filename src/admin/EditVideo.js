@@ -3,6 +3,8 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
 import Employee from './Employee';
+
+
 import React, { useState, useEffect } from 'react';
 
 const EditVideo = (receivedData) => {
@@ -216,8 +218,7 @@ const EditVideo = (receivedData) => {
 
   return (
     <div id="content-wrapper" class="d-flex flex-column" style={{ marginLeft: "13rem" }}>
-      <div className='container-fluid px-4'>
-        <Navbar />
+      <div className='container-fluid'>
         <Sidebar />
         <div>
           {/* <h1 className="mt-4 text-white">Add Video</h1> */}

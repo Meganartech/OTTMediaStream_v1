@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import AudioPlayer from 'react-audio-player';
 import "../css/Sidebar.css";
+
 const Audio = () => {
   // ...................................Admin Functions.............................................
 
@@ -125,9 +126,11 @@ const Audio = () => {
   // };
   return (
     <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-    <div className="container-fluid px-4">
-      <Navbar />
-      <Sidebar />
+
+   <Sidebar />
+    <div className="container-fluid">
+   
+
       <h1 className="mt-4 text-white">Audios</h1>
       <ol className="breadcrumb mb-4">
         <li className="breadcrumb-item">

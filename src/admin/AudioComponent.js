@@ -13,9 +13,12 @@ const AudioComponent = () => {
 
   return (
     <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-    <div className="container-fluid px-4">
-      <Navbar />
+
       <Sidebar />
+    <div className="container-fluid">
+
+    
+
       <h2 className="text-white">Audio Component</h2>
       {/* Display audio component content */}
       <button onClick={handleGoBack}>Go Back</button>
