@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Route  } from 'react-router-dom';
 import Usersidebar from './usersidebar'
+import { useNavigate } from 'react-router-dom';
 import Video from './video';
 import Footer from './Footer'
 // import '../css/style.css';
@@ -10,10 +11,13 @@ function VideoHomescreen() {
     const [image, setImage] = useState([]);
     const [vimage, setvImage] = useState([]);
     // const [audios, setAudios] = useState([]);
+    const navigate = useNavigate();
     const [deleteStatus, setDeleteStatus] = useState(null);
     const [filename, setFilename] = useState(null);
     const [getall, setGetall] = useState(null);
     const [all, setall] = useState(null);
+    const [items, setItems] = useState([]);
+
     useEffect(() => {
       fetchData();
     }, [deleteStatus]);
@@ -68,7 +72,14 @@ function VideoHomescreen() {
         console.error('Error fetching or processing image data:', error);
       }
     };
-  
+    const Navigation = (Id) => {
+        // Set localStorage item
+        localStorage.setItem('items', Id);
+        const items = localStorage.getItem('items');
+        console.log(items); // Log the updated value of items
+        // Navigate to the desired route
+        navigate('/admin/Watch');
+    };
     
     useEffect(() => {
       console.log(deleteStatus);
@@ -95,10 +106,21 @@ function VideoHomescreen() {
         <section class="hero">
 <div class="hero__slider_user owl-carousel_user">
 <div class="hero__item_user set-bg_user">
-<Link className="Link" to="/UserVideo">
-<img src="img/work/work-6.jpg" class="im_1_user" alt="Responsive image" />
-      </Link>
-
+{all && all.map((item, index) => {
+    if (index === 0) {
+        return (
+            <Link className="Link" to={{
+                pathname: `/admin/Watch`,
+                state: { get: item },
+            }} key={index}>
+                <img src={`data:image/png;base64,${vimage[24]}`} className="im_1_user" alt="Responsive image" />
+            </Link>
+        );
+    } else {
+        // handle else case if needed
+        return null; // or any other fallback
+    }
+})}
 </div>
 </div>
 </section>
@@ -115,326 +137,27 @@ function VideoHomescreen() {
     all.map((get, index) => (
       
         
-        <Link className="Link" to="/PlayBack">
+        <Link className="Link" onClick={() => Navigation(get.id)} to={{pathname: `/admin/Watch`}}>
             <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
             
                 <img src={`data:image/png;base64,${vimage[index]}`} class="im_u"   alt={`Image ${index + 1}`} />
                 <div class="work__item__hover_user">
                     <h4>{get.moviename}</h4>
                     <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
+                    <h4> <li>{get.category}</li></h4>
+                    <h4>  <li>{get.language}</li></h4>
                     </ul>
                 </div>
                 
             </div>
             </Link>
             ))
-  ) : (
+        )
+  : (
     <p>No audios found.admin</p>
   )
   }
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/1542216179.svg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-7.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-3.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-6.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-5.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-1.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-7.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-5.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-6.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-3.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/1542216179.svg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-5.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-        <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-1.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/1542216179.svg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-7.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-3.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-6.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-5.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-1.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-7.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-5.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-6.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-3.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/1542216179.svg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
-            <Link className="Link" to="/PlayBack">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
-                <img src="img/work/work-5.jpg" class="im_u" alt="Responsive image" />
-                <div class="work__item__hover_user">
-                    <h4>VIP Auto Tires & Service</h4>
-                    <ul>
-                        <li>eCommerce</li>
-                        <li>Magento</li>
-                    </ul>
-                </div>
-            </div>
-            </Link>
+           
         {/* </div> */}
     
         {/* </div> */}
