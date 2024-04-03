@@ -87,6 +87,8 @@ const Video = () => {
   return (
    
   <div id="content-wrapper" class="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
+  
+
 
     <Sidebar />
     <div className="container-fluid">
@@ -99,7 +101,7 @@ const Video = () => {
         </li>
         <li className="breadcrumb-item active">Videos</li>
       </ol>
-      <div className="card-1 mb-4">
+      <div className="card-1 mb-4" style={{height: "auto"}}>
           <div className="card-header">
             <i className="fas fa-table me-1"></i>
             Registered User Details
@@ -201,7 +203,6 @@ const Video = () => {
           } */}
         </div>
     </div>
-    <EditVideo receivedData={dataToSend} />
     </div>
   );
 };
