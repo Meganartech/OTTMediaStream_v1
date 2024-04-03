@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
-const Login = () => {
+const Login = ({ handleLogin }) => {
   const [user, setUser] = useState({ username: '', password: '' });
   const [samp1, setsamp] = useState(1);
   const [users, setUsers] = useState([]);
@@ -69,8 +69,11 @@ const Login = () => {
 
     if (userFound && !isEmpty && valid) {
       hide();
+      handleLogin();
       navigate('/admin/Dashboard');
       sessionStorage.setItem('mySessionData', true);
+      const itrm= sessionStorage.getItem('mySessionData')
+      console.log("session :"+itrm)
       
       // If needed, perform navigation or any other action here
     } else if (isEmpty) {
