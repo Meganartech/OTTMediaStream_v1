@@ -1,25 +1,20 @@
-
-import React, { useState, useEffect } from 'react';
-import { Link, Outlet, useLocation,useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import React, { useEffect, useState } from 'react';
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [user, setUser] = useState({ username: '', password: '' });
   const [samp1, setsamp] = useState(1);
   const [users, setUsers] = useState([]);
-
-  let value=1;
-  const [isEmpty, setisEmpty] = useState();
-
+  const [valid, setValid] = useState();
+  let value = 1;
+  const [isEmpty, setIsEmpty] = useState();
   // var isEmpty;
   const location = useLocation();
   const navigate = useNavigate();
-  
 
 
   useEffect(() => {
-
 
     fetchUsers();
 
@@ -38,22 +33,22 @@ const Login = () => {
 
 
 
-    
-  };
 
+  };
   const hide = () => {
-    setsamp(1);
+    // setsamp(1);
+    setValid('');
   };
-
 
   const fetchUsers = async () => {
     try {
       const response = await axios.get('http://localhost:8080/api/v2/GetAllUser');
       setUsers(response.data.userList);
-
-      setisEmpty(response.data.empty);
-      console.log(isEmpty);
-
+      setIsEmpty(response.data.empty); // Corrected from setisEmpty to setIsEmpty
+      setValid(response.data.valid);
+      console.log("Is empty: " + isEmpty); // Corrected from empty to isEmpty
+      console.log("Valid: " + valid);
+      console.log("--------------------------------------------------------------------");
       // After setting the users state, check if the username exists
       // const userFound = response.data.find(userData => userData.username === user.username);
     } catch (error) {
@@ -62,27 +57,34 @@ const Login = () => {
 
   }
 
-  
- 
-  const Submit =(e)=>{  
-    e.preventDefault(); 
+
+  const Submit = (e) => {
+    e.preventDefault();
     fetchUsers();
     
+
     const userFound = users.find(userData => (
       user.username === userData.username && user.password === userData.password
     ));
-    
-if (userFound && !isEmpty) {
-  navigate('/admin/Dashboard');
-  sessionStorage.setItem('mySessionData', true);
-  // If needed, perform navigation or any other action here
-} else if(isEmpty){
-  navigate('/admin/licence');
-}
-  else{
-    alert("Invalid username or password");
-}
 
+    if (userFound && !isEmpty && valid) {
+      hide();
+      navigate('/admin/Dashboard');
+      sessionStorage.setItem('mySessionData', true);
+      
+      // If needed, perform navigation or any other action here
+    } else if (isEmpty) {
+      alert("Licence required")
+      navigate('/admin/licence');
+    } else if (!valid) {
+
+      alert("Licence Expired")
+      navigate('/admin/licence');
+    }
+    else {
+      alert("Invalid username or password");
+    }
+    
     // if(
     //   // user.username==users.username
     //   //  && 
