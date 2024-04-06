@@ -1,62 +1,36 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './navbar';
-import Sidebar from './sidebar';
-import {  useLocation,Link} from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import Axios from 'axios';
 import AudioPlayer from 'react-audio-player';
-import "../css/Sidebar.css";
+import Sidebar from './sidebar'; // Import Sidebar component
+
 const ViewAudio = () => {
-
   const location = useLocation();
-  const { get } = location.state;
-  console.log(get.id)
+  const { state } = location;
 
-
+  // Define variables using useState and useEffect unconditionally
+  const [get, setGet] = useState(null);
   const [audioData, setAudioData] = useState(null);
   const [image, setImage] = useState([]);
-  // const imageData = get.thumbnail;
-  // const imageUrl = URL.createObjectURL(new Blob([atob(imageData)], { type: 'image/png' }));
-  
-
 
   useEffect(() => {
-    // Fetch the audio file when the component mounts
-    const fetchAudio = async () => {
-      try {
-        const response = await Axios.get(
-          `http://localhost:8080/api/v2/${get.fileName.replace(/^.*[\\\/]/, '')}/file`,
-          {
-            responseType: 'arraybuffer', // Set the response type to arraybuffer for binary data
-          }
-        );
+    // Check if location.state exists and has the required data structure
+    if (state && state.get) {
+      setGet(state.get);
+    }
+  }, [state]);
 
-        // Set the audio data directly
-        setAudioData(response.data);
-      } catch (error) {
-        console.error('Error fetching audio:', error);
-      }
-    };
-
-    fetchAudio();
-  }, [get.fileName]);
-  
   useEffect(() => {
+    if (!get) return; // Check if get is null
     const fetchData = async () => {
       try {
-        // Fetch image data
-        const response = await fetch(`http://localhost:8080/api/v2/GetThumbnailsById/${get.id}`);
-
+        const response = await Axios.get(`http://localhost:8080/api/v2/GetThumbnailsById/${get.id}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-
         const data = await response.json();
-
-        // if (data && Array.isArray(data)) {
-        //   setImage(data);
-        if(response.ok){
-            setImage(data);
-
+        if (response.ok) {
+          setImage(data);
         } else {
           console.error('Invalid or empty data received:', data);
         }
@@ -66,9 +40,30 @@ const ViewAudio = () => {
     };
 
     fetchData();
-  }, [get.id]);
+  }, [get]);
 
-  
+  useEffect(() => {
+    if (!get) return; // Check if get is null
+    const fetchAudio = async () => {
+      try {
+        const response = await Axios.get(
+          `http://localhost:8080/api/v2/${get.fileName.replace(/^.*[\\\/]/, '')}/file`,
+          {
+            responseType: 'arraybuffer',
+          }
+        );
+        setAudioData(response.data);
+      } catch (error) {
+        console.error('Error fetching audio:', error);
+      }
+    };
+
+    fetchAudio();
+  }, [get]);
+
+  if (!get) {
+    return <div>No data available</div>;
+  }
  
   // const base64Audio = btoa(audioUrl);
   // const audioDataURL = `data:audio/mpeg;base64,${base64Audio}`;
@@ -76,14 +71,13 @@ const ViewAudio = () => {
   //   setAudioUrl(audioDataURL);
   // };
 
+
   return (
-    <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
-
-    <Sidebar />
-    <div className="container-fluid">
-     
-      
-
+    <div id="content-wrapper" className="d-flex flex-column" style={{ marginLeft: "13rem"}}>
+   
+    
+      <Sidebar />
+      <div className="container-fluid">
       {/* <h1 className="mt-4 text-black">{updatedget.categories}'s Profile</h1> */}
 
       <ol className="breadcrumb mb-4">
