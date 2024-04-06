@@ -97,21 +97,19 @@ const AddLanguage = () => {
     
     <Sidebar />
     <div className='container-fluid'>      
-
-      <h1 className="mt-4 text-white">Add Language</h1>
+<div className='container2'>
           <ol className="breadcrumb mb-4">
-          <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>
+          <li className="breadcrumb-item text-white"><Link to="/Dashboard">Dashboard</Link>
           </li>
             <li className="breadcrumb-item active">Add Language</li>
           </ol>
-      <div className='row justify-content-center'>
+      <div className='temp justify-content-center'>
         <div className='col-lg-12'>
           {/* {name=="admin"
           ? */}
           <div className='card shadow-lg border-0 rounded-lg mt-5'>
             <div className='card-header'>
-              <h2 className='text-center'>Add Language</h2>
-              <hr />
+              <h2 className='text-center' style={{padding:'10px',fontFamily:'Poppins'}}>Add Language</h2>
             </div>
             <div className='card-body'>
               {errorMessage && (
@@ -122,7 +120,7 @@ const AddLanguage = () => {
               )}
               <form onSubmit={handleSubmit}>
                 <div className='modal-header bg-info'>
-                  <h5 className='modal-title' id='exampleModalLongTitle'>
+                  <h5 className='modal-title text-white' style={{fontFamily:'Poppins'}}id='exampleModalLongTitle'>
                     Add New Language
                   </h5>
                 </div>
@@ -195,6 +193,7 @@ const AddLanguage = () => {
           </div>
           {/* } */}
         </div> 
+      </div>
       </div>
     </div>
     // </div>

@@ -144,20 +144,17 @@ const AddUser = () => {
       <Sidebar />
     <div className="container-fluid">
     
-
-      <h1 className="mt-4 text-white">Add User</h1>
+<div className='container2'>
+      
           <ol className="breadcrumb mb-4">
-          <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>
+          <li className="breadcrumb-item text-white"><Link to="/Dashboard">Dashboard</Link>
           </li>
             <li className="breadcrumb-item active">Add User</li>
           </ol>
-      <div className="row">
-        <div className="col-md-12 text-white text-center" id="ta">
-          <h1>Register</h1>
-        </div>
-      </div>
+   
       <form onSubmit={submitForm} method="post" className="registration-form">
-        <div className="row">
+        <h1 className='text-center' style={{ maxWidth: '400px', margin: '0 auto', padding: '20px',color:'#1D0F6E', borderRadius: '5px', backgroundColor: '#f9f9f9',textAlign: 'center', marginBottom: '20px', fontFamily: 'Poppins', fontWeight: 'bold' }}>Registration Form</h1>
+        <div className="temp">
           <div className="col-md-6">
             <div className="form-group">
               <label className="custom-label">
@@ -275,7 +272,7 @@ const AddUser = () => {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="temp">
           <div className="col-md-12">
             <div className="form-group">
               <label className="custom-label">
@@ -293,12 +290,13 @@ const AddUser = () => {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="temp">
           <div className="col-md-12 text-center">
             <input type="submit" className="btn btn-info" name="submit" value="Register" />
           </div>
         </div>
       </form>
+    </div>
     </div>
     </div>
   );

@@ -128,10 +128,9 @@ const ViewCategory = () => {
       
         <Sidebar />
       <div className="container-fluid">
-
-        <h1 className="mt-4 text-white">View languages</h1>
+<div className='container2'>
         <ol className="breadcrumb mb-4">
-        <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>
+        <li className="breadcrumb-item text-white"><Link to="/Dashboard">Dashboard</Link>
         </li>
           <li className="breadcrumb-item active">View Languages</li>
         </ol>
@@ -223,6 +222,7 @@ const ViewCategory = () => {
         </div>
         }
          */}
+      </div>
       </div>
 
       {/* Confirmation dialog

@@ -158,19 +158,18 @@ const Profile = () => {
 
       <Sidebar />
       <div className="container-fluid"   >
-        
-
+<div className='container2'>
         {/* <Sample /> */}
-        <h1 className="mt-4 text-white">{name=="admin"?"Manage users":name}{name=="admin"?"":" Details"}</h1>
+       
         <ol className="breadcrumb mb-4">
-          <li className="breadcrumb-item">
+          <li className="breadcrumb-item text-white">
             <Link to="/Dashboard">Dashboard</Link>
           </li>
-          <li className="breadcrumb-item active">{name=="admin"?"Manage users":name}{name=="admin"?"":" Details"}</li>
+          <li className="breadcrumb-item active">{name=="admin"?"Manage users":name}{name=="admin"?"":"Profile"}</li>
         </ol>
         <div className="card-1 mb-4">
           <div className="card-header">
-            <i className="fas fa-table me-1"></i>
+            <i className="fas fa-users me-1" style={{paddingRight:'10px'}}></i>
             Registered User Details
           </div>
           {/* {name === 'admin' 
@@ -267,6 +266,7 @@ const Profile = () => {
           } */}
         </div>
       </div>
+    </div>
     </div>
   );
 };

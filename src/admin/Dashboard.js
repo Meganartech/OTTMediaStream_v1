@@ -27,10 +27,9 @@ const Dashboard = () => {
     <div className="container-fluid">
    
       {/* <App2 /> */}
-
-      <h1 className="mt-4 text-white">Dashboard</h1>
+    <div className='container2'>
       <ol className="breadcrumb mb-4">
-        <li className="breadcrumb-item active">Dashboard</li>
+        <li className="breadcrumb-item active text-white">Dashboard</li>
       </ol>
       {name=="admin"
       ?
@@ -181,6 +180,9 @@ const Dashboard = () => {
       }
     </div>
     </div>
+    </div>
+  
+    
   );
 };
 

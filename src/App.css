@@ -11948,10 +11948,10 @@ font-weight: 900;
   padding: 20px;
 }
 .registration-form {
-  max-width: 50rem;
-  height: 39rem;
+  max-width: 60rem;
+  height: 30rem;
+  padding: 10px;
   margin: 0 auto;
-  padding: 20px;
   background-color: #f8f9fa;
   border-radius: 8px;
 }

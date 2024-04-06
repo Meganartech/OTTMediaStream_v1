@@ -83,22 +83,19 @@ const AddCertificate = () => {
 
 <Sidebar />
     <div className='container-fluid'>
-
-
-      <h1 className="mt-4 text-white">Add certificate</h1>
+<div className='container2'>
           <ol className="breadcrumb mb-4">
-          <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>
+          <li className="breadcrumb-item text-white"><Link to="/Dashboard">Dashboard</Link>
           </li>
             <li className="breadcrumb-item active">Add Certificate</li>
           </ol>
-      <div className='row justify-content-center'>
+      <div className='temp justify-content-center'>
         <div className='col-lg-12'>
           {/* {name==="admin"
           ? */}
           <div className='card shadow-lg border-0 rounded-lg mt-5'>
             <div className='card-header'>
-              <h2 className='text-center'>Add Certificate</h2>
-              <hr />
+              <h2 className='text-center'  style={{padding:'10px',fontFamily:'Poppins'}}>Add Certificate</h2>
             </div>
             <div className='card-body'>
               {error && (
@@ -109,7 +106,7 @@ const AddCertificate = () => {
               )}
             <div className='card-body'>
               <form className='form-container' onSubmit={handleSubmit}>
-                  <h5 className='modal-title modal-header bg-info' id='exampleModalLongTitle'>
+                  <h5 className='modal-title modal-header bg-info'  style={{fontFamily:'Poppins'}} id='exampleModalLongTitle'>
                     Add Certificate
                   </h5>
                   <div className='modal-body text-center'>
@@ -140,6 +137,8 @@ const AddCertificate = () => {
         </div>
       </div>
     </div>
+    </div>
+
     </div>
   );
 };

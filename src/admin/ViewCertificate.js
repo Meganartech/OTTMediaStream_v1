@@ -76,18 +76,15 @@ return (
 
    <Sidebar />
   <div className="container-fluid">
-  
-   
-
-    <h1 className="mt-4 text-white">View Certificate</h1>
+    <div className='container2'>
     <ol className="breadcrumb mb-4">
-    <li className="breadcrumb-item"><Link to="admin/Dashboard">Dashboard</Link>
+    <li className="breadcrumb-item text-white"><Link to="admin/Dashboard">Dashboard</Link>
     </li>
       <li className="breadcrumb-item active">View Certificate</li>
     </ol>
       <div className="card mb-4">
       <div className="card-header">
-        <i className="fas fa-table me-1"></i>
+        <i className="fas fa-certificate me-1"></i>
         Certificate
       </div>
       <div className="card-body">
@@ -123,6 +120,7 @@ return (
           </tbody>
         </table>
       </div>
+    </div>
     </div>
     </div>
     </div>

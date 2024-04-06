@@ -105,27 +105,26 @@ const AddAudio = () => {
  <Sidebar />
     <div className='container-fluid'>
     
-     
+     <div className='container2'>
 
-      <h1 className="mt-4 text-white">Add Audio</h1>
           <ol className="breadcrumb mb-4">
-          <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>
+          <li className="breadcrumb-item text-white"><Link to="/Dashboard">Dashboard</Link>
           </li>
             <li className="breadcrumb-item active">Add Audio</li>
           </ol>
-      <div className='row justify-content-center'>
+      <div className='temp justify-content-center'>
         <div className='col-lg-12'>
           {/* {name=="admin"
           ? */}
           <div className='card shadow-lg border-0 rounded-lg mt-5'>
             <div className='card-header'>
-              <h2 className='text-center'>Add Audios</h2>
-              <hr />
+              <h2 className='text-center' style={{padding:'10px',fontFamily:'Poppins'}}>Add Audios</h2>
+              
             </div>
             <div className='card-body'>
               <form className='form-container' onSubmit={handleSubmit}>
                 <div className='modal-header bg-info'>
-                  <h5 className='modal-title' id='exampleModalLongTitle'>
+                  <h5 className='modal-title modal-header bg-info' id='exampleModalLongTitle' style={{fontFamily:'Poppins'}}>
                     Add New Audio
                   </h5>
                 </div>
@@ -146,7 +145,7 @@ const AddAudio = () => {
                   {errors.categoryId && <div className="error-message">{errors.categoryId}</div>}
                   <br />
                   <br />
-                  <h5 className='modal-title modal-header bg-info' id='exampleModalLongTitle'>
+                  <h5 className='modal-title modal-header bg-info' id='exampleModalLongTitle' style={{fontFamily:'Poppins'}}>
                     Add New Audio File
                   </h5>
                   <input
@@ -158,7 +157,7 @@ const AddAudio = () => {
                   />
                   {errors.audioFile && <div className="error-message">{errors.audioFile}</div>}
                   <br />
-                  <h5 className='modal-title modal-header bg-info' id='exampleModalLongTitle'>
+                  <h5 className='modal-title modal-header bg-info' id='exampleModalLongTitle' style={{fontFamily:'Poppins'}}>
                     Add Thumbnail
                   </h5>
                   <input
@@ -282,6 +281,7 @@ const AddAudio = () => {
       </div>
     </div>
     </div>
+   </div>
   );
 };
 

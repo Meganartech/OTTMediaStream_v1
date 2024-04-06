@@ -112,12 +112,9 @@ const ListAudio = () => {
 
        <Sidebar />
       <div className="container-fluid">
-       
-       
-
-        <h1 className="mt-4 text-white">Audios</h1>
+       <div className='container2'>
         <ol className="breadcrumb mb-4">
-          <li className="breadcrumb-item">
+          <li className="breadcrumb-item text-white">
             <Link to="/Dashboard">Dashboard</Link>
           </li>
           <li className="breadcrumb-item active">Audios</li>
@@ -314,6 +311,7 @@ const ListAudio = () => {
           )} */}
         {/* </div> */}
       </div> 
+    </div>
     </div>
   );
 };

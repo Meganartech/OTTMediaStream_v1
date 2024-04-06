@@ -156,20 +156,16 @@ const SubscriptionPayments = () => {
 
       <Sidebar />
       <div className="container-fluid"   >
-       
-        
-
-        {/* <Sample /> */}
-        <h1 className="mt-4 text-white">Subscriptions</h1>
+        <div className='container2'>
         <ol className="breadcrumb mb-4">
-          <li className="breadcrumb-item">
+          <li className="breadcrumb-item text-white">
             <Link to="/Dashboard">Dashboard</Link>
           </li>
           <li className="breadcrumb-item active">{name=="admin"?"Subscriptions":name}{name=="admin"?"":" Details"}</li>
         </ol>
         <div className="card-1 mb-4">
           <div className="card-header">
-            <i className="fas fa-table me-1"></i>
+            <i className="fas fa-bell me-1"></i>
             Subscription User Details
           </div>
           {name == 'admin' 
@@ -260,11 +256,14 @@ const SubscriptionPayments = () => {
               <label>Password:</label>
               <input type="password" name="password" value={password} onChange={handleChange} />
             </div>
+            <div style={{textAlign:'center'}}>
             <button type="submit" className="btn btn-info">Save Changes</button>
+            </div>
           </form>
         </div>
           }
         </div>
+      </div>
       </div>
     </div>
   );

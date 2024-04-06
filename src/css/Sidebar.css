@@ -16,6 +16,7 @@
       z-index: 999;
     }
 
+
   .container-fluid {
       padding:20px !important;
     }
@@ -31,8 +32,31 @@
     margin-left: 0 !important;
    }
 }
+.container2{
+  height: 100vh;
+  margin-bottom: 60px;
+  margin-left: 60px;
+  margin-right: 60px;
+  border-color: #DFDAD2;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 8px;
+  box-shadow: 5px 10px #949391;
+  /* padding-bottom: 300px; */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.row{
+padding: 40px;
+}
+.temp{
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
 
-
+}
 /* Style for sidebar */
 #sidebar {
   width: 200px;
