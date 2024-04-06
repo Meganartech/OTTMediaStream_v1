@@ -37,7 +37,6 @@ import Login from "./admin/login";
 import EditCategory from "./admin/EditCategory";
 import AddCertificate from "./admin/AddCertificate";
 import EditCertificate from "./admin/EditCertificate";
-import ViewAudio from "./admin/ViewAudio";
 import ViewCertificate from "./admin/ViewCertificate";
 import Editaudio1 from "./admin/Editaudio1";
 import ListAudio from "./admin/ListAudio";
@@ -66,7 +65,7 @@ import AddAud from "./admin/AddAud";
 import MoviesPage from "./user/Screens/Movies";
 import Watch from './admin/player';
 import PrivateRoute from './admin/PrivateRoute';
-
+import ViewAudio from "./admin/ViewAudio";
 import VideoHomescreen from './user/VideoHomescreen';
 
 
@@ -160,7 +159,9 @@ const App = () => {
             <Route path='AddMovie' element={<PrivateRoute isAuthenticated={isLogged} element={<AddMovie/>} />}/>
             <Route path='AddAud' element={<PrivateRoute isAuthenticated={isLogged} element={<AddAud/>} />}/>
             <Route path='EditVideo' element={<PrivateRoute isAuthenticated={isLogged} element={<EditVideo/>} />}/>
-            <Route path='Licence' element={<PrivateRoute isAuthenticated={isLogged} element={<Licence/>} />}/>
+            <Route path='ViewAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<ViewAudio/>} />}/>
+            <Route path='EditAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<EditAudio/>} />}/>
+            <Route path='Licence' element={<Licence/>} />
             {/* <Route path='EditComponent' element={< EditComponent />} /> */}
             {/* <Route path='Navbar' element={< Navbar />} /> */}
             {/* 
