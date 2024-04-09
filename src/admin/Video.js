@@ -92,20 +92,13 @@ const Video = () => {
 
     <Sidebar />
     <div className="container-fluid">
-      
-      
-
-      <h1 className="mt-4 text-white">{name=="admin"?"Admin-Videos":"User-Videos"}</h1>
+      <div className='container2'>
       <ol className="breadcrumb mb-4">
-        <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>
+        <li className="breadcrumb-item text-white"><Link to="/Dashboard">Dashboard</Link>
         </li>
         <li className="breadcrumb-item active">Videos</li>
       </ol>
-      <div className="card-1 mb-4" style={{height: "auto"}}>
-          <div className="card-header">
-            <i className="fas fa-table me-1"></i>
-            Registered User Details
-          </div>
+    
           {/* {name === 'admin' 
           ? */}
             <div className="card-body profile-card-body">
@@ -113,14 +106,14 @@ const Video = () => {
                 <thead>
                   <tr>
                     <th>S.No</th>
-                    <th>moviename</th>
-                    <th>description</th>
-                    <th>tags</th>
-                    <th>category</th>
-                    <th>certificate</th>
-                    <th> language</th>
-                    <th>duration</th>
-                    <th>year</th>
+                    <th>Movie Name</th>
+                    <th>Description</th>
+                    <th>Tags</th>
+                    <th>Category</th>
+                    <th>Certificate</th>
+                    <th>Language</th>
+                    <th>Duration</th>
+                    <th>Year</th>
                     
                   </tr>
                 </thead>
@@ -204,6 +197,7 @@ const Video = () => {
         </div>
     </div>
     </div>
+
   );
 };
 

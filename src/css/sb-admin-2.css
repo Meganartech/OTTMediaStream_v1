@@ -220,7 +220,9 @@ caption {
   caption-side: bottom;
 }
 
-th {
+th,td,tr {
+  text-align: left;
+  padding: 10px;
   text-align: inherit;
   text-align: -webkit-match-parent;
 }
@@ -4720,10 +4722,10 @@ input[type="button"].btn-block {
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
-  padding: 0.75rem 1rem;
+  padding: 1.5rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #eaecf4;
+  background-color:#19094A;
   border-radius: 0.35rem;
 }
 
@@ -11310,7 +11312,7 @@ h1 {
 }
 
 .card-body {
-  padding: 20px;
+  padding: 40px;
 }
 
 .form-container {
@@ -11685,13 +11687,12 @@ h1 {
 /* addVideo.css */
 
 .container-fluid {
-
 padding-top: 20px;
 }
 
 .card-1 {
-max-width: 70rem;
-height: 40rem;
+max-width: 60rem;
+height:50rem;
 padding: 20px;
 margin: 0 auto;
 border-radius: 10px;
@@ -11712,13 +11713,13 @@ padding: 20px;
 }
 
 .form-container {
-max-width: 500px;
+max-width: 1000px;
 margin: 0 auto;
 }
 
 .modal-header {
-background-color: #17a2b8;
-color: #fff;
+background-color: white;
+color: black;
 padding: 10px;
 border-bottom: none;
 }

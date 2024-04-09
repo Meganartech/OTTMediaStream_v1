@@ -192,27 +192,23 @@ const Contact_setting = () => {
 
        <Sidebar />
         <div className="container-fluid"   >
-      
-      
-
-        {/* <Sample /> */}
-        <h1 className="mt-4 text-white">Setting</h1>
+          <div className='container2'>
         <ol className="breadcrumb mb-4">
-          <li className="breadcrumb-item">
+          <li className="breadcrumb-item text-white">
             <Link to="/Dashboard">Dashboard</Link>
           </li>
-          <li className="breadcrumb-item active">Setting</li>
+          <li className="breadcrumb-item active">Contact Settings</li>
         </ol>
         <div className="card md-8" style={{maxWidth: '91rem',paddingLeft: '0px'}}>           
           <div className="container card-body">
-          <div class="row">
+          <div class="temp">
           <div class="col col-lg-2">
         <Setting_sidebar />
         </div>
         <div class="col col-lg-9">
         <ul className='breadcrumb-item' style={{paddingLeft: '0px'}}>
         <form onSubmit="" method="post" className="registration-form">
-        <div className="row">
+        <div className="temp">
         <div className="col-md-6">
         <div className="form-group">
               <label className="custom-label">
@@ -247,11 +243,11 @@ const Contact_setting = () => {
                </div>
           </div>
           <div className="col-md-12">
-          <div className="col-md-2">
+         
           <div className="form-group">
            <input type="submit" className="btn btn-info" name="submit" value="Submit" onClick={save} />
               </div>
-               </div>
+               
           </div>
         </div>
         </form>
@@ -260,6 +256,7 @@ const Contact_setting = () => {
         </div>
         </div>
         </div>
+      </div>
       </div>
     </div>
   );

@@ -116,22 +116,16 @@ const ViewCategory = () => {
          <Sidebar />
       <div className="container-fluid">
    
-     
-
-        <h1 className="mt-4 text-white">View Categories</h1>
+     <div className='container2'>
         <ol className="breadcrumb mb-4">
-        <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>
+        <li className="breadcrumb-item text-white"><Link to="/Dashboard">Dashboard</Link>
         </li>
           <li className="breadcrumb-item active">View Categories</li>
         </ol>
         {/* {
           name=="admin"
           ? */}
-          <div className="card mb-4">
-          <div className="card-header">
-            <i className="fas fa-table me-1"></i>
-            Categories
-          </div>
+        
           <div className="card-body">
             <table id="datatablesSimple">
               <thead>
@@ -164,7 +158,7 @@ const ViewCategory = () => {
                 ))}
               </tbody>
             </table>
-          </div>
+     
         </div>
         {/* :
          <div className="card mb-4">
@@ -227,6 +221,7 @@ const ViewCategory = () => {
           </div>
         </div>
       )} */}
+    </div>
     </div>
   );
 };
