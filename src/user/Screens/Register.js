@@ -38,7 +38,7 @@ const Register = () => {
                     </Link>
                     <p className='text-center text-border'>
                         Already have an account?{" "}
-                        <Link to='/login' className='text-dryGray font-semibold ml-2'>
+                        <Link to='/UserLogin' className='text-dryGray font-semibold ml-2'>
                             SignIn
                         </Link>
                     </p>

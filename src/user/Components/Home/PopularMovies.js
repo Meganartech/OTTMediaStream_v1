@@ -57,10 +57,10 @@ const PopularMovies = () => {
   };
 
   return (
-    <div className='my-16 mx-8'>
+    <div className='my-10 mx-8'>
       <Titles title="Popular Movies" Icon={BsCollectionFill} />
       <br />
-      <div className="slider-container">
+      <div className="slider-container" >
         <Slider {...sliderSettings} ref={sliderRef}>
           {Movies.slice(0, 8).map((movie, index) => (
             <div key={index} className="slider-item">
@@ -69,7 +69,10 @@ const PopularMovies = () => {
           ))}
         </Slider>
       </div>
-    </div>
+
+      
+
+     </div>
   );
 };
 

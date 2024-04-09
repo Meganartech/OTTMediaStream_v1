@@ -2,10 +2,15 @@ import React, { useState ,useEffect} from 'react';
 import { Navbar } from 'react-bootstrap';
 import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "../css/Sidebar.css";
 
 const ViewCertificate= () => {
   const [certificate, setCertificate] = useState([]);
+  const userid = parseInt(sessionStorage.getItem('id'), 10); // Get user ID from session storage
+  const name = sessionStorage.getItem('username');
+  const navigate = useNavigate();
+  let Id;
 
   useEffect(() => {
     // fetch category data from the backend
@@ -48,6 +53,11 @@ const ViewCertificate= () => {
       .catch(error => {
         console.error('Error deleting certificate:', error);
       });
+  };
+
+  const handlEdit = async (certificateId) => {
+    localStorage.setItem('items', certificateId);
+    navigate('/admin/EditCertificate');
   };
   
 // return (
@@ -104,7 +114,7 @@ return (
                 <td>{index + 1}</td>
                 <td>{certificate.certificate ? certificate.certificate : 'No certificate available'}</td>
                 <td>
-                <button>
+                {/* <button>
                 <Link
                   to={{
                     pathname: `/admin/EditCertificate`,
@@ -112,8 +122,11 @@ return (
                   }}
                 >
                   <i className="fas fa-edit"></i>
-                </Link>
-              </button>
+                </Link> */}
+              <button onClick={() => handlEdit(certificate.id)} >
+                          <i className="fas fa-edit" aria-hidden="true"></i>
+                        
+                  </button>
                     <button onClick={() => handleDeleteCertificate(certificate.id)}>
                     <i className="fa fa-trash" aria-hidden="true"></i>
                   </button>

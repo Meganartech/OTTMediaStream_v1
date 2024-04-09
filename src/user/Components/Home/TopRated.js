@@ -16,7 +16,7 @@ const TopRated = () => {
     <div className='my-16'>
       <Titles title='Top Rated' Icon={BsBookmarkStarFill} />
       <div className='mt-10'>
-      <Swiper
+      <Swiper 
           navigation={{ nextEl, prevEl }}
           autoplay={true}
           speed={1000}
@@ -41,6 +41,8 @@ const TopRated = () => {
           },
         }}
         >
+          {/* <div className='w-full px-1 flex-rows gap-6 pt-12'>*/}
+          <div className='w-full px-1 flex-rows gap-6 pt-12'>
           {Movies.map((movie,index)=>(
             <SwiperSlide key={index}>
               <div className='p-4 h-rate hovered border border-border bg-dry rounded-lg overflow-hidden'>
@@ -63,12 +65,15 @@ const TopRated = () => {
               </div>
             </SwiperSlide>
           ))}
+          </div>
         </Swiper>
-        <div className='w-full px-1 flex-rows gap-6 pt-12'>
-        </div>
+        
+        
       </div>
     </div>
   )
 }
 
 export default TopRated
+
+

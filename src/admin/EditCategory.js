@@ -6,9 +6,8 @@ import "../css/Sidebar.css";
 
 const EditCategory = () => {
 
-  const location = useLocation();
-  const { category } = location.state;
-  const [updatedcategory, setUpdatedcategory] = useState(category);
+  const id=localStorage.getItem('items');
+  const [updatedcategory, setUpdatedcategory] = useState(id);
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -25,7 +24,7 @@ const EditCategory = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const categoryId = category.id;
+    const categoryId =id;
       fetch(`http://localhost:8080/api/v2/editCategory/${categoryId}`, {  // Use backticks (`) for string interpolation
         method: 'PATCH',
         headers: {

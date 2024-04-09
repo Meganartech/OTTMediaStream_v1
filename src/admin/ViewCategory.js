@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+ import React, { useState, useEffect } from 'react';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "../css/Sidebar.css";
 const ViewCategory = () => {
   //.......................................Admin functiuons.....................................
-  const name=sessionStorage.getItem('username');
+  
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [categoryIdToDelete, setCategoryIdToDelete] = useState('');
   const [categories, setCategories] = useState([]);
@@ -13,6 +14,12 @@ const ViewCategory = () => {
   const [showConfirmation_u, setShowConfirmation_u] = useState(false);
   const [categoryIdToDelete_u, setCategoryIdToDelete_u] = useState('');
   const [categories_u, setCategories_u] = useState([]);
+  const userid = parseInt(sessionStorage.getItem('id'), 10); // Get user ID from session storage
+  const name = sessionStorage.getItem('username');
+  const navigate = useNavigate();
+  let Id;
+  const [dataToSend, setDataToSend] = useState('');
+  const [items, setItems] = useState([]);
 
 
   useEffect(() => {
@@ -56,24 +63,14 @@ const ViewCategory = () => {
         console.error('Error deleting category:', error);
       });
   };
+
+  const handlEdit = async (categoryId) => {
+    localStorage.setItem('items', categoryId);
+    navigate('/admin/EditCategory');
+  };
   
 
-  // const confirmDeleteCategory = () => {
-  //   // Send an AJAX request to delete the category
-  //   fetch('http://localhost:8080/api/v2/DeleteCategory/{categoryId}')
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log('Category deleted successfully');
-  //       // Remove the deleted category from the local state
-  //       setCategories(prevCategories => prevCategories.filter(category => category.id !== categoryIdToDelete));
-  //     })
-  //     .catch(error => {
-  //       console.log('Error deleting category:', error);
-  //     })
-  //     .finally(() => {
-  //       setShowConfirmation(false);
-  //     });
-  // };
+
   
   //.......................................User functiuons.....................................
   useEffect(() => {
@@ -86,27 +83,6 @@ const ViewCategory = () => {
 
   
 
-  // const handleDeleteCategory_u = (categoryId) => {
-  //   setShowConfirmation_u(true);
-  //   setCategoryIdToDelete_u(categoryId);
-  // };
-
-  // const confirmDeleteCategory_u = () => {
-  //   // Send an AJAX request to delete the category
-  //   fetch(`http://localhost/mediareact/src/php/deletecategory.php?id=${categoryIdToDelete_u}`)
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log('Category deleted successfully');
-  //       // Remove the deleted category from the local state
-  //       setCategories_u(prevCategories => prevCategories.filter(category => category.id !== categoryIdToDelete_u));
-  //     })
-  //     .catch(error => {
-  //       console.log('Error deleting category:', error);
-  //     })
-  //     .finally(() => {
-  //       setShowConfirmation_u(false);
-  //     });
-  // };
 
   
   return (
@@ -146,15 +122,18 @@ const ViewCategory = () => {
                     <td>{index + 1}</td>
                     <td>{category.categories ? category.categories : 'No category available'}</td>
                     <td>
-                    <button>
-                    <Link
+                    
+                    {/* <Link
                       to={{
                         pathname: "/admin/EditCategory",
                         state: { category },
                       }}
                     >
                       <i className="fas fa-edit"></i>
-                    </Link>
+                    </Link> */}
+                    <button onClick={() => handlEdit(category.id)} >
+                          <i className="fas fa-edit" aria-hidden="true"></i>
+                        
                   </button>
                         <button onClick={() => handleDeleteCategory(category.id)}>
                         <i className="fa fa-trash" aria-hidden="true"></i>

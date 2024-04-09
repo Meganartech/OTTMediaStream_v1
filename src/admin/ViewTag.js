@@ -4,11 +4,15 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
 import AddTag from './AddTag';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import "../css/Sidebar.css";
 const ViewTag = () => {
      //.......................................Admin functiuons.....................................
-     const name=sessionStorage.getItem('username');
+     const userid = parseInt(sessionStorage.getItem('id'), 10); // Get user ID from session storage
+     const name = sessionStorage.getItem('username');
+     const navigate = useNavigate();
+     let Id;
   // const history = useHistory();
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [userIdToDelete, setUserIdToDelete] = useState('');
@@ -56,6 +60,11 @@ const ViewTag = () => {
       });
   };
 
+  const handlEdit = async (tagId) => {
+    localStorage.setItem('items', tagId);
+    navigate('/admin/EditTag');
+  };
+
   // const handleEditUser = (userId) => {
   //   // Redirect to the add tag page with the user ID as a query parameter
   //   const selectedTag = users.find(user => user.id === userId);
@@ -81,7 +90,6 @@ const ViewTag = () => {
   //   };    
     
      //.......................................User functiuons.....................................
-     const userid =sessionStorage.getItem('id');
     //  const history_u = useHistory();
      const [tagIdToDelete_u, setTagIdToDelete_u] = useState('');
      const [tags_u, setTags_u] = useState([]);
@@ -161,15 +169,17 @@ const ViewTag = () => {
                     <td>{index + 1}</td>
                     <td>{tag.tag}</td>
                     <td>&nbsp;&nbsp;
-                      <button>
-                        <Link
+                        {/* <Link
                           to={{
                             pathname: '/admin/EditTag',
                             state: { tag },
                           }}
                         >&nbsp;
                           <i className="fa fa-edit" aria-hidden="true">&nbsp;</i>
-                        </Link>
+                        </Link> */}
+                        <button onClick={() => handlEdit(tag.id)} >
+                          <i className="fas fa-edit" aria-hidden="true"></i>
+                        
                       </button>
                       <button onClick={() => handleDeleteTag(tag.id)}>
                         <i className="fa fa-trash" aria-hidden="true"></i>

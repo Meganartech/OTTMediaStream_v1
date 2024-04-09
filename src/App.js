@@ -34,6 +34,7 @@ import ViewCategory from "./admin/ViewCategory";
 import AddLanguage from './admin/AddLanguage';
 import ViewLanguage from "./admin/ViewLanguage";
 import Login from "./admin/login";
+import UserLogin from './user/Screens/UserLogin'
 import EditCategory from "./admin/EditCategory";
 import AddCertificate from "./admin/AddCertificate";
 import EditCertificate from "./admin/EditCertificate";
@@ -66,6 +67,9 @@ import AddAud from "./admin/AddAud";
 import MoviesPage from "./user/Screens/Movies";
 import Watch from './admin/player';
 import PrivateRoute from './admin/PrivateRoute';
+import Register from './user/Screens/Register'
+import AboutUs from './user/Screens/AboutUs';
+import SingleMovie from './user/Screens/SingleMovie';
 
 import VideoHomescreen from './user/VideoHomescreen';
 
@@ -116,7 +120,13 @@ const App = () => {
        {/* <Router> */}
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='MoviesPage' element={<MoviesPage />} />
           <Route path='VideoHomescreen' element={<VideoHomescreen />} />
+          <Route path='UserLogin' element={<UserLogin />} />
+          <Route path='Register' element={<Register />} />
+          <Route path='AboutUs' element={<AboutUs />} />
+          <Route path="/movie/:id" element={<SingleMovie />} />
+
           <Route path='admin' element={<Login handleLogin={handleLogin} />}  >
             <Route path='dashboard' element={<PrivateRoute isAuthenticated={isLogged} element={<Dashboard />} />}/>
             <Route path='addUser'   element={<PrivateRoute isAuthenticated={isLogged} element={<AddUser/>} />} />

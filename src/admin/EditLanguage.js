@@ -6,10 +6,8 @@ import "../css/Sidebar.css";
 
 const EditLanguage = () => {
 
-  const location = useLocation();
-  const { lang } = location.state;
-  console.log("lang",lang)
-  const [updatedlanguage, setUpdatedlanguage] = useState(lang);
+  const id=localStorage.getItem('items');
+  const [updatedlanguage, setUpdatedlanguage] = useState(id);
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -26,7 +24,7 @@ const EditLanguage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const languageId = lang.id;
+    const languageId = id;
       fetch(`http://localhost:8080/api/v2/editLanguage/${languageId}`, {  // Use backticks (`) for string interpolation
         method: 'PATCH',
         headers: {

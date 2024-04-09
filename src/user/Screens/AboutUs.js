@@ -4,8 +4,8 @@ import Head from '../Components/Head'
 
 const AboutUs = () => {
   return (
-    <Layout>
-      <div className='min-height-screen container mx-auto px-2 my-6'>
+    <Layout className='container mx-auto min-h-screen  overflow-y-auto'>
+      <div className='px-2 my-6  '>
         <Head title="About Us" />
         <div className='xl:py-20 py-10 px-4'>
           <div className='grid grid-flow-row xl:grid-cols-2 gap-4 xl:gap-16 items-center'>
@@ -22,7 +22,7 @@ const AboutUs = () => {
                 </p>
               </div>
               <div className='grid md:grid-cols-2 gap-6 mt-8'>
-                <div className='p-8 bg-dry rounded-lg'>
+                <div className=' bg-dry rounded-lg'>
                   <span className='text-3xl block font-extrabold mt-4'>
                     10K
                   </span>
@@ -31,7 +31,7 @@ const AboutUs = () => {
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                   </p>
                 </div>
-                <div className='p-8 bg-dry rounded-lg'>
+                <div className='bg-dry rounded-lg'>
                   <span className='text-3xl block font-extrabold mt-4'>
                     8K
                   </span>
@@ -46,7 +46,7 @@ const AboutUs = () => {
               <img
                 src='/images/aboutus.png'
                 alt='aboutus'
-                className='w-full xl:block hidden h-header rounded-lg object-cover'
+                className='w-full xl:block hidden h-header rounded-lg object-cover '
               />
             </div>
           </div>
