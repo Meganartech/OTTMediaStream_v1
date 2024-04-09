@@ -1,19 +1,18 @@
 import React from 'react';
 // import '../App.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from './navbar';
 import { useState } from 'react';
 import "../css/Sidebar.css";
 const Sidebar = () => {
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const navigate = useNavigate();
   // const history = useHistory();
 
   const handleLogout = () => {
-    // Perform any necessary logout actions (e.g., clearing session, removing tokens, etc.)
-    // ...
-    // After the logout actions are performed, redirect the user to the login page
-    // history.push('/');
+    navigate('/admin');
+    sessionStorage.setItem('mySessionData', false);
   };
 
   const toggleDropdown = () => {

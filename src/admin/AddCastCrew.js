@@ -141,25 +141,19 @@ const AddCastCrew = () => {
 
     <Sidebar />
     <div className="container-fluid">
-
-
-      <h1 className="mt-4 text-white">Add Cast & Crew</h1>
+    <div className='container2'>
           <ol className="breadcrumb mb-4">
-          <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>
+          <li className="breadcrumb-item text-white"><Link to="/Dashboard">Dashboard</Link>
           </li>
             <li className="breadcrumb-item active">Add Cast & Crew</li>
           </ol>
-      <div className="row">
-        <div className="col-md-12 text-white text-center" id="ta">
-          {/* <h1>Register</h1> */}
-        </div>
-      </div>
+
       <form onSubmit={submitForm} method="post" className="registration-form">
-        <div className="row">
+        <div className="temp">
           <div className="col-md-6">
             <div className="form-group">
               <label className="custom-label">
-                name
+                Name
                 {errors.username && <span className="error-icon">!</span>}
               </label>
               <input
@@ -273,7 +267,7 @@ const AddCastCrew = () => {
             </div>
           </div> */}
         </div>
-        <div className="row">
+        <div className="temp">
           <div className="col-md-12">
             <div className="form-group">
               <label className="custom-label">
@@ -291,12 +285,13 @@ const AddCastCrew = () => {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="temp">
           <div className="col-md-12 text-center">
             <input type="submit" className="btn btn-info" name="submit" value="Add" />
           </div>
         </div>
       </form>
+    </div>
     </div>
     </div>
   );

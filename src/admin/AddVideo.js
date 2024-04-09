@@ -197,27 +197,19 @@ const AddVideo = () => {
              <Sidebar />
 
       <div className='container-fluid'>
-     
- 
-   
-
-        <div>
+        <div className='container2'>
           {/* <h1 className="mt-4 text-white">Add Video</h1> */}
           <ol className="breadcrumb mb-4">
-            <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>
+            <li className="breadcrumb-item text-white"><Link to="/Dashboard">Dashboard</Link>
             </li>
             <li className="breadcrumb-item active">Add Video</li>
           </ol>
-          <div className='row justify-content-center'>
-            <div className='col-lg-12'>
-              <div className="card shadow-lg border-0 rounded-lg mt-5" style={{ marginLeft: "0px", marginRight: "0px",minWidth: "100%" }} >
-                <div className='card-header'>
-                  <h2 className='text-center'>Add Movie</h2>
-                </div>
+          <div className='row'>
+               
                 <div className='card-body'>
                   {/* <form className='form-container'> */}
                   <div className='modal-body '>
-                    <div className='row'>
+                    <div className='temp'>
                     <div className='col-lg-6'>
                       <label >Movie_name</label>
                     <input
@@ -242,7 +234,7 @@ const AddVideo = () => {
                     </div>
                     </div>
                     <br></br>
-                    <div className='row'>
+                    <div className='temp'>
                     <div className='col-lg-6'>
                       <label >Tag</label>
                       <select
@@ -262,7 +254,7 @@ const AddVideo = () => {
                   <br />
                     </div>
                     <div className='col-lg-6'>
-                      <label >category</label>
+                      <label >Category</label>
                     <select
                   className='form-control'
                   name='category'
@@ -281,7 +273,7 @@ const AddVideo = () => {
                     </div>
                     </div>
                     <br></br>
-                    <div className='row'>
+                    <div className='temp'>
                     <div className='col-lg-6'>
                       <label >Certificate</label>
                       <select
@@ -320,7 +312,7 @@ const AddVideo = () => {
                     </div>
                     </div>
                     <br></br>
-                    <div className='row'>
+                    <div className='temp'>
                     <div className='col-lg-6'>
                       <label >Duration</label>
                     <input
@@ -345,7 +337,7 @@ const AddVideo = () => {
                     </div>
                     </div>
                     <br></br>
-                    <div className='row'>
+                    <div className='temp'>
                     <div className='col-lg-6'>
                       <label >Description</label>
                     <input
@@ -388,6 +380,7 @@ const AddVideo = () => {
                       onChange={''}
                       value={'categoryName'}
                     /> */} 
+                        <div className='col-lg-12'>
                     <label >Thumbnail</label>
                     <br></br>
                     <input
@@ -397,27 +390,34 @@ const AddVideo = () => {
           name='thumbnail'
           onChange={(e) => setThumbnail(e.target.files[0])}
         />
+        </div><br/>
+        <div className='col-lg-12'>
         <label >AddMovie</label>
          <br></br>
                     <input type="file" accept="video/*" onChange={handleFile} />
                     {uploadProgress > 0 && <p>Upload Progress: {uploadProgress}%</p>}
                     <br></br>
                     <br></br>
+                    </div>
+                    <div style={{display:'flex',textAlign:'center'}}>
+                    <div className='col-lg-6'>
                     <button className='text-center btn btn-info' onClick={save}>Add_Details</button>{/*handleUpload*/}&nbsp;&nbsp;
                     {/* <Link to="/admin/AddMovie" className="btn btn-info">Add</Link>&nbsp;&nbsp; */}
                     {/* <button className='text-center btn btn-info' onClick={Upload}>Upload</button>&nbsp;&nbsp; */}
-                   
+                   </div>
+                   <div className='col-lg-6'>
                     {/* <button className='text-center btn btn-info' > */}
                     <Link to="/admin/Watch" className="btn btn-info">Play</Link>
                     {/* </button> */}
                     {/* {uploadProgress > 0 && <p>Upload Progress: {uploadProgress}%</p>} */}
-
+</div>
+                  </div>
                   </div>
 
                   {/* </form> */}
                 </div>
-              </div>
-            </div>
+             
+          
           </div>
         </div>
       </div>
