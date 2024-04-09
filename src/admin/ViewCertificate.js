@@ -82,11 +82,7 @@ return (
     </li>
       <li className="breadcrumb-item active">View Certificate</li>
     </ol>
-      <div className="card mb-4">
-      <div className="card-header">
-        <i className="fas fa-certificate me-1"></i>
-        Certificate
-      </div>
+    
       <div className="card-body">
         <table id="datatablesSimple">
           <thead>
@@ -123,7 +119,7 @@ return (
     </div>
     </div>
     </div>
-    </div>
+   
   );
   
   

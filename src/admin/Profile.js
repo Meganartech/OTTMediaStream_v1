@@ -167,11 +167,7 @@ const Profile = () => {
           </li>
           <li className="breadcrumb-item active">{name=="admin"?"Manage users":name}{name=="admin"?"":"Profile"}</li>
         </ol>
-        <div className="card-1 mb-4">
-          <div className="card-header">
-            <i className="fas fa-users me-1" style={{paddingRight:'10px'}}></i>
-            Registered User Details
-          </div>
+      
           {/* {name === 'admin' 
           ? */}
             <div className="card-body profile-card-body">
@@ -220,7 +216,7 @@ const Profile = () => {
                   ))}
                 </tbody>
               </table>
-            </div> 
+         
           {/* : 
           <div className="card-body">
           <form onSubmit={handleSubmit} method='POST'>

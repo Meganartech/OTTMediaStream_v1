@@ -164,10 +164,7 @@ const SubscriptionPayments = () => {
           <li className="breadcrumb-item active">{name=="admin"?"Subscriptions":name}{name=="admin"?"":" Details"}</li>
         </ol>
         <div className="card-1 mb-4">
-          <div className="card-header">
-            <i className="fas fa-bell me-1"></i>
-            Subscription User Details
-          </div>
+        
           {name == 'admin' 
           ?
             <div className="card-body profile-card-body">

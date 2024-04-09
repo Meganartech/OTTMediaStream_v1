@@ -205,9 +205,7 @@ const AddVideo = () => {
             <li className="breadcrumb-item active">Add Video</li>
           </ol>
           <div className='row'>
-                <div className='card-header'>
-                  <h2 className='text-center' style={{fontFamily:'Poppins',padding:'10px'}}>Add Movie</h2>
-                </div>
+               
                 <div className='card-body'>
                   {/* <form className='form-container'> */}
                   <div className='modal-body '>

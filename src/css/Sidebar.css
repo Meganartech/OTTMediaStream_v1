@@ -33,7 +33,7 @@
    }
 }
 .container2{
-  height: 100vh;
+  height: 200vh;
   margin-bottom: 60px;
   margin-left: 60px;
   margin-right: 60px;
@@ -43,8 +43,8 @@
   border-radius: 8px;
   box-shadow: 5px 10px #949391;
   /* padding-bottom: 300px; */
-  overflow-y: auto;
-  overflow-x: hidden;
+  /* overflow-y: auto;
+  overflow-x: hidden; */
 }
 .row{
 padding: 40px;

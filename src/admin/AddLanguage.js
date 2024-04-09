@@ -107,10 +107,7 @@ const AddLanguage = () => {
         <div className='col-lg-12'>
           {/* {name=="admin"
           ? */}
-          <div className='card shadow-lg border-0 rounded-lg mt-5'>
-            <div className='card-header'>
-              <h2 className='text-center' style={{padding:'10px',fontFamily:'Poppins'}}>Add Language</h2>
-            </div>
+      
             <div className='card-body'>
               {errorMessage && (
                 <div className='alert alert-danger'>{errorMessage}</div>
@@ -119,8 +116,8 @@ const AddLanguage = () => {
                 <div className='alert alert-success'>{successMessage}</div>
               )}
               <form onSubmit={handleSubmit}>
-                <div className='modal-header bg-info'>
-                  <h5 className='modal-title text-white' style={{fontFamily:'Poppins'}}id='exampleModalLongTitle'>
+                <div className='modal-header'>
+                  <h5 className='modal-title' style={{fontFamily:'Poppins'}}id='exampleModalLongTitle'>
                     Add New Language
                   </h5>
                 </div>
@@ -195,7 +192,7 @@ const AddLanguage = () => {
         </div> 
       </div>
       </div>
-    </div>
+    
     // </div>
   );
 };

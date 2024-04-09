@@ -11713,13 +11713,13 @@ padding: 20px;
 }
 
 .form-container {
-max-width: 500px;
+max-width: 1000px;
 margin: 0 auto;
 }
 
 .modal-header {
-background-color: #17a2b8;
-color: #fff;
+background-color: white;
+color: black;
 padding: 10px;
 border-bottom: none;
 }

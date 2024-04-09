@@ -137,11 +137,7 @@ const ViewCategory = () => {
         {/* {
           name=="admin"
           ? */}
-          <div className="card mb-4">
-          <div className="card-header">
-            <i className="fas fa-table me-1"></i>
-            Languages
-          </div>
+         
           <div className="card-body">
             <table id="datatablesSimple">
               <thead>
@@ -175,7 +171,7 @@ const ViewCategory = () => {
               </tbody>
             </table>
           </div>
-        </div>
+    
         {/* :
          <div className="card mb-4">
           <div className="card-header">

@@ -93,10 +93,7 @@ const AddCertificate = () => {
         <div className='col-lg-12'>
           {/* {name==="admin"
           ? */}
-          <div className='card shadow-lg border-0 rounded-lg mt-5'>
-            <div className='card-header'>
-              <h2 className='text-center'  style={{padding:'10px',fontFamily:'Poppins'}}>Add Certificate</h2>
-            </div>
+     
             <div className='card-body'>
               {error && (
                 <div className='alert alert-danger'>{error}</div>
@@ -106,7 +103,7 @@ const AddCertificate = () => {
               )}
             <div className='card-body'>
               <form className='form-container' onSubmit={handleSubmit}>
-                  <h5 className='modal-title modal-header bg-info'  style={{fontFamily:'Poppins'}} id='exampleModalLongTitle'>
+                  <h5 className='modal-title modal-header'  style={{fontFamily:'Poppins'}} id='exampleModalLongTitle'>
                     Add Certificate
                   </h5>
                   <div className='modal-body text-center'>
@@ -139,7 +136,6 @@ const AddCertificate = () => {
     </div>
     </div>
 
-    </div>
   );
 };
 

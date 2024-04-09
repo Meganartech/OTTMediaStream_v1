@@ -292,8 +292,9 @@ const AddUser = () => {
         </div>
         <div className="temp">
           <div className="col-md-12 text-center">
-            <input type="submit" className="btn btn-info" name="submit" value="Register" />
+            <input type="submit" className="btn btn-info" name="submit" value="Register" />     <br/>
           </div>
+     
         </div>
       </form>
     </div>

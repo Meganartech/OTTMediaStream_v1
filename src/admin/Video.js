@@ -98,11 +98,7 @@ const Video = () => {
         </li>
         <li className="breadcrumb-item active">Videos</li>
       </ol>
-      <div className="card-1 mb-4" style={{height: "auto"}}>
-          <div className="card-header">
-            <i className="fas fa-video-camera me-1" style={{paddingRight:'10px'}}></i>
-            Videos
-          </div>
+    
           {/* {name === 'admin' 
           ? */}
             <div className="card-body profile-card-body">
@@ -201,7 +197,7 @@ const Video = () => {
         </div>
     </div>
     </div>
-    </div>
+
   );
 };
 

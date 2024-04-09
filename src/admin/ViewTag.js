@@ -138,11 +138,7 @@ const ViewTag = () => {
             <li className="breadcrumb-item active">View Tags</li>
           </ol>
           {/* {name=="admin"? */}
-          <div className="card mb-4">
-            <div className="card-header">
-              <i className="fas fa-tags me-1" style={{padding:'10px'}}></i>
-              Tags
-            </div>
+       
             <div className="card-body">
               <table id="datatablesSimple">
                 <thead>
@@ -233,7 +229,7 @@ const ViewTag = () => {
         )} */}
         </div>
         </div>
-      </div>
+  
     );
   };
 

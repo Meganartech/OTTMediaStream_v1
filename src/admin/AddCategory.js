@@ -104,10 +104,7 @@ const AddCategory = () => {
         <div className='col-lg-12'>
           {/* {name=="admin"
           ? */}
-          <div className='card shadow-lg border-0 rounded-lg mt-5'>
-            <div className='card-header'>
-              <h2 className='text-center'  style={{fontFamily:'Poppins',padding:'10px'}}>Add Categories</h2>
-            </div>
+      
             <div className='card-body'>
               {errorMessage && (
                 <div className='alert alert-danger'>{errorMessage}</div>
@@ -116,8 +113,8 @@ const AddCategory = () => {
                 <div className='alert alert-success'>{successMessage}</div>
               )}
               <form onSubmit={handleSubmit}>
-                <div className='modal-header bg-info'>
-                  <h5 className='modal-title text-white' id='exampleModalLongTitle' style={{fontFamily:'Poppins'}}>
+                <div className='modal-header'>
+                  <h5 className='modal-title' id='exampleModalLongTitle' style={{fontFamily:'Poppins'}}>
                     Add New Categories
                   </h5>
                 </div>
@@ -192,7 +189,7 @@ const AddCategory = () => {
       </div>
     </div>
     </div>
-    </div>
+
   );
 };
 
