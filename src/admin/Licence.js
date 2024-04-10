@@ -15,19 +15,19 @@ const Licence = () => {
   const [thumbnail, setThumbnail] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const categoriesResponse = await axios.get('http://localhost:8080/api/v2/GetAllCategories');
-        setCategories(categoriesResponse.data);
-        console.log(categories)
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  // useEffect(() => {
+  //   // const fetchData = async () => {
+  //   //   try {
+  //   //     const categoriesResponse = await axios.get('http://localhost:8080/api/v2/GetAllCategories');
+  //   //     setCategories(categoriesResponse.data);
+  //   //     console.log(categories)
+  //   //   } catch (error) {
+  //   //     console.error(error);
+  //   //   }
+  //   // };
 
-    fetchData();
-  }, []);
+  //   fetchData();
+  // }, []);
 
   const generateAudioTitle = () => {
     const fileName = audioFile ? audioFile.name : 'Untitled Audio';
@@ -40,13 +40,9 @@ const Licence = () => {
     try {
       const formData = new FormData();
       const audioData = {
-        // category: categoryId,
         audioFile: audioFile,
-        // thumbnail: thumbnail,
       };
       console.log(audioData)
-  
-      // Append each property in the audioData object to FormData
       for (const key in audioData) {
         formData.append(key, audioData[key]);
       }
@@ -59,10 +55,8 @@ const Licence = () => {
   
       console.log(response.data);
       console.log("audio updated successfully");
-      // Handle success, e.g., show a success message to the user
     } catch (error) {
       console.error('Error uploading audio:', error);
-      // Handle error, e.g., show an error message to the user
     }
     setCategoryId('')
     setAudioFile(null)
@@ -73,27 +67,6 @@ const Licence = () => {
     const validateForm = () => {
     let isValid = true;
     const errors = {};
-
-    // if (!categoryName) {
-    //   errors.categoryName = 'Category is required.';
-    //   isValid = false;
-    // }
-
-    // if (!tagName) {
-    //   errors.tagName = 'Tag is required.';
-    //   isValid = false;
-    // }
-
-    // if (!audioFile) {
-    //   errors.audioFile = 'Audio file is required.';
-    //   isValid = false;
-    // }
-
-    // if (!thumbnail) {
-    //   errors.thumbnail = 'Thumbnail is required.';
-    //   isValid = false;
-    // }
-
     setErrors(errors);
     return isValid;
   };
@@ -112,25 +85,7 @@ const Licence = () => {
                             <br></br>
                             <div className="card-body">
                             <form className='form-container' onSubmit={handleSubmit}>
-
-             
                 <div className='modal-body text-center'>
-                     {/* -------------------------- 
-                <select
-                  className='form-control'
-                  name='category'
-                  value={categoryId}
-                  onChange={(e) => setCategoryId(e.target.value)}
-                >
-                <option value=''>Select Category</option>
-                    {categories.map((category) => (
-                     <option key={category.id} value={category.id}>
-                    {category.categories}
-                </option>
-                ))}
-               </select>
-                  {errors.categoryId && <div className="error-message">{errors.categoryId}</div>}
-                  {/* ----------------------- */}
                   <br />
                   <br />
                   <h5 className='modal-title modal-header bg-info' id='exampleModalLongTitle'>
@@ -145,26 +100,10 @@ const Licence = () => {
                   />
                   {errors.audioFile && <div className="error-message">{errors.audioFile}</div>}
                   <br />
-
-                  {/* -----------------------------------
-                  <h5 className='modal-title modal-header bg-info' id='exampleModalLongTitle'>
-                    Add Thumbnail
-                  </h5>
-                  <input
-                    type='file'
-                    className='form-control'
-                    placeholder='Choose Thumbnail'
-                    name='thumbnail'
-                    onChange={(e) => setThumbnail(e.target.files[0])}
-                  />
-                  {errors.thumbnail && <div className="error-message">{errors.thumbnail}</div>}
-                  <br />
-                  // ------------------------------------------------  */}
                 </div>
                 <div className='modal-footer'>
                   <input
                     type='submit'
-                    // name='but_upload'
                     value='Upload'
                     className='btn'style={{ backgroundColor:"#17a2b8",color:"White",fontWeight:"500" }}
                   />
