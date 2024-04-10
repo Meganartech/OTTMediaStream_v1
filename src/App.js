@@ -174,7 +174,7 @@ const App = () => {
             <Route path='EditVideo' element={<PrivateRoute isAuthenticated={isLogged} element={<EditVideo/>} />}/>
             <Route path='ViewAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<ViewAudio/>} />}/>
             <Route path='EditAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<EditAudio/>} />}/>
-            <Route path='Licence' element={<Licence/>} />
+            
             {/* <Route path='EditComponent' element={< EditComponent />} /> */}
             {/* <Route path='Navbar' element={< Navbar />} /> */}
             {/* 
@@ -183,6 +183,7 @@ const App = () => {
             
             */}
           </Route>
+          <Route path='licence' element={<Licence/>} />
 
         </Routes>
       {/* </Router> */}

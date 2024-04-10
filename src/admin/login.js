@@ -78,11 +78,11 @@ const Login = ({ handleLogin }) => {
       // If needed, perform navigation or any other action here
     } else if (isEmpty) {
       alert("Licence required")
-      navigate('/admin/licence');
+      navigate('/licence');
     } else if (!valid) {
 
       alert("Licence Expired")
-      navigate('/admin/licence');
+      navigate('/licence');
     }
     else {
       alert("Invalid username or password");
