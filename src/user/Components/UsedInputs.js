@@ -30,7 +30,7 @@ export const Input = ({ label, placeholder, type, bg }) => {
    required 
    type={type} 
    placeholder={placeholder}
-   className={`w-full text-sm mt-2 p-5 border border-border rounded text-white ${
+   className={`w-full text-sm mt-2 p-3 border border-border rounded text-white ${
     bg ? 'bg-main' : 'bg-dry'
 
    }`} 

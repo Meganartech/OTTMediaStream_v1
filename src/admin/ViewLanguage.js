@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import "../css/Sidebar.css";
-const ViewCategory = () => {
+const ViewLanguage = () => {
   //.......................................Admin functiuons.....................................
-  const name=sessionStorage.getItem('username');
+  const userid = parseInt(sessionStorage.getItem('id'), 10); // Get user ID from session storage
+  const name = sessionStorage.getItem('username');
+  const navigate = useNavigate();
+  let Id;
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [categoryIdToDelete, setCategoryIdToDelete] = useState('');
   const [language, setlanguage] = useState([]);
@@ -44,29 +48,35 @@ const ViewCategory = () => {
   //   setCategoryIdToDelete(categoryId);
   // };
 
-  const handleDeleteCategory = (languageId) => {
-    fetch(`http://localhost:8080/api/v2/DeleteLangugae/${languageId}`, {
+  const handleDeleteLanguage = (languageId) => {
+    fetch(`http://localhost:8080/api/v2/DeleteLanguage/${languageId}`, {
       method: 'DELETE',
     })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        // If the response status is OK, don't attempt to parse JSON from an empty response
-        return response.status === 204 ? null : response.json();
-      })
-      .then(data => {
-        if (data) {
-          console.log('Category deleted successfully', data);
-        } else {
-          console.log('Category deleted successfully (no content)');
-        }
-        // Remove the deleted category from the local state
-        setlanguage(prevCategories => prevCategories.filter(language => language.id !== languageId));
-      })
-      .catch(error => {
-        console.error('Error deleting category:', error);
-      });
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      // If the response status is OK, don't attempt to parse JSON from an empty response
+      return response.status === 204 ? null : response.json();
+    })
+    .then(data => {
+      if (!data) {
+        console.log('Language deleted successfully');
+        // Remove the deleted language from the local state
+        setlanguage(prevLanguages => prevLanguages.filter(language => language.id !== languageId));
+      } else {
+        console.error('Error deleting language:', data.error); // Log error message from server
+      }
+    })
+    .catch(error => {
+      console.error('Error deleting language:', error);
+    });
+  };
+  
+
+  const handlEdit = async (languageId) => {
+    localStorage.setItem('items', languageId);
+    navigate('/admin/Editlanguage');
   };
   
 
@@ -152,17 +162,20 @@ const ViewCategory = () => {
                     <td>{index + 1}</td>
                     <td>{lang.language ? lang.language : 'No category available'}</td>
                     <td>
-                    <button>
-                    <Link
+                    
+                    {/* <Link
                       to={{
                         pathname: `/EditCategory`,
                         state: { lang },
                       }}
                     >
                       <i className="fas fa-edit"></i>
-                    </Link>
+                    </Link> */}
+                  <button onClick={() => handlEdit(language.id)} >
+                          <i className="fas fa-edit" aria-hidden="true"></i>
+                        
                   </button>
-                        <button onClick={() => handleDeleteCategory(language.id)}>
+                        <button onClick={() => handleDeleteLanguage(language.id)}>
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </button>
                     </td>
@@ -238,4 +251,4 @@ const ViewCategory = () => {
   );
 };
 
-export default ViewCategory;
+export default ViewLanguage;

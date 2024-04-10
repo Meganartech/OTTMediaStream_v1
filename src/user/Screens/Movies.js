@@ -12,13 +12,13 @@ const MoviesPage = () => {
     setPage(page+maxPage)
   }
   return (
-    <Layout>
-      <div className='min-height-screen container mx-auto px-2 my-6'>
+    <Layout >
+      <div className='container mx-auto min-h-screen px-10 my-10'>
         <Filters />
         <p className='text-lg font-medium my-6'>
           Total <span className='font-bold text-subMain'>{Movies?.length}</span> items Found
         </p>
-        <div className='grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 gap-6'>
+        <div className='grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 gap-6' >
           {
             Movies.slice(0,page)?.map((movie,index)=>(
               <Movie key={index} movie={movie} />

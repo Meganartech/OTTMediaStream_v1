@@ -6,9 +6,8 @@ import "../css/Sidebar.css";
 
 const EditLanguage = () => {
 
-  const location = useLocation();
-  const { certificate } = location.state;
-  const [updatedcertificate, setUpdatedcertificate] = useState(certificate);
+  const id=localStorage.getItem('items');
+  const [updatedcertificate, setUpdatedcertificate] = useState(id);
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -25,7 +24,7 @@ const EditLanguage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const certificateId = certificate.id;
+    const certificateId = id;
       fetch(`http://localhost:8080/api/v2/editCertificate/${certificateId}`, {  // Use backticks (`) for string interpolation
         method: 'PATCH',
         headers: {

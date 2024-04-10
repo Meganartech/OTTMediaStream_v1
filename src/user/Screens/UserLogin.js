@@ -4,7 +4,7 @@ import { Input } from '../Components/UsedInputs';
 import { Link } from 'react-router-dom';
 import { FiLogIn } from 'react-icons/fi';
 
-const Login = () => {
+const UserLogin = () => {
   return (
     <Layout>
       <div className='container mx-auto px-2 my-24 flex-colo'>
@@ -33,7 +33,7 @@ const Login = () => {
           </Link>
           <p className='text-center text-border'>
             Don't have an account?{" "}
-            <Link to='/register' className='text-dryGray font-semibold ml-2'>
+            <Link to='/Register' className='text-dryGray font-semibold ml-2'>
               SignUp
             </Link>
           </p>
@@ -43,4 +43,4 @@ const Login = () => {
   );
 }
 
-export default Login;
+export default UserLogin;

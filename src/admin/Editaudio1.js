@@ -6,33 +6,48 @@ import axios from 'axios';
 import AudioPlayer from 'react-audio-player';
 
 const Editaudio1 = () => {
-    const location = useLocation();
-    const { get } = location.state;
-    const  audioId=get.id
-    const category = get.category.categories;
-    const fileName = get.fileName;
+  const id=localStorage.getItem('items');
+    const  audioId=id
+    const category = id && id.category && id.category.categories;
+    const fileName = audioId.fileName;
+
+//   const audioId = JSON.parse(localStorage.getItem('items'));
+// const fileName = audioId.fileName;
+
+//     console.log("fileName",fileName)
     
 
-  const [updatedget, setUpdatedget] = useState(get);
+  const [updatedget, setUpdatedget] = useState(audioId);
+  console.log(updatedget.fileName)
   const [errors, setErrors] = useState({});
   const [categories, setCategories] = useState([]);
   const [audioFile, setAudioFile] = useState(null);
   const [thumbnail, setThumbnail] = useState();
   const [filename, setfilename] = useState(fileName);
+  const [categoryId, setCategoryId] = useState('');
   const [selectedCategoryId, setSelectedCategoryId] = useState('');
 
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const categoriesResponse = await axios.get('http://localhost:8080/api/v2/GetAllCategories');
-        setCategories(categoriesResponse.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, []);
+   
+    
+
+fetch('http://localhost:8080/api/v2/GetAllCategories')
+
+
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    setCategories(data);
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+}, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,10 +77,31 @@ const Editaudio1 = () => {
 }, [audioId]);
 
 useEffect(() => {
+  const fetchData = async () => {
+    try {
+      // Fetch audio data
+      const response = await fetch(`http://localhost:8080/api/v2/audio/${audioId}`);
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      setUpdatedget(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+  fetchData();
+}, [audioId]);
+
+
+useEffect(() => {
 const fetchAudio = async () => {
   try {
     const response = await axios.get(
-      `http://localhost:8080/api/v2/${fileName.replace(/^.*[\\\/]/, '')}/file`,
+      `http://localhost:8080/api/v2/${updatedget.fileName}/file`,
       {
         responseType: 'arraybuffer', // Set the response type to arraybuffer for binary data
       }
@@ -83,7 +119,7 @@ const fetchAudio = async () => {
   }
 };
 fetchAudio(); // Replace 'yourDefaultFileName' with the desired default file name
-  }, [fileName]);
+  }, [updatedget.fileName]);
 
   const handleChange = (e) => {
     const selectedCategoryId = e.target.value;
@@ -220,23 +256,24 @@ fetchAudio(); // Replace 'yourDefaultFileName' with the desired default file nam
                 </div>
                 <div className='modal-body text-center'>
                 <div className="form-group">
-              <label htmlFor="category" className="color">
-                Category
-              </label>
-              <select
-                      className='form-control'
-                      name='category'
-                      value={selectedCategoryId}
-                      onChange={handleChange}
-                    >
-                      <option value=''>{category}</option>
-                      {categories.map((category) => (
-                        <option key={category.id} value={category.id}>
-                          {category.categories}
-                        </option>
-                      ))}
-              </select>
-                    <br />
+                <div className='col-lg-6'>
+                      <label >category</label>
+                    <select
+                  className='form-control'
+                  name='category'
+                  value={categoryId}
+                  onChange={(e) => setCategoryId(e.target.value)}
+                >
+                <option value=''>Select Category</option>
+                    {categories.map((category) => (
+                     <option key={category.id} value={category.categories}>
+                    {category.categories}
+                </option>
+                ))}
+               </select>
+                  {errors.categoryId && <div className="error-message">{errors.categoryId}</div>}
+                  <br />
+                    </div>
                     </div>
                     <h5 className='modal-title modal-header bg-info' id='exampleModalLongTitle'>
                       Add New thumbnail File
@@ -276,7 +313,7 @@ fetchAudio(); // Replace 'yourDefaultFileName' with the desired default file nam
                   <label htmlFor="Audioname" className="color">
                 Audio 
               </label>
-              <p>{filename.replace(/^.*[\\\/]/, '').replace(/^.*_/, '')}</p>
+              <p>{updatedget?.fileName?.replace(/^.*[\\\/]/, '').replace(/^.*_/, '').replace(/\.mp3$/, '')}</p>
               {audioFile ? (
               <AudioPlayer
                 src={URL.createObjectURL(new Blob([audioFile], { type: 'audio/mpeg' }))}

@@ -26,16 +26,16 @@ const NavBar = () => {
                     </div>
                     {/* Menus */}
                     <div className='col-span-3 font-medium text-sm hidden xl:gap-14 2xl:gap-20 justify-between lg:flex xl:justify-end items-center'>
-                        <NavLink to='/movies' className={Hover}>
+                        <NavLink to='/MoviesPage' className={Hover}>
                             Movies
                         </NavLink>
-                        <NavLink to='/about-us' className={Hover}>
+                        <NavLink to='/AboutUs' className={Hover}>
                             AboutUs
                         </NavLink>
                         <NavLink to='/contact-us' className={Hover}>
                             Contact Us
                         </NavLink>
-                        <NavLink to='/login' className={Hover}>
+                        <NavLink to='/UserLogin' className={Hover}>
                             <CgUser className='w-8 h-8' />
                         </NavLink>
                         <NavLink to='/favorites' className={`${Hover} relative`}>

@@ -6,9 +6,8 @@ import "../css/Sidebar.css";
 
 const EditTag = () => {
 
-  const location = useLocation();
-  const { tag } = location.state;
-  const [UpdatedTag, setUpdatedTag] = useState(tag);
+  const id=localStorage.getItem('items');
+  const [UpdatedTag, setUpdatedTag] = useState(id);
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -33,7 +32,7 @@ const EditTag = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const tagId = tag.id;
+    const tagId = id;
       fetch(`http://localhost:8080/api/v2/editTag/${tagId}`, {  // Use backticks (`) for string interpolation
         method: 'PATCH',
         headers: {

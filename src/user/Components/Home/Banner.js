@@ -7,8 +7,8 @@ import { Link } from 'react-router-dom';
 import { FaHeart } from 'react-icons/fa';
 
 const Banner = () => {
-  return (
-    <div className='relative w-full'>
+   return (
+    <div className='relative w-full xl:h-96 bg-dry lg:h-64 h-48 overflow-hidden'>
       <Swiper
         direction='vertical'
         spaceBetween={50}
@@ -29,7 +29,6 @@ const Banner = () => {
                 </h1>
                 <div className='flex gap-5 items-center text-dryGray'>
                   <FlexMovieItems movie={movie} />
-
                 </div>
                 <div className='flex gap-5 items-center'>
                   <Link
@@ -37,7 +36,7 @@ const Banner = () => {
                     className="bg-subMain hover:text-main transitions text-white px-8 py-3 rounded font-medium sm:text-sm text-xs">
                     Watch
                   </Link>
-                  <button className='bg-white hover:text-subMain transitions text-white px-4 py-3 rounded text-sm bg-opacity-30'>
+                  <button className='hover:text-subMain'>
                     <FaHeart />
                   </button>
                 </div>
@@ -48,6 +47,7 @@ const Banner = () => {
         }
       </Swiper>
     </div>
+
   )
 }
 
