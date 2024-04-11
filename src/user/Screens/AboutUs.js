@@ -42,7 +42,7 @@ const AboutUs = () => {
                 </div>
               </div>
             </div>
-            <div className='mt-10 lg:mt-0'>
+            <div className='mt-10 lg:mt-0  '>
               <img
                 src='/images/aboutus.png'
                 alt='aboutus'

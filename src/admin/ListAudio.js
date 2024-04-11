@@ -115,37 +115,27 @@ const ListAudio = () => {
 
   return (
 
-    <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: '13rem' }}>
-
-       <Sidebar />
-      <div className="container-fluid">
-       <div className='container2'>
-        <ol className="breadcrumb mb-4">
-          <li className="breadcrumb-item text-white">
-            <Link to="/Dashboard">Dashboard</Link>
-          </li>
-          <li className="breadcrumb-item active">Audios</li>
-        </ol>
-        
-        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
-        {getall && getall.length > 0 ? (
-    getall.map((get, index) => (
-      
-
-      <h1 className="mt-4 text-white">{name=="admin"?"Admin-Audios":"User-Audios"}</h1>
+<div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: '13rem' }}>
+  <Sidebar />
+  <div className="container-fluid">
+    <div className='container2'>
       <ol className="breadcrumb mb-4">
-        <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>
+        <li className="breadcrumb-item text-white">
+          <Link to="/Dashboard">Dashboard</Link>
         </li>
         <li className="breadcrumb-item active">Audios</li>
       </ol>
-      <div className="card-1 mb-4" style={{height: "auto"}}>
-          <div className="card-header">
-            <i className="fas fa-table me-1"></i>
-            Audio List
-          </div>
-      {/* {name=="admin"
-      ? */}
-      <div className="card-body profile-card-body">
+
+      <h1 className="mt-4 text-white">{name === "admin" ? "Admin-Audios" : "User-Audios"}</h1>
+
+      <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+        {getall && getall.length > 0 && (
+          <div className="card-1 mb-4" style={{ height: "auto" }}>
+            <div className="card-header">
+              <i className="fas fa-table me-1"></i>
+              Audio List
+            </div>
+            <div className="card-body profile-card-body">
               <table id="datatablesSimple">
                 <thead>
                   <tr>
@@ -155,29 +145,30 @@ const ListAudio = () => {
                   </tr>
                 </thead>
                 <tbody>
-                {getall && getall.map((audio, index) => (
-                  <tr key={audio.id}>
-                    <td>{index + 1}</td>
-                    <td>{audio.fileName.replace(/^.*[\\\/]/, '').replace(/^.*_/, '').replace(/\.mp3$/, '')}</td>
-                    <td>{audio.category.categories}</td>
-                    <td>
-                      <button onClick={() => handlEdit(audio.id)}>
-                        <i className="fas fa-edit" aria-hidden="true"></i>
-                      </button>
-                      <button onClick={() => handleDelete(audio.id)}>
-                        <i className="fa fa-trash" aria-hidden="true"></i>
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                  {getall.map((audio, index) => (
+                    <tr key={audio.id}>
+                      <td>{index + 1}</td>
+                      <td>{audio.fileName.replace(/^.*[\\\/]/, '').replace(/^.*_/, '').replace(/\.mp3$/, '')}</td>
+                      <td>{audio.category.categories}</td>
+                      <td>
+                        <button onClick={() => handlEdit(audio.id)}>
+                          <i className="fas fa-edit" aria-hidden="true"></i>
+                        </button>
+                        <button onClick={() => handleDelete(audio.id)}>
+                          <i className="fa fa-trash" aria-hidden="true"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
-            
-                 </div>
+          </div>
+        )}
+      </div>
     </div>
-
-    </div>
+  </div>
+</div>
   );
 
 };
