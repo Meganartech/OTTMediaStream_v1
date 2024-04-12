@@ -131,7 +131,7 @@ const ListAudio = () => {
         {getall && getall.length > 0 ? (
     getall.map((get, index) => (
       
-
+      <div>
       <h1 className="mt-4 text-white">{name=="admin"?"Admin-Audios":"User-Audios"}</h1>
       <ol className="breadcrumb mb-4">
         <li className="breadcrumb-item"><Link to="/Dashboard">Dashboard</Link>
@@ -143,8 +143,7 @@ const ListAudio = () => {
             <i className="fas fa-table me-1"></i>
             Audio List
           </div>
-      {/* {name=="admin"
-      ? */}
+    
       <div className="card-body profile-card-body">
               <table id="datatablesSimple">
                 <thead>
@@ -176,7 +175,10 @@ const ListAudio = () => {
             
                  </div>
     </div>
-
+    ))):(<div> No Audios</div>)};
+    </div>
+    </div>
+    </div>
     </div>
   );
 

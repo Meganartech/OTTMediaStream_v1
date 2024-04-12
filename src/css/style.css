@@ -82,6 +82,9 @@ p {
   color: white;
   font-size: x-large;
 }
+/* .slick-prev::before {
+  display: none !important;
+} */
 .profile-data-user  h2{
   color: #ffffff;
   
@@ -726,7 +729,7 @@ ol {
 }
 .grid{
     width: 90vw;
-    height: 28vh !important;
+    height: auto !important;
 }
 .grid_1_user{
   width: 89vw;

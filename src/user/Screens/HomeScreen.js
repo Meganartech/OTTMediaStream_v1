@@ -2,6 +2,9 @@ import React from 'react'
 import Layout from '../Layout/Layout'
 import Banner from '../Components/Home/Banner'
 import PopularMovies from '../Components/Home/PopularMovies'
+import PopularMoviesWrapper from '../Components/Home/PopularMoviesWrapper'
+import MoviesPage from "./Movies";
+import Test from "../Test";
 // import Promos from '../Components/Home/Promos'
 // import TopRated from '../Components/Home/TopRated'
 const HomeScreen = () => {
@@ -12,7 +15,8 @@ const HomeScreen = () => {
         <div className="px-2 mb-6">
         <Banner />
         <PopularMovies />
-        <PopularMovies />
+        <Test />
+        {/* <MoviesPage/> */}
          {/* <Promos /> */}
         {/* <TopRated />  */}
         </div>
