@@ -113,7 +113,7 @@ function VideoHomescreen() {
                 pathname: `/admin/Watch`,
                 state: { get: item },
             }} key={index}>
-                <img src={`data:image/png;base64,${vimage[24]}`} className="im_1_user" alt="Responsive image" />
+                <img src={`data:image/png;base64,${vimage[index]}`} className="im_1_user" alt="Responsive image" />
             </Link>
         );
     } else {

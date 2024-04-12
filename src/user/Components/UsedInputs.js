@@ -22,19 +22,19 @@ export const Message = ({label,placeholder}) =>{
         </>
         )   
 };
-export const Input = ({ label, placeholder, type, bg }) => {
-    return(
-    <div className="text-sm w-full">
-    <label className="text-border font-semibold">{label}</label>
-   <input 
-   required 
-   type={type} 
-   placeholder={placeholder}
-   className={`w-full text-sm mt-2 p-3 border border-border rounded text-white ${
-    bg ? 'bg-main' : 'bg-dry'
-
-   }`} 
-   />
-    </div>
-    )   
-}
+export const Input = ({ label, placeholder, type, bg, name, value, onChange, required }) => {
+    return (
+        <div className="text-sm w-full">
+            <label className="text-border font-semibold">{label}</label>
+            <input
+                required={required}
+                type={type}
+                placeholder={placeholder}
+                className={`w-full text-sm mt-2 p-3 border border-border rounded text-white ${bg ? 'bg-main' : 'bg-dry'}`}
+                name={name} // Add name attribute
+                value={value}
+                onChange={onChange}
+            />
+        </div>
+    );
+};

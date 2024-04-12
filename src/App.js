@@ -70,6 +70,8 @@ import Register from './user/Screens/Register'
 import AboutUs from './user/Screens/AboutUs';
 import SingleMovie from './user/Screens/SingleMovie';
 import ViewAudio from "./admin/ViewAudio";
+import PlanDetails from './user/PlanDetails';
+import UserProfileScreen from './user/UserProfileScreen';
 import VideoHomescreen from './user/VideoHomescreen';
 import Test from './user/Test';
 import Userplayer from './user/Userplayer';
@@ -129,6 +131,10 @@ const App = () => {
           <Route path='AboutUs' element={<AboutUs />} />
           <Route path="/movie/:id" element={<SingleMovie />} />
           <Route path='play' element={<Userplayer/>} />
+          <Route path='PlanDetails' element={<PlanDetails />} />
+          <Route path="Subscriptiondetails" element={<Subscription_details />} />
+          <Route path='UserProfileScreen' element ={<UserProfileScreen />} />
+
 
           <Route path='admin' element={<Login handleLogin={handleLogin} />}  >
             <Route path='dashboard' element={<PrivateRoute isAuthenticated={isLogged} element={<Dashboard />} />}/>
