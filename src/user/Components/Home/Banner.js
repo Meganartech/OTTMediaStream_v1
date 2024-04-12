@@ -9,6 +9,7 @@ import { FaHeart } from 'react-icons/fa';
 const Banner = () => {
   const [all, setall] = useState(null);
   const [vimage, setvImage] = useState([]);
+  const log=localStorage.getItem('login');
   useEffect(() => {
     // Find the "Previous" arrow and remove its content
     // const prevArrow = document.querySelector('.slick-prev');
@@ -38,12 +39,13 @@ const Banner = () => {
     })
     .then(data => {
       setall(data);
-      console.log(data)
+      // console.log(data)
     })
     .catch(error => {
       console.error('Error fetching data:', error);
     });
-
+  
+    fetchData();
       // fetch('http://localhost:8080/api/GetvideoThumbnail')
       // .then(response => {
       //   if (!response.ok) {
@@ -70,6 +72,7 @@ const Banner = () => {
   };
 
   
+ 
   const fetchData = async () => {
       
   
@@ -86,14 +89,14 @@ const Banner = () => {
 
       if (data && Array.isArray(data)) {
         setvImage(data);
-        console.log(data);
+        // console.log(data);
       } else {
         console.error('Invalid or empty data received:', data);
       }
     } catch (error) {
       console.error('Error fetching or processing image data:', error);
     }
-  };
+  }; 
    return (
     <div className='relative w-full xl:h-96 bg-dry lg:h-64 h-48 overflow-hidden'>
       <Swiper
@@ -119,7 +122,7 @@ const Banner = () => {
                 </div>
                 <div className='flex gap-5 items-center'>
                   <Link
-                    to="/play"
+                    to={log==="true"?"/play":"/UserLogin"}
                     onClick={() => handlEdit(movie.id)} 
                     className="bg-subMain hover:text-main transitions text-white px-8 py-3 rounded font-medium sm:text-sm text-xs">
                     Watch

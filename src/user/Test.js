@@ -15,7 +15,7 @@ export const Test = () => {
     const [getall, setGetall] = useState(null);
     const [all, setall] = useState(null);
     const [items, setItems] = useState([]);
-  
+    const log=localStorage.getItem('login');  
     useEffect(() => {
       fetchData();
     }, [deleteStatus]);
@@ -33,7 +33,7 @@ export const Test = () => {
     })
     .then(data => {
       setall(data);
-      console.log(data)
+      // console.log(data)
     })
     .catch(error => {
       console.error('Error fetching data:', error);
@@ -62,7 +62,7 @@ export const Test = () => {
   
         if (data && Array.isArray(data)) {
           setvImage(data);
-          console.log(data);
+          // console.log(data);
         } else {
           console.error('Invalid or empty data received:', data);
         }
@@ -75,13 +75,13 @@ export const Test = () => {
         // Set localStorage item
         localStorage.setItem('items', Id);
         const items = localStorage.getItem('items');
-        console.log(items); // Log the updated value of items
+        // console.log(items); // Log the updated value of items
         // Navigate to the desired route
         navigate('/admin/Watch');
     };
     const handlEdit = async (Id) => {
       localStorage.setItem('items', Id);
-      navigate("/play");
+      // navigate("/play");
     };
 
     useEffect(() => {
@@ -112,7 +112,7 @@ all && all.length > 0 ? (
 all.map((get, index) => (
 
 
-<Link className="Link" onClick={() => handlEdit(get.id)} to="/play">
+<Link className="Link" onClick={() => handlEdit(get.id)} to={log==="true"?"/play":"/UserLogin"}>
 <div class="col-lg-2 col-md-2 col-sm-2 col-2 wo_u work__item_user">
 
     <img src={`data:image/png;base64,${vimage[index]}`} class="im_u"   alt={`Image ${index + 1}`} />

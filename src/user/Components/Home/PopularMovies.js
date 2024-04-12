@@ -10,7 +10,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import '../../../index.css';
 
 const PopularMovies = () => {
-
+  const log=localStorage.getItem('login');
   const [all, setall] = useState(null);
   const [vimage, setvImage] = useState([]);
   useEffect(() => {
@@ -42,7 +42,7 @@ const PopularMovies = () => {
     })
     .then(data => {
       setall(data);
-      console.log(data)
+      // console.log(data)
     })
     .catch(error => {
       console.error('Error fetching data:', error);
@@ -90,7 +90,7 @@ const PopularMovies = () => {
 
       if (data && Array.isArray(data)) {
         setvImage(data);
-        console.log(data);
+        // console.log(data);
       } else {
         console.error('Invalid or empty data received:', data);
       }
@@ -143,7 +143,7 @@ const PopularMovies = () => {
           {all && all.length > 0 ? (all.slice(0, all.length).map((movie, index) => (
             <div key={index} className="slider-item">
              <div className='border border-border p-1 hover:scale-95 transitions relative rounded overflow-hidden' style={{height: "16rem"}}>
-      <Link to="/play" className='w-full' onClick={() => handlEdit(movie.id)} >
+      <Link to={log==="true"?"/play":"/UserLogin"} className='w-full' onClick={() => handlEdit(movie.id)} >
         <img 
         src={`data:image/png;base64,${vimage[index]}`}
         alt={movie?.name} 

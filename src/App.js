@@ -75,11 +75,14 @@ import UserProfileScreen from './user/UserProfileScreen';
 import VideoHomescreen from './user/VideoHomescreen';
 import Test from './user/Test';
 import Userplayer from './user/Userplayer';
+import UserPrivateRouter from './user/UserPrivateRouter';
 
 const App = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [isLogged, setIsLogged] = useState(); 
+  const [isuserLogged, setIsuserLogged] = useState();
+  const log=localStorage.getItem('login'); 
   const storedData = sessionStorage.getItem('mySessionData')
   useEffect(() => {
 
@@ -97,9 +100,14 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       const storedData = sessionStorage.getItem('mySessionData')
+      const val2=sessionStorage.getItem('login')
+      console.log("inadd"+log)
       setIsLogged(storedData);
+      setIsuserLogged(val2);
       console.log("inside the app.js Logged :", isLogged);
       console.log("inside the app.js sessionvakue :", storedData);
+      console.log("inside the app.js val2 :", val2);
+      console.log("inside the app.js Logged 2:", isuserLogged);
           
     
   };
@@ -111,8 +119,12 @@ const App = () => {
   const handleLogin = () => {
   
     const val=sessionStorage.getItem('mySessionData')
+    const val2=sessionStorage.getItem('login')
     setIsLogged(val);
+    setIsuserLogged(val2);
     console.log("inside the app.js val :", val);
+    console.log("inside the app.js val2 :", val2);
+    console.log("inside the app.js Logged 2:", isuserLogged);
     console.log("inside the app.js Logged :", isLogged);// Log the state after it's updated
   };
  
@@ -121,7 +133,7 @@ const App = () => {
     <div >
        {/* <Router> */}
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home handleLogin={handleLogin} />} />
           <Route path='MoviesPage' element={<MoviesPage />} />
           <Route path='VideoHomescreen' element={<VideoHomescreen />} />
           {/* <Route path='Homescreen' element={<Videosam />} /> */}
@@ -130,13 +142,14 @@ const App = () => {
           <Route path='Register' element={<Register />} />
           <Route path='AboutUs' element={<AboutUs />} />
           <Route path="/movie/:id" element={<SingleMovie />} />
-          <Route path='play' element={<Userplayer/>} />
+          {/* <Route path='play' element={<Userplayer/>} /> */}
+          <Route path='play' element={<UserPrivateRouter isAuthenticated={log} element={<Userplayer />} />} />
           <Route path='PlanDetails' element={<PlanDetails />} />
           <Route path="Subscriptiondetails" element={<Subscription_details />} />
           <Route path='UserProfileScreen' element ={<UserProfileScreen />} />
 
 
-          <Route path='admin' element={<Login handleLogin={handleLogin} />}  >
+          <Route path='admin' element={<Login/>}  >
             <Route path='dashboard' element={<PrivateRoute isAuthenticated={isLogged} element={<Dashboard />} />}/>
             <Route path='addUser'   element={<PrivateRoute isAuthenticated={isLogged} element={<AddUser/>} />} />
             <Route path='profile' element={<PrivateRoute isAuthenticated={isLogged} element={<Profile/>} />}/>
