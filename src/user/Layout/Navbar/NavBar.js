@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom'
 import {FaHeart, FaSearch} from 'react-icons/fa'
 import {CgUser} from 'react-icons/cg'
+import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
     const hover = 'hover:text-subMain transitions text-white'
     const Hover =({isActive}) =>(isActive ? 'text-subMain':hover);
+    const navigate = useNavigate();
 
     const [showDropdown, setShowDropdown] = useState(false);
    const token=sessionStorage.getItem("token")
+
+   const handleprofile = async()=>{
+    navigate('/UserProfileScreen');
+   }
 
    const handleLogout = async () => {
     try {
@@ -38,6 +44,7 @@ const NavBar = () => {
           localStorage.clear();
           // Redirect to login page
           window.location.href = "/UserLogin";
+          localStorage.setItem('login', false);
           console.log("logged out")
           return;
         } else {
@@ -84,9 +91,9 @@ const NavBar = () => {
                         <NavLink to='/AboutUs' className={Hover}>
                             AboutUs
                         </NavLink>
-                        <NavLink to='/contact-us' className={Hover}>
+                        {/* <NavLink to='/contact-us' className={Hover}>
                             Contact Us
-                        </NavLink>
+                        </NavLink> */}
 
 
                         {token!==null ? (
@@ -96,9 +103,16 @@ const NavBar = () => {
                             </div>
                             {showDropdown && (
                                 <div className="absolute right-0 mt-2 bg-yellow-600 rounded shadow-lg">
-                                <button className="block w-full py-2 px-4 text-left text-white" onClick={handleLogout}>Logout</button>
+                                  <button className="block w-full py-2 px-4 text-left text-white" onClick={handleprofile}>profile</button>
+                                  
+                                <button className="block btn-danger w-full py-2 px-4 text-left text-white" onClick={handleLogout}>Logout</button>
+                               
+                                 
+                              
                                 </div>
+                                 
                             )}
+                            
                             </div>
                         ) : (
                             <>
@@ -119,12 +133,12 @@ const NavBar = () => {
 
 
 
-                        <NavLink to='/favorites' className={`${Hover} relative`}>
+                        {/* <NavLink to='/favorites' className={`${Hover} relative`}>
                             <FaHeart className='w-6 h-6' />
                             <div className='w-5 h-5 flex-colo rounded-full text-xs bg-subMain text-white absolute -top-5 -right-1'>
                                 3
                             </div>
-                        </NavLink>
+                        </NavLink> */}
                     </div>
                 </div>
             </div>

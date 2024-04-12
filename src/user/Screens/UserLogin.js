@@ -38,6 +38,8 @@ const UserLogin = () => {
               sessionStorage.setItem("name", name);
               sessionStorage.setItem('token', jwtToken);
               sessionStorage.setItem('userId',userId);
+              localStorage.setItem('login', true);
+              
               window.location.href = "/";
               
           } else {

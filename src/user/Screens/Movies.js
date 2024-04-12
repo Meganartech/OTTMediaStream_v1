@@ -8,6 +8,7 @@ import {Movies} from '../Data/MovieData'
 import { CgSpinner } from 'react-icons/cg'
 const MoviesPage = () => {
   const maxPage =5;
+  const log=localStorage.getItem('login');
   const [page,setPage] = useState(maxPage);
   const [vimage, setvImage] = useState([]);
   const [all, setall] = useState(null);
@@ -16,6 +17,8 @@ const MoviesPage = () => {
   }
   useEffect(() => {
      
+    // console.log("EditVideo=" + id);
+   
   
     // fetch category data from the backend
     fetch('http://localhost:8080/api/videogetall')
@@ -27,7 +30,7 @@ const MoviesPage = () => {
       })
       .then(data => {
         setall(data);
-        console.log(data)
+        // console.log(data)
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -61,7 +64,7 @@ const MoviesPage = () => {
 
       if (data && Array.isArray(data)) {
         setvImage(data);
-        console.log(data);
+        // console.log(data);
       } else {
         console.error('Invalid or empty data received:', data);
       }
@@ -82,7 +85,7 @@ const MoviesPage = () => {
       {all && all.length > 0 ? (all.slice(0, all.length).map((movie, index) => (
             <div key={index} className="slider-item">
              <div className='border border-border p-1 hover:scale-95 transitions relative rounded overflow-hidden' style={{height: "16rem"}}>
-      <Link to="/play" onClick={() => handlEdit(movie.id)} className='w-full'>
+      <Link to={log==="true"?"/play":"/UserLogin"} onClick={() => handlEdit(movie.id)} className='w-full'>
         <img 
         src={`data:image/png;base64,${vimage[index]}`}
         alt={movie?.name} 
