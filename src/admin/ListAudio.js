@@ -115,10 +115,25 @@ const ListAudio = () => {
 
   return (
 
-<div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: '13rem' }}>
-  <Sidebar />
-  <div className="container-fluid">
-    <div className='container2'>
+    <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: '13rem' }}>
+
+       <Sidebar />
+      <div className="container-fluid">
+       <div className='container2'>
+        <ol className="breadcrumb mb-4">
+          <li className="breadcrumb-item text-white">
+            <Link to="/Dashboard">Dashboard</Link>
+          </li>
+          <li className="breadcrumb-item active">Audios</li>
+        </ol>
+        
+        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around' }}>
+        {getall && getall.length > 0 ? (
+    getall.map((get, index) => (
+      
+      <div>
+      <h1 className="mt-4 text-white">{name=="admin"?"Admin-Audios":"User-Audios"}</h1>
+
       <ol className="breadcrumb mb-4">
         <li className="breadcrumb-item text-white">
           <Link to="/Dashboard">Dashboard</Link>
@@ -136,6 +151,7 @@ const ListAudio = () => {
               Audio List
             </div>
             <div className="card-body profile-card-body">
+
               <table id="datatablesSimple">
                 <thead>
                   <tr>
@@ -163,9 +179,18 @@ const ListAudio = () => {
                 </tbody>
               </table>
             </div>
+
+            
+                 </div>
+    </div>
+    ))):(<div> No Audios</div>)};
+    </div>
+    </div>
+    </div>
           </div>
         )}
       </div>
+
     </div>
   </div>
 </div>

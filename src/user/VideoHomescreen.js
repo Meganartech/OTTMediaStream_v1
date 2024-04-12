@@ -64,7 +64,7 @@ function VideoHomescreen() {
   
         if (data && Array.isArray(data)) {
           setvImage(data);
-          console.log(image);
+          console.log("in homescreen"+vimage);
         } else {
           console.error('Invalid or empty data received:', data);
         }
