@@ -76,6 +76,7 @@ import VideoHomescreen from './user/VideoHomescreen';
 import Test from './user/Test';
 import Userplayer from './user/Userplayer';
 import UserPrivateRouter from './user/UserPrivateRouter';
+import AdminSignin from './admin/AdminSignin';
 
 const App = () => {
   const location = useLocation();
@@ -147,9 +148,9 @@ const App = () => {
           <Route path='PlanDetails' element={<PlanDetails />} />
           <Route path="Subscriptiondetails" element={<Subscription_details />} />
           <Route path='UserProfileScreen' element ={<UserProfileScreen />} />
+          <Route path='AdminSignin' element ={<AdminSignin />} />
 
-
-          <Route path='admin' element={<Login/>}  >
+          <Route path='admin' element={<Login handleLogin={handleLogin}/>}  >
             <Route path='dashboard' element={<PrivateRoute isAuthenticated={isLogged} element={<Dashboard />} />}/>
             <Route path='addUser'   element={<PrivateRoute isAuthenticated={isLogged} element={<AddUser/>} />} />
             <Route path='profile' element={<PrivateRoute isAuthenticated={isLogged} element={<Profile/>} />}/>

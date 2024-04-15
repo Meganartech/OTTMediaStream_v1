@@ -4,11 +4,13 @@ import axios from 'axios';
 // import '../App.css';
 import Sidebar from './sidebar';
 import Navbar from './navbar';
+
 import { Link } from 'react-router-dom';
 import "../css/Sidebar.css";
 
 const AddUser = () => {
   // const history = useHistory();
+  // const navigate = useNavigate();
   const [data, setData] = useState({
     username: '',
     mobnum: '',
