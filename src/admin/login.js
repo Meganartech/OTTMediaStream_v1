@@ -139,13 +139,13 @@ const Login = ({ handleLogin }) => {
                         <label htmlFor="inputPassword">Password</label>
                       </div>
                       <div className="d-flex align-items-center justify-content-between mt-4 mb-0">
-                        <a className="small" href="password-recovery.php">
-                          Forgot Password?
+                        <a className="small" href="/AdminSignin">
+                          Admin SignIn
                         </a>
                         <button className="btn btn-primary" type="submit" style={{ color: "black" }}>LOGIN</button>
                       </div>
                       <div className="small text-center">
-                        <Link to="Dashboard" onClick={hide}>Back to Home</Link>
+                        {/* <Link to="Dashboard" onClick={hide}>Back to Home</Link> */}
                       </div>
                     </form>
                   </div>
