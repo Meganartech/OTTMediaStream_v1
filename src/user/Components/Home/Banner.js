@@ -112,7 +112,7 @@ const Banner = () => {
         {
           all && all.length > 0 ? (all.slice(0, 8).map((movie, index) => (
             <SwiperSlide key={index} className='relative rounded overflow-hidden' style={{overflow:"hidden"}}>
-              <img src={`data:image/png;base64,${vimage[23]}`} alt={movie.title} className='w-full h-200 object-cover' />
+              <img src={`data:image/png;base64,${vimage[index]}`} alt={movie.title} className='w-full h-200 object-cover' />
               <div className='absolute linear-bg xl:pl-52 sm:pl-32 pl-8 top-0 bottom-0 right-0 left-0 flex flex-col justify-center lg:gap- md:gap-5 gap-4'>
                 <h1 className='xl:text-4xl truncate capitalize font-sans sm:text-2xl text-xl font-bold'>
                   {movie.moviename}

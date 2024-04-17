@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { useLocation, Link } from 'react-router-dom';
 import "../css/Sidebar.css";
 
 function EditComponent() {
-  const location = useLocation();
-  const { user } = location.state;
-  const [updatedUser, setUpdatedUser] = useState(user);
+  const id=localStorage.getItem('items');
+  const profileID=id
+  console.log(profileID)
+  const [updatedUser, setUpdatedUser] = useState('');
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -87,21 +88,51 @@ function EditComponent() {
     return isValid;
   };
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+        try {
+            const response = await fetch(`http://localhost:8080/api/v2/GetUserId/${profileID}`);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log(data); // Check the value of data received from the API
+            if (data.userList && data.userList.length > 0) {
+                setUpdatedUser(data.userList[0]); // Assuming userList is an array containing user objects
+            }
+        } catch (error) {
+            console.error('There was a problem with the fetch operation:', error);
+        }
+    };
+
+    fetchUserData();
+
+    // Clean-up function (optional)
+    return () => {
+        // Perform any clean-up tasks if needed
+    };
+}, [profileID]); // Dependency array, useEffect will re-run if profileID changes
+ 
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userId = user.id;
+    const userId = id; // Assuming id is defined somewhere
     if (validateForm()) {
-      fetch(`http://localhost:8080/api/v2/UpdateUser/${userId}`, {  // Use backticks (`) for string interpolation
+      fetch(`http://localhost:8080/api/v2/UpdateUser/${userId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(updatedUser),
+        body: JSON.stringify(updatedUser), // Make sure updatedUser is defined
       })
         .then((response) => {
           if (response.ok) {
             console.log('User updated successfully');
             window.alert('User details successfully updated');
+            // Assuming you're using React hooks, update state here
+            // Example: setUpdatedUser(data);
           } else {
             console.log('Error updating user');
           }
@@ -111,6 +142,7 @@ function EditComponent() {
         });
     }
   };
+  
   
 
   return (
