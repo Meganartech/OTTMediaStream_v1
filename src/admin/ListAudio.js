@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import AudioPlayer from 'react-audio-player';
 import { useNavigate } from 'react-router-dom';
 import "../css/Sidebar.css";
+import API_URL from '../Config';
 const ListAudio = () => {
   const [image, setImage] = useState([]);
   const [vimage, setvImage] = useState([]);
@@ -22,7 +23,7 @@ const ListAudio = () => {
 
   useEffect(() => {
     // fetch category data from the backend
-    fetch('http://localhost:8080/api/v2/GetAll')
+    fetch(`${API_URL}/api/v2/GetAll`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -46,7 +47,7 @@ const ListAudio = () => {
   const fetchData = async () => {
     try {
       // Fetch image data
-      const response = await fetch('http://localhost:8080/api/v2/GetAllThumbnail');
+      const response = await fetch(`${API_URL}/api/v2/GetAllThumbnail`);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -73,7 +74,7 @@ const ListAudio = () => {
     const  audId=audioId
     console.log(audId)
     try {
-      const response = await fetch(`http://localhost:8080/api/v2/audio/${audId}`);
+      const response = await fetch(`${API_URL}/api/v2/audio/${audId}`);
   
       if (response.ok) {
         // fetchAudios();
@@ -99,19 +100,9 @@ const ListAudio = () => {
 
   const handlEdit = async (audioId) => {
     localStorage.setItem('items', audioId);
-    navigate('/admin/Editaudio1');
+    navigate('/admin/Editaudio');
   };
   
-  
-
-  // const fetchAudios = async () => {
-  //   try {
-  //     const response = await axios.get('http://localhost:8080/api/v2/audio/list');
-  //     setAudios(response.data);
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //   }
-  // };
 
   return (
 

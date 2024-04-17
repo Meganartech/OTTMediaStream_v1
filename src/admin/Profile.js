@@ -1,12 +1,8 @@
-// Profile.jsx
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import '../App.css';
-import Navbar from './navbar';
 import Sidebar from './sidebar';
 import axios from 'axios';
-import Sample from './Sample';
+import API_URL from '../Config';
 
 const Profile = () => {
 
@@ -21,7 +17,7 @@ const Profile = () => {
     // Fetch user data from the backend
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/v2/GetAllUser');
+        const response = await axios.get(`${API_URL}/api/v2/GetAllUser`);
         setUsers(response.data.userList);
       } catch (error) {
         console.log('Error fetching users:', error);
@@ -38,7 +34,7 @@ const Profile = () => {
       console.log(`Deleting user with ID: ${userId}`);
 
       // Make an API call to delete the user
-      fetch(`http://localhost:8080/api/v2/DeleteUser/${userId}`, {
+      fetch(`${API_URL}/api/v2/DeleteUser/${userId}`, {
         method: 'DELETE',
       })
         .then((response) => {

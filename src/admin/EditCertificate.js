@@ -3,6 +3,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { useLocation , Link} from 'react-router-dom';
 import "../css/Sidebar.css";
+import API_URL from '../Config';
 
 const EditLanguage = () => {
 
@@ -25,7 +26,7 @@ const EditLanguage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const certificateId = id;
-      fetch(`http://localhost:8080/api/v2/editCertificate/${certificateId}`, {  // Use backticks (`) for string interpolation
+      fetch(`${API_URL}/api/v2/editCertificate/${certificateId}`, {  // Use backticks (`) for string interpolation
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

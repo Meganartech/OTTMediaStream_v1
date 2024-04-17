@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import API_URL from '../Config'
+import {Outlet, useLocation, useNavigate } from 'react-router-dom';
+import API_URL from '../Config';
 
 const Login = ({ handleLogin }) => {
   const [user, setUser] = useState({ username: '', password: '' });
@@ -16,7 +16,7 @@ const Login = ({ handleLogin }) => {
 
 
   useEffect(() => {
-    console.log(`${API_URL}/api`);
+    // console.log(`${API_URL}/api`);
 
     fetchUsers();
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// import { Switch, Route } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Link, Outlet, useLocation,useNavigate } from 'react-router-dom';
+import { useLocation,useNavigate } from 'react-router-dom';
 import Dashboard from "./admin/Dashboard";
 import "./App.css";
 import "./css/sb-admin-2.css";
@@ -27,8 +26,6 @@ import Video from "./admin/Video";
 import AddVideo from "./admin/AddVideo";
 import Audio from "./admin/Audio";
 import AddAudio from "./admin/AddAudio";
-import Photo from "./admin/Photo";
-import AddPhoto from "./admin/AddPhoto";
 import AddCategory from "./admin/AddCategory";
 import ViewCategory from "./admin/ViewCategory";
 import AddLanguage from './admin/AddLanguage';
@@ -41,23 +38,11 @@ import EditCertificate from "./admin/EditCertificate";
 import ViewCertificate from "./admin/ViewCertificate";
 import Editaudio1 from "./admin/Editaudio1";
 import ListAudio from "./admin/ListAudio";
-import AddMovie from "./admin/AddMovie";
 import EditAudio from "./admin/EditAudio";
 import EditTag from "./admin/EditTag";
 import ViewTag from "./admin/ViewTag";
 import Licence from "./admin/Licence";
-import EditComponent from "./admin/EditComponent";
-import VideoPlayer from "./admin/VideoPlayer";
-import usersidebar from "./user/usersidebar";
-import search from "./user/search";
-import Homescreen from "./user/Homescreen";
-import Userlogin from "./user/Userlogin";
-import Userprofile from "./user/Userprofile";
-import Signin from "./user/Signin";
 import Subscription_details from "./user/Subscription_details";
-// import Video from "./user/video";
-import Playback from "./user/Playback";
-import movie from "./sample/Movie";
 import Home from "./user/Screens/HomeScreen";
 import EditLanguage from "./admin/EditLanguage";
 import EditVideo from "./admin/EditVideo";
@@ -87,10 +72,7 @@ const App = () => {
   const storedData = sessionStorage.getItem('mySessionData')
   useEffect(() => {
 
-    const fetchData = async () => {
-   
-     
-          
+    const fetchData = async () => {       
     
   };
   
@@ -158,8 +140,6 @@ const App = () => {
             <Route path='addVideo' element={<PrivateRoute isAuthenticated={isLogged} element={<AddVideo/>} />}/>
             <Route path='audio' element={<PrivateRoute isAuthenticated={isLogged} element={<Audio/>} />}/>
             <Route path='addAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<AddAudio/>} />}/>
-            <Route path='photo' element={<PrivateRoute isAuthenticated={isLogged} element={<Photo/>} />}/>
-            <Route path='addPhoto' element={<PrivateRoute isAuthenticated={isLogged} element={<AddPhoto/>} />}/>
             <Route path='addCategory'element={<PrivateRoute isAuthenticated={isLogged} element={<AddCategory/>} />}/>
             <Route path='addCastCrew' element={<PrivateRoute isAuthenticated={isLogged} element={<AddCastCrew/>} />}/>
             <Route path='subscriptionPayments' element={<PrivateRoute isAuthenticated={isLogged} element={<SubscriptionPayments/>} />}/>
@@ -179,23 +159,21 @@ const App = () => {
             <Route path='ViewLanguage' element={<PrivateRoute isAuthenticated={isLogged} element={<ViewLanguage/>} />}/>
             <Route path='EditCategory' element={<PrivateRoute isAuthenticated={isLogged} element={<EditCategory/>} />}/>
             <Route path='AddCertificate' element={<PrivateRoute isAuthenticated={isLogged} element={<AddCertificate/>} />}/>
-            <Route path='VideoPlayer' element={<PrivateRoute isAuthenticated={isLogged} element={<VideoPlayer/>} />}/>
             <Route path='EditCertificate' element={<PrivateRoute isAuthenticated={isLogged} element={<EditCertificate/>} />}/>
             <Route path='ViewCertificate' element={<PrivateRoute isAuthenticated={isLogged} element={<ViewCertificate/>} />}/>
             <Route path='Watch' element={<PrivateRoute isAuthenticated={isLogged} element={<Watch/>} />}/>
-            <Route path='EditAudio1' element={<PrivateRoute isAuthenticated={isLogged} element={<Editaudio1/>} />}/>
+            <Route path='EditAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<Editaudio1/>} />}/>
             <Route path='ViewAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<ViewAudio/>} />}/>
             <Route path='ListAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<ListAudio/>} />}/>
             <Route path='EditTag' element={<PrivateRoute isAuthenticated={isLogged} element={<EditTag/>} />}/>
             <Route path='ViewTag' element={<PrivateRoute isAuthenticated={isLogged} element={<ViewTag/>} />}/>
             <Route path='AddTag' element={<PrivateRoute isAuthenticated={isLogged} element={<AddTag/>} />}/>
             <Route path='EditLanguage' element={<PrivateRoute isAuthenticated={isLogged} element={<EditLanguage/>} />}/>
-            <Route path='AddMovie' element={<PrivateRoute isAuthenticated={isLogged} element={<AddMovie/>} />}/>
             <Route path='AddAud' element={<PrivateRoute isAuthenticated={isLogged} element={<AddAud/>} />}/>
             <Route path='EditVideo' element={<PrivateRoute isAuthenticated={isLogged} element={<EditVideo/>} />}/>
             <Route path='ViewAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<ViewAudio/>} />}/>
             <Route path='EditAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<EditAudio/>} />}/>
-            
+
             {/* <Route path='EditComponent' element={< EditComponent />} /> */}
             {/* <Route path='Navbar' element={< Navbar />} /> */}
             {/* 

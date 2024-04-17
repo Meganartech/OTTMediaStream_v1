@@ -4,6 +4,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
 import Employee from './Employee';
+import API_URL from '../Config';
 import "../css/Sidebar.css";
 
 import "../App.css"
@@ -27,7 +28,7 @@ const AddVideo = () => {
     useEffect(() => {
    
     
-    fetch('http://localhost:8080/api/v2/GetAllCategories')
+    fetch(`${API_URL}/api/v2/GetAllCategories`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -41,7 +42,7 @@ const AddVideo = () => {
         console.error('Error fetching data:', error);
       });
 
-    fetch('http://localhost:8080/api/v2/GetAllCertificate')
+    fetch(`${API_URL}/api/v2/GetAllCertificate`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -55,7 +56,7 @@ const AddVideo = () => {
         console.error('Error fetching data:', error);
       });
 
-      fetch('http://localhost:8080/api/v2/GetAllLanguage')
+      fetch(`${API_URL}/api/v2/GetAllLanguage`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -69,7 +70,7 @@ const AddVideo = () => {
         console.error('Error fetching data:', error);
       });
 
-      fetch('http://localhost:8080/api/v2/GetAllTag')
+      fetch(`${API_URL}/api/v2/GetAllTag`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -128,7 +129,7 @@ const AddVideo = () => {
       const formData = new FormData();
       formData.append('video', file);
 
-      const response = await axios.post('http://localhost:8080/api/postit', formData, {
+      const response = await axios.post(`${API_URL}/api/postit`, formData, {
 
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -167,7 +168,7 @@ const AddVideo = () => {
       formData.append(key, Addvideo[key]);
     }
 
-    const response = await axios.post('http://localhost:8080/api/uploaddescriprion', formData, {
+    const response = await axios.post(`${API_URL}/api/uploaddescriprion`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -407,7 +408,7 @@ const AddVideo = () => {
                    </div>
                    <div className='col-lg-6'>
                     {/* <button className='text-center btn btn-info' > */}
-                    <Link to="/admin/Watch" className="btn btn-info">Play</Link>
+                    {/* <Link to="/admin/Watch" className="btn btn-info">Play</Link> */}
                     {/* </button> */}
                     {/* {uploadProgress > 0 && <p>Upload Progress: {uploadProgress}%</p>} */}
 </div>

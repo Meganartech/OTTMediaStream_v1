@@ -3,7 +3,8 @@ import { Link, Route  } from 'react-router-dom';
 import Usersidebar from './usersidebar'
 import { useNavigate } from 'react-router-dom';
 import Video from './video';
-import Footer from './Footer'
+import Footer from './Footer';
+import API_URL from '../Config';
 
 export const Test = () => {
     const [image, setImage] = useState([]);
@@ -24,7 +25,7 @@ export const Test = () => {
      
   
       // fetch category data from the backend
-      fetch('http://localhost:8080/api/videogetall')
+      fetch(`${API_URL}/api/videogetall`)
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -52,7 +53,7 @@ export const Test = () => {
       // ------------------------------------------------------------------------------------
       try {
         // Fetch image data
-        const response = await fetch('http://localhost:8080/api/GetvideoThumbnail');
+        const response = await fetch(`${API_URL}/api/GetvideoThumbnail`);
   
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -88,14 +89,6 @@ export const Test = () => {
       console.log(deleteStatus);
     }, [deleteStatus]);
   
-    // const fetchAudios = async () => {
-    //   try {
-    //     const response = await axios.get('http://localhost:8080/api/v2/audio/list');
-    //     setAudios(response.data);
-    //   } catch (error) {
-    //     console.error('Error:', error);
-    //   }
-    // };
   
   
   

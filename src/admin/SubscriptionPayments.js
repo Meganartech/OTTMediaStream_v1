@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import '../App.css';
-import Navbar from './navbar';
 import Sidebar from './sidebar';
 import axios from 'axios';
-import Sample from './Sample';
 import "../css/Sidebar.css";
 const SubscriptionPayments = () => {
 
   
-    // ---------------------Admin functions -------------------------------
-  const [userIdToDelete, setUserIdToDelete] = useState('');
   const [users, setUsers] = useState([]);
   const name = sessionStorage.getItem('username');
 
