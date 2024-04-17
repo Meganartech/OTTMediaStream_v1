@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import API_URL from '../Config';
 const Licence = () => {
     //.....................................Admin Function............................................
  
@@ -15,19 +16,6 @@ const Licence = () => {
   const [thumbnail, setThumbnail] = useState(null);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   // const fetchData = async () => {
-  //   //   try {
-  //   //     const categoriesResponse = await axios.get('http://localhost:8080/api/v2/GetAllCategories');
-  //   //     setCategories(categoriesResponse.data);
-  //   //     console.log(categories)
-  //   //   } catch (error) {
-  //   //     console.error(error);
-  //   //   }
-  //   // };
-
-  //   fetchData();
-  // }, []);
 
   const generateAudioTitle = () => {
     const fileName = audioFile ? audioFile.name : 'Untitled Audio';
@@ -47,7 +35,7 @@ const Licence = () => {
         formData.append(key, audioData[key]);
       }
   
-      const response = await axios.post('http://localhost:8080/api/v2/uploadfile', formData, {
+      const response = await axios.post(`${API_URL}/api/v2/uploadfile`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

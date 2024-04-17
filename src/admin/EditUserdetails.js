@@ -4,7 +4,7 @@ import Sidebar from './sidebar';
 import { useLocation, Link } from 'react-router-dom';
 import "../css/Sidebar.css";
 
-function EditComponent() {
+function EditUserdetails() {
   const location = useLocation();
   const { user } = location.state;
   const [updatedUser, setUpdatedUser] = useState(user);
@@ -247,53 +247,10 @@ function EditComponent() {
             </div>
           </div>
         </div>
-        {/*<div className="col-lg-4">
-          <div className="row">
-            <div className="col-xl-12 col-md-6 mt-3">
-              <div className="card bg-warning text-white mb-4">
-              <div className="card-body">
-              <h4>Video</h4>
-              <div className="card-footer d-flex align-items-center justify-content-between">
-                <Link to="/Video" className="small text-white stretched-link">
-                  View Details
-                </Link>
-                <div className="small text-white"><i className="fas fa-angle-right"></i></div>
-              </div>
-            </div>
-              </div>
-            </div>
-            <div className="col-xl-12 col-md-6 mt-3">
-              <div className="card bg-success text-white mb-4">
-              <div className="card-body">
-              <h4>Audio</h4>
-              <div className="card-footer d-flex align-items-center justify-content-between">
-                <Link to="/Audio" className="small text-white stretched-link">
-                  View Details
-                </Link>
-                <div className="small text-white"><i className="fas fa-angle-right"></i></div>
-              </div>
-            </div>
-              </div>
-            </div>
-            <div className="col-xl-12 col-md-6 mt-3">
-              <div className="card bg-primary text-white mb-4">
-              <div className="card-body">
-              <h4>Photo</h4>
-              <div className="card-footer d-flex align-items-center justify-content-between">
-                <Link to="/Photo" className="small text-white stretched-link">
-                  View Details
-                </Link>
-                <div className="small text-white"><i className="fas fa-angle-right"></i></div>
-              </div>
-            </div>
-              </div>
-            </div>
-          </div>
-        </div>*/}
       </div>
     </div>
   </div>
   );
 }
 
-export default EditComponent;
+export default EditUserdetails;

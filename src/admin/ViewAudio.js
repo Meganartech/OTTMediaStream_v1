@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import Axios from 'axios';
 import AudioPlayer from 'react-audio-player';
-import Sidebar from './sidebar'; // Import Sidebar component
+import Sidebar from './sidebar'; 
+import API_URL from '../Config';
 
 const ViewAudio = () => {
   const location = useLocation();
@@ -24,7 +25,7 @@ const ViewAudio = () => {
     if (!get) return; // Check if get is null
     const fetchData = async () => {
       try {
-        const response = await Axios.get(`http://localhost:8080/api/v2/GetThumbnailsById/${get.id}`);
+        const response = await Axios.get(`${API_URL}/api/v2/GetThumbnailsById/${get.id}`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
@@ -47,7 +48,7 @@ const ViewAudio = () => {
     const fetchAudio = async () => {
       try {
         const response = await Axios.get(
-          `http://localhost:8080/api/v2/${get.fileName.replace(/^.*[\\\/]/, '')}/file`,
+          `${API_URL}/api/v2/${get.fileName.replace(/^.*[\\\/]/, '')}/file`,
           {
             responseType: 'arraybuffer',
           }

@@ -15,46 +15,9 @@ const Email_setting = () => {
   const [users, setUsers] = useState([]);
   const name = sessionStorage.getItem('username');
 
-  useEffect(() => {
+  
 
-    // Fetch user data from the backend
-    const fetchUsers = async () => {
-      try {
-        const response = await axios.get('http://localhost/mediareact/src/php/profile.php');
-        setUsers(response.data);
-      } catch (error) {
-        console.log('Error fetching users:', error);
-      }
-    };
-
-    fetchUsers();
-  }, []);
-
-  const handleDeleteUser = (userId) => {
-    const confirmDelete = window.confirm('Do you really want to delete this user?');
-    if (confirmDelete) {
-      // Perform the actual deletion logic here
-      console.log(`Deleting user with ID: ${userId}`);
-
-      // Make an API call to delete the user
-      fetch(`http://localhost/mediareact/src/php/delete.php?id=${userId}`, {
-        method: 'DELETE',
-      })
-        .then((response) => {
-          if (response.ok) {
-            console.log('User deleted successfully');
-
-            // Remove the deleted user from the local state
-            setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
-          } else {
-            console.log('Error deleting user');
-          }
-        })
-        .catch((error) => {
-          console.log('Error deleting user:', error);
-        });
-    }
-  };
+ 
   // ---------------------User functions -------------------------------
 
   const [id, setId] = useState(sessionStorage.getItem('id') || '');

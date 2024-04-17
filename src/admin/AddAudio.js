@@ -3,6 +3,7 @@ import axios from 'axios';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
 // import '../csstemp/addAudio.css';
+import API_URL from '../Config';
 import { Link } from 'react-router-dom';
 import "../css/Sidebar.css";
 
@@ -20,7 +21,7 @@ const AddAudio = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const categoriesResponse = await axios.get('http://localhost:8080/api/v2/GetAllCategories');
+        const categoriesResponse = await axios.get(`${API_URL}/api/v2/GetAllCategories`);
         setCategories(categoriesResponse.data);
         console.log(categories)
       } catch (error) {
@@ -53,7 +54,7 @@ const AddAudio = () => {
         formData.append(key, audioData[key]);
       }
   
-      const response = await axios.post('http://localhost:8080/api/v2/uploadaudio', formData, {
+      const response = await axios.post(`${API_URL}/api/v2/uploadaudio`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import {Outlet, useLocation, useNavigate } from 'react-router-dom';
+import API_URL from '../Config';
 
 const Login = ({ handleLogin }) => {
   const [user, setUser] = useState({ username: '', password: '' });
@@ -15,6 +16,7 @@ const Login = ({ handleLogin }) => {
 
 
   useEffect(() => {
+    // console.log(`${API_URL}/api`);
 
     fetchUsers();
 
@@ -42,7 +44,7 @@ const Login = ({ handleLogin }) => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/v2/GetAllUser');
+      const response = await axios.get(`${API_URL}/api/v2/GetAllUser`);
       setUsers(response.data.userList);
       setIsEmpty(response.data.empty); // Corrected from setisEmpty to setIsEmpty
       setValid(response.data.valid);
@@ -138,8 +140,8 @@ const Login = ({ handleLogin }) => {
                         />
                         <label htmlFor="inputPassword">Password</label>
                       </div>
-                      <div className="d-flex align-items-center justify-content-between mt-4 mb-0">
-                        <a className="small" href="/AdminSignin">
+                      <div className="d-flex btn  align-items-center justify-content-between mt-4 mb-0">
+                        <a className="small colour" href="/AdminSignin">
                           Admin SignIn
                         </a>
                         <button className="btn btn-primary" type="submit" style={{ color: "black" }}>LOGIN</button>

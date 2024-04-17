@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom';
+import API_URL from '../Config';
 const AdminSignin = () => {
     const navigate = useNavigate();
     const [data, setData] = useState({
@@ -112,7 +113,7 @@ const AdminSignin = () => {
             console.log('Sending data:', sendData);
     
             const response = await axios.post(
-              'http://localhost:8080/api/v2/AddUser',
+              `${API_URL}/api/v2/AddUser`,
               sendData
             );
     

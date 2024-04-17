@@ -4,6 +4,7 @@ import axios from 'axios';
 // import '../App.css';
 import Sidebar from './sidebar';
 import Navbar from './navbar';
+import API_URL from '../Config';
 
 import { Link } from 'react-router-dom';
 import "../css/Sidebar.css";
@@ -120,15 +121,26 @@ const AddUser = () => {
         console.log('Sending data:', sendData);
 
         const response = await axios.post(
-          'http://localhost:8080/api/v2/AddUser',
+          `${API_URL}/api/v2/AddUser`,
           sendData
         );
 
         console.log('API Response:', response);
 
         if (response.status === 200) {
-          // history.push('/Dashboard');
-          //  history.push('/admin/Profile');
+          {
+            setData({
+              username: '',
+              mobnum: '',
+              address: '',
+              pincode: '',
+              email: '',
+              compname: '',
+              country: '',
+              password: '',
+              confirm_Password: ''
+            });
+          }
         } else {
           console.log('Invalid User');
         }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom'; // Import NavLink for navigation
 import Layout from './Layout/Layout';
 import { FiLogIn } from 'react-icons/fi';
+import API_URL from '../Config';
 
 const UserProfileScreen = () => {
     // Retrieve user information from session storage
@@ -19,7 +20,7 @@ const UserProfileScreen = () => {
             return;
         }
 
-        fetch(`http://localhost:8080/api/v2/GetUserById/${userId}`)
+        fetch(`${API_URL}/api/v2/GetUserById/${userId}`)
           .then(response => {
             if (!response.ok) {
               throw new Error('Failed to fetch user');

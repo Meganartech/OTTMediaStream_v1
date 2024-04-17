@@ -1,16 +1,17 @@
 import axios from "axios";
+import API_URL from '../Config';
 
-const SiteSetting= "http://localhost:8080/api/v2/SiteSetting";
-const videoSetting= "http://localhost:8080/api/v2/videoSetting";
-const Othersettings="http://localhost:8080/api/v2/Othersettings";
-const Contactsettings= "http://localhost:8080/api/v2/Contactsettings";
-const Companysiteurl= "http://localhost:8080/api/v2/Companysiteurl";
-const Socialsettings="http://localhost:8080/api/v2/Socialsettings"
-const Paymentsettings= "http://localhost:8080/api/v2/Paymentsettings";
-const Emailsettings= "http://localhost:8080/api/v2/Emailsettings";
-const Mobilesettings="http://localhost:8080/api/v2/Mobilesettings";
-const seoSettings="http://localhost:8080/api/v2/seoSettings";
-const Video= "http://localhost:8080/api/save";
+const SiteSetting= `${API_URL}/api/v2/SiteSetting`;
+const videoSetting= `${API_URL}/api/v2/videoSetting`;
+const Othersettings=`${API_URL}/api/v2/Othersettings`;
+const Contactsettings= `${API_URL}/api/v2/Contactsettings`;
+const Companysiteurl= `${API_URL}/api/v2/Companysiteurl`;
+const Socialsettings=`${API_URL}/api/v2/Socialsettings`
+const Paymentsettings= `${API_URL}/api/v2/Paymentsettings`;
+const Emailsettings= `${API_URL}/api/v2/Emailsettings`;
+const Mobilesettings=`${API_URL}/api/v2/Mobilesettings`;
+const seoSettings=`${API_URL}/api/v2/seoSettings`;
+const Video= `${API_URL}/api/save`;
 
   
 
