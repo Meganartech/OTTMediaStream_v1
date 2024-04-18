@@ -62,7 +62,8 @@ import Test from './user/Test';
 import Userplayer from './user/Userplayer';
 import UserPrivateRouter from './user/UserPrivateRouter';
 import AdminSignin from './admin/AdminSignin';
-import EditComponent from './admin/EditComponent'
+
+import EditComponent from './admin/EditComponent';
 
 const App = () => {
   const location = useLocation();
