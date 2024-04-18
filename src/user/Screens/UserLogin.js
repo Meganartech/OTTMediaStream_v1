@@ -38,7 +38,7 @@ const UserLogin = () => {
               sessionStorage.setItem("name", name);
               sessionStorage.setItem('token', jwtToken);
               sessionStorage.setItem('userId',userId);
-              sessionStorage.setItem('login', true);
+              localStorage.setItem('login', true);
               
               window.location.href = "/";
               

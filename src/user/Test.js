@@ -16,7 +16,7 @@ export const Test = () => {
     const [getall, setGetall] = useState(null);
     const [all, setall] = useState(null);
     const [items, setItems] = useState([]);
-    const log=sessionStorage.getItem('login');  
+    const log=localStorage.getItem('login');  
     useEffect(() => {
       fetchData();
     }, [deleteStatus]);
