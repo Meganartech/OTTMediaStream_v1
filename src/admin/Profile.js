@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Sidebar from './sidebar';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import Sample from './Sample';
 import API_URL from '../Config';
 
 const Profile = () => {
@@ -32,7 +31,7 @@ const Profile = () => {
        fetchUsers();
         }, []);
         
-    const handlEdit = async (userId) => {
+    const handl2Edit = async (userId) => {
       localStorage.setItem('items',userId);
       navigate('/admin/EditComponent');
     };

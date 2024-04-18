@@ -30,7 +30,7 @@ const ViewCertificate= () => {
 
 
   const handleDeleteCertificate = (certificateId) => {
-    fetch(`${API_URL}api/v2/DeleteCertificate/${certificateId}`, {
+    fetch(`${API_URL}/api/v2/DeleteCertificate/${certificateId}`, {
       method: 'DELETE',
     })
       .then(response => {
