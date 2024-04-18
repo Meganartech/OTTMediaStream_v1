@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from './sidebar';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import API_URL from '../Config';
 
 const Profile = () => {
@@ -10,8 +11,10 @@ const Profile = () => {
     // ---------------------Admin functions -------------------------------
   const [userIdToDelete, setUserIdToDelete] = useState('');
   const [users, setUsers] = useState([]);
+  const userid = parseInt(sessionStorage.getItem('id'), 10); // Get user ID from session storage
   const name = sessionStorage.getItem('username');
-
+  const navigate = useNavigate();
+  let Id;
   useEffect(() => {
 
     // Fetch user data from the backend
@@ -26,6 +29,11 @@ const Profile = () => {
 
        fetchUsers();
         }, []);
+        
+    const handlEdit = async (userId) => {
+      localStorage.setItem('items',userId);
+      navigate('/admin/EditComponent');
+    };
 
     const handleDeleteUser = (userId) => {
     const confirmDelete = window.confirm('Do you really want to delete this user?');
@@ -203,6 +211,10 @@ const Profile = () => {
                         >
                           <i className="fas fa-edit"></i>
                         </Link>
+                        <button onClick={() => handlEdit(user.id)} >
+                          <i className="fas fa-edit" aria-hidden="true"></i>
+
+                         </button>
                         <button onClick={() => handleDeleteUser(user.id)}>
                           <i className="fa fa-trash" aria-hidden="true"></i>
                         </button>
