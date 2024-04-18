@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Sidebar from './sidebar';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Sample from './Sample';
 import API_URL from '../Config';
 
 const Profile = () => {
@@ -15,6 +16,7 @@ const Profile = () => {
   const name = sessionStorage.getItem('username');
   const navigate = useNavigate();
   let Id;
+
   useEffect(() => {
 
     // Fetch user data from the backend
@@ -59,6 +61,11 @@ const Profile = () => {
           console.log('Error deleting user:', error);
         });
     }
+    };
+
+    const handlEdit = async (userId) => {
+      localStorage.setItem('items',userId);
+      navigate('/admin/EditComponent');
     };
     // ---------------------User functions -------------------------------
 
@@ -203,17 +210,16 @@ const Profile = () => {
                       <td>{user.country}</td>
                       <td>{user.password}</td>
                       <td>
-                        <Link
+                        {/* <Link
                           to={{
                             pathname: `/admin/EditComponent`,
                             state: { user },
                           }}
                         >
                           <i className="fas fa-edit"></i>
-                        </Link>
+                        </Link> */}
                         <button onClick={() => handlEdit(user.id)} >
                           <i className="fas fa-edit" aria-hidden="true"></i>
-
                          </button>
                         <button onClick={() => handleDeleteUser(user.id)}>
                           <i className="fa fa-trash" aria-hidden="true"></i>
