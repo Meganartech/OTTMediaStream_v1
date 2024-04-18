@@ -4,6 +4,8 @@ import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import "../css/Sidebar.css";
+import API_URL from '../Config';
+
 const ViewCategory = () => {
   //.......................................Admin functiuons.....................................
   
@@ -24,7 +26,7 @@ const ViewCategory = () => {
 
   useEffect(() => {
     // fetch category data from the backend
-    fetch('http://localhost:8080/api/v2/GetAllCategories')
+    fetch(`${API_URL}/api/v2/GetAllCategories`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -40,7 +42,7 @@ const ViewCategory = () => {
   }, []);
 
   const handleDeleteCategory = (categoryId) => {
-    fetch(`http://localhost:8080/api/v2/DeleteCategory/${categoryId}`, {
+    fetch(`${API_URL}/api/v2/DeleteCategory/${categoryId}`, {
       method: 'DELETE',
     })
       .then(response => {
@@ -75,7 +77,7 @@ const ViewCategory = () => {
   //.......................................User functiuons.....................................
   useEffect(() => {
     // fetch category data from the backend
-    fetch('http://localhost:8080/api/v2/GetAllCategories')
+    fetch(`${API_URL}/api/v2/GetAllCategories`)
       .then(response => response.json())
       .then(data => setCategories_u(data))
       .catch(error => console.log(error));

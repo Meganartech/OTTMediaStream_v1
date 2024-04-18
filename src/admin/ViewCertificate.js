@@ -4,17 +4,16 @@ import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import "../css/Sidebar.css";
+import API_URL from '../Config';
 
 const ViewCertificate= () => {
   const [certificate, setCertificate] = useState([]);
-  const userid = parseInt(sessionStorage.getItem('id'), 10); // Get user ID from session storage
-  const name = sessionStorage.getItem('username');
   const navigate = useNavigate();
   let Id;
 
   useEffect(() => {
     // fetch category data from the backend
-    fetch('http://localhost:8080/api/v2/GetAllCertificate')
+    fetch(`${API_URL}/api/v2/GetAllCertificate`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -31,7 +30,7 @@ const ViewCertificate= () => {
 
 
   const handleDeleteCertificate = (certificateId) => {
-    fetch(`http://localhost:8080/api/v2/DeleteCertificate/${certificateId}`, {
+    fetch(`${API_URL}api/v2/DeleteCertificate/${certificateId}`, {
       method: 'DELETE',
     })
       .then(response => {
@@ -60,27 +59,6 @@ const ViewCertificate= () => {
     navigate('/admin/EditCertificate');
   };
   
-// return (
-//     <div>
-//       <h1>Certificate Display Example</h1>
-//       {certificateData.length > 0 ? (
-//         certificateData.map((certificate, index) => (
-//           <img
-//             key={index}
-//             src={`data:image/jpeg;base64,${certificate}`}
-//             alt={`Certificate ${index + 1}`}
-//             width="50%"
-//             height="50px"
-//           />
-//         ))
-//       ) : (
-//         <div className="text-center mt-5">
-//           <p className="font-weight-bold">No Certificate Found</p>
-//         </div>
-//       )}
-//     </div>
-//   );
-
 return (
   <div id="content-wrapper" className="d-flex flex-column samp" style={{ marginLeft: "13rem"}}>
 

@@ -8,6 +8,7 @@ import ReactPlayer from 'react-player';
 import AudioPlayer from 'react-audio-player';
 import "../css/Sidebar.css";
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../Config';
 
 const Audio = () => {
   // ...................................Admin Functions.............................................
@@ -38,7 +39,7 @@ const Audio = () => {
 
   const fetchAudios = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/v2/audio/list');
+      const response = await axios.get(`${API_URL}/api/v2/audio/list`);
       setAudios(response.data);
       console.log('Fetched Audios:', response.data); // Added console.log()
     } catch (error) {
@@ -48,7 +49,7 @@ const Audio = () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/v2/GetAllThumbnail');
+      const response = await fetch(`${API_URL}/api/v2/GetAllThumbnail`);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -72,7 +73,7 @@ const Audio = () => {
     const  audId=audioId
     console.log(audId)
     try {
-      const response = await fetch(`http://localhost:8080/api/v2/audio/${audioId}`);
+      const response = await fetch(`${API_URL}/api/v2/audio/${audioId}`);
   
       if (response.ok) {
         // fetchAudios();

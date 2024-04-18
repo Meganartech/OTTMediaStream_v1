@@ -4,6 +4,8 @@ import Sidebar from './sidebar';
 import { useLocation,Link} from 'react-router-dom';
 import axios from 'axios';
 import AudioPlayer from 'react-audio-player';
+import API_URL from '../Config';
+
 
 const Editaudio1 = () => {
   const id=localStorage.getItem('items');
@@ -32,7 +34,7 @@ const Editaudio1 = () => {
    
     
 
-fetch('http://localhost:8080/api/v2/GetAllCategories')
+fetch(`${API_URL}/api/v2/GetAllCategories`)
 
 
   .then(response => {
@@ -53,7 +55,7 @@ fetch('http://localhost:8080/api/v2/GetAllCategories')
     const fetchData = async () => {
       try {
         // Fetch image data
-        const response = await fetch(`http://localhost:8080/api/v2/GetThumbnailsById/${audioId}`);
+        const response = await fetch(`${API_URL}/api/v2/GetThumbnailsById/${audioId}`);
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -80,7 +82,7 @@ useEffect(() => {
   const fetchData = async () => {
     try {
       // Fetch audio data
-      const response = await fetch(`http://localhost:8080/api/v2/audio/${audioId}`);
+      const response = await fetch(`${API_URL}/api/v2/audio/${audioId}`);
 
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -101,7 +103,7 @@ useEffect(() => {
 const fetchAudio = async () => {
   try {
     const response = await axios.get(
-      `http://localhost:8080/api/v2/${updatedget.fileName}/file`,
+      `${API_URL}/api/v2/${updatedget.fileName}/file`,
       {
         responseType: 'arraybuffer', // Set the response type to arraybuffer for binary data
       }
@@ -208,7 +210,7 @@ fetchAudio(); // Replace 'yourDefaultFileName' with the desired default file nam
     e.preventDefault();
     try {
       const response = await fetch(
-        `http://localhost:8080/api/v2/updateaudio/update/${audioId}`,
+        `${API_URL}/api/v2/updateaudio/update/${audioId}`,
         {
           method: "PATCH",
           body: formData,

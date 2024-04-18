@@ -4,6 +4,7 @@ import { Input } from '../Components/UsedInputs'
 import { Link } from 'react-router-dom'
 import { FiLogIn } from 'react-icons/fi'
 import axios from 'axios';
+import API_URL from '../../Config';
 
 const Register = () => {
 
@@ -73,7 +74,7 @@ const Register = () => {
         if (validateForm()) {
             try {
                 const response = await axios.post(
-                    'http://localhost:8080/api/v2/userregister',
+                    `${API_URL}/api/v2/userregister`,
                     data
                 );
 

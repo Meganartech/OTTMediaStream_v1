@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 import EditVideo from './EditVideo';
+import API_URL from '../Config';
 // import '../csstemp/VideoStyle.css';
 import "../css/Sidebar.css";
 const Video = () => {
@@ -29,7 +30,7 @@ const Video = () => {
     // Fetch videos from the backend API
     const fetchUsers = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/videogetall');
+        const response = await axios.get(`${API_URL}/api/videogetall`);
         setUsers(response.data);
       } catch (error) {
         console.log('Error fetching users:', error);
@@ -41,7 +42,7 @@ const Video = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/videogetall');
+      const response = await axios.get(`${API_URL}/api/videogetall`);
       setUsers(response.data);
     } catch (error) {
       console.log('Error fetching users:', error);
@@ -51,7 +52,7 @@ const Video = () => {
     const  audId=audioId
     console.log(audId)
     try {
-      const response = await fetch(`http://localhost:8080/api/video/${audId}`);
+      const response = await fetch(`${API_URL}/api/video/${audId}`);
   
       if (response.ok) {
         // fetchAudios();

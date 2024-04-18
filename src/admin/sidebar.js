@@ -116,21 +116,7 @@ const Sidebar = () => {
             <span> Add Audio</span>
           </Link>
       </li>
-      {/* <div className="sb-sidenav-menu-heading bg-primary text-white text-center">
-        <div className="sidebar-brand-text mx-3">Photo</div>
-      </div> */}
-      {/* <li className="nav-item">
-          <Link className="nav-link text-white" to="/Photo">
-              <i className="fas fa-photo-video"></i>
-            <span> Photo</span>
-          </Link>
-      </li> */}
-      {/* <li className="nav-item">
-          <Link className="nav-link text-white" to="/AddPhoto">
-              <i className="fas fa-upload"></i>
-            <span> Add Photo</span>
-          </Link>
-      </li> */}
+     
       <div className="sb-sidenav-menu-heading bg-primary text-white text-center">
         <div className="sidebar-brand-text mx-3">Category</div>
       </div>
@@ -146,21 +132,7 @@ const Sidebar = () => {
             <span> View Category</span>
           </Link>
       </li>
-      {/* <div className="sb-sidenav-menu-heading bg-primary text-white text-center">
-        <div className="sidebar-brand-text mx-3">CastCrew</div>
-      </div>
-      <li className="nav-item">
-          <Link className="nav-link text-white" to="/AddTag">
-              <i className="fas fa-photo-video"></i>
-            <span> Add Category</span>
-          </Link>
-      </li>
-      <li className="nav-item">
-          <Link className="nav-link text-white" to="/ViewTag">
-              <i className="fas fa-upload"></i>
-            <span> View Category</span>
-          </Link>
-      </li> */}
+     
       <div className="sb-sidenav-menu-heading bg-primary text-white text-center">
         <div className="sidebar-brand-text mx-3">Tag</div>
       </div>

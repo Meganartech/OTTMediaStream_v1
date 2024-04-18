@@ -3,6 +3,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { useLocation , Link} from 'react-router-dom';
 import "../css/Sidebar.css";
+import API_URL from '../Config';
 
 const EditCategory = () => {
 
@@ -25,7 +26,7 @@ const EditCategory = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const categoryId =id;
-      fetch(`http://localhost:8080/api/v2/editCategory/${categoryId}`, {  // Use backticks (`) for string interpolation
+      fetch(`${API_URL}/api/v2/editCategory/${categoryId}`, {  // Use backticks (`) for string interpolation
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom'
 import Layout from '../Layout/Layout'
 import Head from '../Components/Head'
 import Filters from '../Components/Filters'
-import Movie from '../Components/Movie'
-import {Movies} from '../Data/MovieData'
-import { CgSpinner } from 'react-icons/cg'
+import API_URL from '../../Config';
 const MoviesPage = () => {
   const maxPage =5;
   const log=localStorage.getItem('login');
@@ -21,7 +19,7 @@ const MoviesPage = () => {
    
   
     // fetch category data from the backend
-    fetch('http://localhost:8080/api/videogetall')
+    fetch(`${API_URL}/api/videogetall`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -54,7 +52,7 @@ const MoviesPage = () => {
     // ------------------------------------------------------------------------------------
     try {
       // Fetch image data
-      const response = await fetch('http://localhost:8080/api/GetvideoThumbnail');
+      const response = await fetch(`${API_URL}/api/GetvideoThumbnail`);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

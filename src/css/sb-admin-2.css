@@ -170,12 +170,12 @@ a:hover {
 }
 
 a:not([href]):not([class]) {
-  color: inherit;
+  color:  #224abe;
   text-decoration: none;
 }
 
 a:not([href]):not([class]):hover {
-  color: inherit;
+  color:  #224abe;
   text-decoration: none;
 }
 
@@ -4899,7 +4899,9 @@ a.badge-primary:focus, a.badge-primary.focus {
   color: #fff;
   background-color: #858796;
 }
-
+a.colour:hover{
+  color:#19094A
+}
 a.badge-secondary:hover, a.badge-secondary:focus {
   color: #fff;
   background-color: #6b6d7d;

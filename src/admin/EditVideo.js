@@ -3,6 +3,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
 import Employee from './Employee';
+import API_URL from '../Config';
 
 
 import React, { useState, useEffect } from 'react';
@@ -30,7 +31,7 @@ const EditVideo = (receivedData) => {
         console.log("EditVideo="+id);
         
     
-    fetch('http://localhost:8080/api/v2/GetAllCategories')
+    fetch(`${API_URL}/api/v2/GetAllCategories`)
 
     
       .then(response => {
@@ -46,25 +47,7 @@ const EditVideo = (receivedData) => {
         console.error('Error fetching data:', error);
       });
 
-      // fetch(`http://localhost:8080/api/GetvideoDetail/${id}`)
-
-    
-      // .then(response => {
-      //   if (!response.ok) {
-      //     throw new Error('Network response was not ok');
-      //   }
-      //   return response.json();
-      // })
-      // .then(data => {
-      //   setUpdatedata(data);
-        
-      //   console.log(updatedata);
-      // })
-      // .catch(error => {
-      //   console.error('Error fetching data:', error);
-      // });
-
-    fetch('http://localhost:8080/api/v2/GetAllCertificate')
+    fetch(`${API_URL}/api/v2/GetAllCertificate`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -78,7 +61,7 @@ const EditVideo = (receivedData) => {
         console.error('Error fetching data:', error);
       });
 
-      fetch('http://localhost:8080/api/v2/GetAllLanguage')
+      fetch(`${API_URL}/api/v2/GetAllLanguage`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -92,7 +75,7 @@ const EditVideo = (receivedData) => {
         console.error('Error fetching data:', error);
       });
 
-      fetch('http://localhost:8080/api/v2/GetAllTag')
+      fetch(`${API_URL}/api/v2/GetAllTag`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -108,7 +91,7 @@ const EditVideo = (receivedData) => {
 
       const fetchData = async () => {
         try {
-            const response = await fetch(`http://localhost:8080/api/GetvideoDetail/${id}`);
+            const response = await fetch(`${API_URL}/api/GetvideoDetail/${id}`);
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -194,7 +177,7 @@ const EditVideo = (receivedData) => {
       const formData = new FormData();
       formData.append('video', file);
 
-      const response = await axios.post('http://localhost:8080/api/postit', formData, {
+      const response = await axios.post(`${API_URL}/api/postit`, formData, {
 
       headers: {
         'Content-Type': 'multipart/form-data',
@@ -237,7 +220,7 @@ const EditVideo = (receivedData) => {
       formData.append(key, Addvideo[key]);
     }
 
-    const response = await axios.post('http://localhost:8080/api/updatedescriprion', formData, {
+    const response = await axios.post(`${API_URL}/api/updatedescriprion`, formData, {
         headers: {
           'Content-Type': 'form-data',
         },

@@ -3,6 +3,7 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
 import "../css/Sidebar.css";
+import API_URL from '../Config';
 
 
 const AddLanguage = () => {
@@ -26,7 +27,7 @@ const AddLanguage = () => {
     };
     console.log(data)
     // Send the category name to the server using a POST request
-    fetch('http://localhost:8080/api/v2/AddLanguage', {
+    fetch(`${API_URL}/api/v2/AddLanguage`, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

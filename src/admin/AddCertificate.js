@@ -5,7 +5,7 @@ import Sidebar from './sidebar';
 // import '../csstemp/addVideo.css';
 import { Link } from 'react-router-dom';
 import "../css/Sidebar.css";
-
+import API_URL from '../Config';
 
 
 const AddCertificate = () => {
@@ -29,7 +29,7 @@ const AddCertificate = () => {
       console.log(data)
 
       // Use axios for the file upload
-      const response = await axios.post('http://localhost:8080/api/v2/AddCertificate', data,{
+      const response = await axios.post(`${API_URL}/api/v2/AddCertificate`, data,{
         headers: {
           'Content-Type': 'application/json',
         },

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './navbar';
 import Sidebar from './sidebar';
-
+import API_URL from '../Config';
 import { useLocation,Link} from 'react-router-dom';
 import axios from 'axios';
 import "../css/Sidebar.css";
@@ -19,7 +19,7 @@ const EditAudio = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const categoriesResponse = await axios.get('http://localhost:8080/api/v2/GetAllCategories');
+        const categoriesResponse = await axios.get(`${API_URL}/api/v2/GetAllCategories`);
         setCategories(categoriesResponse.data);
       } catch (error) {
         console.error(error);
@@ -60,7 +60,7 @@ const EditAudio = () => {
     formData.append('audioFile', audioFile);
     formData.append('thumbnail', thumbnail);
 
-    fetch(`http://localhost:8080/api/v2/updateaudio/update/${get.id}`, {
+    fetch(`${API_URL}/api/v2/updateaudio/update/${get.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'multipart/form-data',
