@@ -31,7 +31,6 @@ const Audio = () => {
   useEffect(() => {
     // Fetch audios from the backend API
     fetchAudios();
-    fetchData();
     // fetchAudios_u();
     // fetchCategories_u();
     // fetchTags_u();
@@ -47,56 +46,40 @@ const Audio = () => {
     }
   };
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch(`${API_URL}/api/v2/GetAllThumbnail`);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-
-      if (data && Array.isArray(data)) {
-        setImage(data);
-        console.log(data);
-      } else {
-        console.error('Invalid or empty data received:', data);
-      }
-    } catch (error) {
-      console.error('Error fetching or processing data:', error);
-    }
-  };
-
-
-  const handleDelete = async (audioId) => {
-    const  audId=audioId
-    console.log(audId)
-    try {
-      const response = await fetch(`${API_URL}/api/v2/audio/${audioId}`);
   
-      if (response.ok) {
-        // fetchAudios();
-        // setDeleteStatus('Audio deleted successfully');
-      // setGetall((prevGetAll) => {
-      //   const updatedGetAll = [...prevGetAll];
-      //   updatedGetAll.splice(index, 1);
-      //   return updatedGetAll;
-      // });
-      fetchAudios();
-        console.log('deleteStatus');
+
+
+  // const handleDelete = async (audioId) => {
+  //   const  audId=audioId
+  //   console.log(audId)
+  //   try {
+  //     const response = await fetch(`${API_URL}/api/v2/audio/${audioId}`);
+  
+  //     if (response.ok) {
+  //       // fetchAudios();
+  //       // setDeleteStatus('Audio deleted successfully');
+  //     // setGetall((prevGetAll) => {
+  //     //   const updatedGetAll = [...prevGetAll];
+  //     //   updatedGetAll.splice(index, 1);
+  //     //   return updatedGetAll;
+  //     // });
+  //     fetchAudios();
+  //       console.log('deleteStatus');
        
-      } else {
-        // setDeleteStatus('Error deleting audio');
-        console.log('deleteStatus');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-      // setDeleteStatus('Error deleting audio');
-      console.log("deleteStatus");
-    }
+  //     } else {
+  //       // setDeleteStatus('Error deleting audio');
+  //       console.log('deleteStatus');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //     // setDeleteStatus('Error deleting audio');
+  //     console.log("deleteStatus");
+  //   }
     
-  };
+  // };
+
+
+  
 
   const handlEdit = async (audioId) => {
     localStorage.setItem('items', audioId);

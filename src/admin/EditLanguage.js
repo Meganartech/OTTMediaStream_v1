@@ -3,12 +3,11 @@ import Navbar from './navbar';
 import Sidebar from './sidebar';
 import { useLocation , Link} from 'react-router-dom';
 import "../css/Sidebar.css";
-import API_URL from '../Config';
 
 const EditLanguage = () => {
 
   const id=localStorage.getItem('items');
-  const [updatedlanguage, setUpdatedlanguage] = useState(id);
+  const [updatedlanguage, setUpdatedlanguage] = useState({language:''});
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -23,10 +22,28 @@ const EditLanguage = () => {
     }));
   };
 
+  useEffect(() => {
+    fetch(`http://localhost:8080/api/v2/GetLanguageById/${id}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setUpdatedlanguage(data);
+        console.log(data)
+      })
+      .catch(error => {
+        console.error('Error fetching language:', error);
+      });
+  }, [id]);
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const languageId = id;
-      fetch(`${API_URL}/api/v2/editLanguage/${languageId}`, {  // Use backticks (`) for string interpolation
+      fetch(`http://localhost:8080/api/v2/editLanguage/${languageId}`, {  // Use backticks (`) for string interpolation
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

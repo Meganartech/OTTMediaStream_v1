@@ -109,11 +109,11 @@ const ViewLanguage = () => {
                     <td>{index + 1}</td>
                     <td>{lang.language ? lang.language : 'No category available'}</td>
                     <td>
-                  <button onClick={() => handlEdit(language.id)} >
+                  <button onClick={() => handlEdit(lang.id)} >
                           <i className="fas fa-edit" aria-hidden="true"></i>
                         
                   </button>
-                        <button onClick={() => handleDeleteLanguage(language.id)}>
+                        <button onClick={() => handleDeleteLanguage(lang.id)}>
                         <i className="fa fa-trash" aria-hidden="true"></i>
                       </button>
                     </td>
