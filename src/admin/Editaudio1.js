@@ -28,6 +28,10 @@ const Editaudio1 = () => {
   const [filename, setfilename] = useState(fileName);
   const [categoryId, setCategoryId] = useState('');
   const [selectedCategoryId, setSelectedCategoryId] = useState('');
+  const [audio,setaudio]=useState('')
+
+  
+  
 
 
   useEffect(() => {
@@ -192,45 +196,47 @@ fetchAudio(); // Replace 'yourDefaultFileName' with the desired default file nam
       });
   };
 
-  const handleupdate = async (e) => {
-    const formData = new FormData();
-   
-    console.log("category",updatedget.category)
-    
-    if (updatedget.thumbnail) {
-      formData.append("thumbnail", updatedget.thumbnail);
-    }
-    if (updatedget.audioFile) {
-      formData.append("audioFile", updatedget.audioFile);
-    }
-    if (updatedget.category) {
-      formData.append("category", updatedget.category);
-    }
+  // Inside the handleupdate function
+const handleupdate = async (e) => {
+  const formData = new FormData();
 
-    e.preventDefault();
-    try {
-      const response = await fetch(
-        `${API_URL}/api/v2/updateaudio/update/${audioId}`,
-        {
-          method: "PATCH",
-          body: formData,
-        }
-      );
+  // Appending thumbnail and audioFile to formData
+  if (updatedget.thumbnail) {
+    formData.append("thumbnail", updatedget.thumbnail);
+  }
+  if (updatedget.audioFile) {
+    formData.append("audioFile", updatedget.audioFile);
+  }
 
-      await response.json();
+  // Appending category ID to formData
+  if (updatedget.category.id) { // This condition might be incorrect
+    formData.append("category", updatedget.category.id); // Make sure this is the correct category ID
+  }
 
-      if (response.ok) {
-        // Handle successful response
-        console.log("Update successful");
-      } else {
-        // Handle error response
-        console.error("Update failed");
+  e.preventDefault();
+  try {
+    const response = await fetch(
+      `${API_URL}/api/v2/updateaudio/update/${audioId}`,
+      {
+        method: "PATCH",
+        body: formData,
       }
-    } catch (error) {
-      // Handle network errors or other exceptions
-      console.error("Error:", error);
+    );
+
+    await response.json();
+
+    if (response.ok) {
+      // Handle successful response
+      console.log("Update successful");
+    } else {
+      // Handle error response
+      console.error("Update failed");
     }
-  };
+  } catch (error) {
+    // Handle network errors or other exceptions
+    console.error("Error:", error);
+  }
+};
 
 
   return (
@@ -267,7 +273,7 @@ fetchAudio(); // Replace 'yourDefaultFileName' with the desired default file nam
                 >
                 <option value=''>Select Category</option>
                     {categories.map((category) => (
-                     <option key={category.id} value={category.categories}>
+                     <option key={category.id} value={category.id}>
                     {category.categories}
                 </option>
                 ))}

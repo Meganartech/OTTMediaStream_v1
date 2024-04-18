@@ -31,10 +31,12 @@ const Profile = () => {
        fetchUsers();
         }, []);
         
-    // const handlEdit = async (userId) => {
-    //   localStorage.setItem('items',userId);
-    //   navigate('/admin/EditComponent');
-    // };
+
+    const handl2Edit = async (userId) => {
+      localStorage.setItem('items',userId);
+      navigate('/admin/EditComponent');
+    };
+
 
     const handleDeleteUser = (userId) => {
     const confirmDelete = window.confirm('Do you really want to delete this user?');
