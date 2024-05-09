@@ -72,6 +72,10 @@ const Login = () => {
     // && !isEmpty && valid
     if (userFound ) {
       hide();
+
+      handleLogin();
+      sessionStorage.setItem('username', user.username);
+
       navigate('/admin/Dashboard');
       let ab = true;
       sessionStorage.setItem("name", ab);

@@ -20,7 +20,7 @@ const Video = () => {
   let Id;
   const navigate = useNavigate();
   const [dataToSend, setDataToSend] = useState('');
-  const [items, setItems] = useState([]);
+  const [paid, setpaid] = useState('');
 
 
 
@@ -31,7 +31,7 @@ const Video = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(`${API_URL}/api/videogetall`);
-        setUsers(response.data);
+        setUsers(response.data);  
       } catch (error) {
         console.log('Error fetching users:', error);
       }
@@ -39,6 +39,9 @@ const Video = () => {
     
     fetchUsers();
   }, []);
+
+  
+  
 
   const fetchUsers = async () => {
     try {
@@ -115,6 +118,8 @@ const Video = () => {
                     <th>Language</th>
                     <th>Duration</th>
                     <th>Year</th>
+                    <th>Paid</th>
+                    <th>Action</th>
                     
                   </tr>
                 </thead>
@@ -130,6 +135,7 @@ const Video = () => {
                       <td>{user.language}</td>
                       <td>{user.duration}</td>
                       <td>{user.year}</td>
+                      <td>{user.paid===true ? 1 : 0}</td>
                       <td>
                         {/* <Link
                           to={{

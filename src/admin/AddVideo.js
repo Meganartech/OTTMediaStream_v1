@@ -24,6 +24,7 @@ const AddVideo = () => {
   const [Tag, setTag] = useState([]);
   const [TagId, setTagId] = useState('');
   const [thumbnail, setThumbnail] = useState(null);
+  const [selected, setSelected] = useState(false); 
 
 
   
@@ -127,6 +128,11 @@ const AddVideo = () => {
     setFile(event.target.files[0]);
   };
 
+  const handleRadioClick = () => {
+    setSelected(!selected); // Toggle the value of 'selected'
+  };
+
+
   const Upload = async () => {
     try {
       const formData = new FormData();
@@ -171,6 +177,7 @@ const AddVideo = () => {
             const Addvideo = { Movie_name: Movie_name, tags: TagId, description: Description,category: categoryId,certificate: certificateId,Language: LanguageId,Duration:Duration,Year:Year,thumbnail:thumbnail,video:file};
             console.log(Addvideo);
         
+
         
             for (const key in Addvideo) {
               formData.append(key, Addvideo[key]);
@@ -200,6 +207,14 @@ const AddVideo = () => {
        } catch (error) {
          console.error('Error ', error);
        }
+      thumbnail: thumbnail,
+    };
+    console.log("audioData")
+    console.log(audioData)
+    const Addvideo = { Movie_name: Movie_name, tags: TagId, description: Description,category: categoryId,certificate: certificateId,Language: LanguageId,Duration:Duration,Year:Year,thumbnail:thumbnail,video:file, paid: selected ? 1 : 0,};
+    console.log(Addvideo);
+
+
 
 
        
@@ -400,6 +415,25 @@ const AddVideo = () => {
                       onChange={''}
                       value={'categoryName'}
                     /> */} 
+
+                    <div className='col-lg-6'>
+                          <label>
+                            Paid:
+                            <div 
+                              className={`radio-button${selected ? ' selected' : ''}`} // Apply 'selected' class if radio button is selected
+                              onClick={handleRadioClick} // Handle click event
+                            >
+                              {/* Display custom radio button */}
+                              <div className="radio-circle">
+                              <input
+                                  type="radio"
+                                  value="paid"
+                                  checked={selected}
+                              />
+                              </div>
+                            </div>
+                          </label>
+                        </div>
                         <div className='col-lg-12'>
                     <label >Thumbnail</label>
                     <br></br>

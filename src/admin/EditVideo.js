@@ -23,6 +23,7 @@ const EditVideo = (receivedData) => {
   const [TagId, setTagId] = useState('');
   const [thumbnail, setThumbnail] = useState(null);
   const [updatedata, setUpdatedata] = useState([]);
+  const [paid, setpaid] =useState('');
   const id=localStorage.getItem('items');
 
   // const fetchData = async () => {
@@ -106,6 +107,7 @@ const EditVideo = (receivedData) => {
             setLanguageId(data.language)
             setTagId(data.tags);
             setYear(data.year);
+            setpaid(data.paid)
         // Log the movie name here
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -212,7 +214,7 @@ const EditVideo = (receivedData) => {
     // };
     // console.log("audioData")
     // console.log(audioData)
-    const Addvideo = { Movie_name: Movie_name, tags: TagId, description: Description,category: categoryId,certificate: certificateId,Language: LanguageId,Duration:Duration,Year:Year,id:updatedata.id};
+    const Addvideo = { Movie_name: Movie_name, tags: TagId, description: Description,category: categoryId,certificate: certificateId,Language: LanguageId,Duration:Duration,Year:Year,paid:paid,id:updatedata.id};
     console.log(Addvideo);
 
 
@@ -243,6 +245,10 @@ const EditVideo = (receivedData) => {
     //   setDescription('');
     // })
   }
+
+  const handleRadioClick = () => {
+    setpaid(!paid); // Toggle the value of 'selected'
+  };
 
 
 
@@ -407,6 +413,26 @@ const EditVideo = (receivedData) => {
                       value={Description}
                     />
                     </div>
+
+                    <div className='col-lg-6'>
+                      <label>
+                          Paid:
+                          <div 
+                              className={`radio-button${paid ? ' selected' : ''}`} // Apply 'selected' class if radio button is selected
+                              onClick={handleRadioClick} // Handle click event
+                          >
+                              {/* Display custom radio button */}
+                              <div className="radio-circle">
+                                  <input
+                                      type="radio"
+                                      checked={paid}  // Use checked={paid} instead of checked={selected}
+                                  />
+                              </div>
+                          </div>
+                      </label>
+                  </div>
+
+
                     {/* <div className='col-lg-6'>
                       <label >Name</label>
                     <input
