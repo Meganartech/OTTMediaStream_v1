@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {Outlet, useLocation, useNavigate } from 'react-router-dom';
 import API_URL from '../Config';
 
-const Login = ({ handleLogin }) => {
+const Login = () => {
   const [user, setUser] = useState({ username: '', password: '' });
   const [samp1, setsamp] = useState(1);
   const [users, setUsers] = useState([]);
@@ -48,9 +48,9 @@ const Login = ({ handleLogin }) => {
       setUsers(response.data.userList);
       setIsEmpty(response.data.empty); // Corrected from setisEmpty to setIsEmpty
       setValid(response.data.valid);
-      console.log("Is empty: " + isEmpty); // Corrected from empty to isEmpty
-      console.log("Valid: " + valid);
-      console.log("--------------------------------------------------------------------");
+      // console.log("Is empty: " + isEmpty); // Corrected from empty to isEmpty
+      // console.log("Valid: " + valid);
+      // console.log("--------------------------------------------------------------------");
       // After setting the users state, check if the username exists
       // const userFound = response.data.find(userData => userData.username === user.username);
     } catch (error) {
@@ -69,23 +69,23 @@ const Login = ({ handleLogin }) => {
       user.username === userData.username && user.password === userData.password
     ));
 
-    if (userFound && !isEmpty && valid) {
+    // && !isEmpty && valid
+    if (userFound ) {
       hide();
-      handleLogin();
       navigate('/admin/Dashboard');
-      sessionStorage.setItem('mySessionData', true);
-      const itrm= sessionStorage.getItem('mySessionData')
-      console.log("session :"+itrm)
+      let ab = true;
+      sessionStorage.setItem("name", ab);
+    }
       
       // If needed, perform navigation or any other action here
-    } else if (isEmpty) {
-      alert("Licence required")
-      navigate('/licence');
-    } else if (!valid) {
+    // } else if (isEmpty) {
+    //   alert("Licence required")
+    //   navigate('/licence');
+    // } else if (!valid) {
 
-      alert("Licence Expired")
-      navigate('/licence');
-    }
+    //   alert("Licence Expired")
+    //   navigate('/licence');
+    // }
     else {
       alert("Invalid username or password");
     }

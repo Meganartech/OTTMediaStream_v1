@@ -62,8 +62,9 @@ import Test from './user/Test';
 import Userplayer from './user/Userplayer';
 import UserPrivateRouter from './user/UserPrivateRouter';
 import AdminSignin from './admin/AdminSignin';
-
+import About_us from './admin/About_us';
 import EditComponent from './admin/EditComponent';
+import PrivateRoutes from './user/PrivateRoutes';
 
 const App = () => {
   const location = useLocation();
@@ -71,7 +72,8 @@ const App = () => {
   const [isLogged, setIsLogged] = useState(); 
   const [isuserLogged, setIsuserLogged] = useState();
   const log=localStorage.getItem('login'); 
-  const storedData = sessionStorage.getItem('mySessionData')
+  const storedData = localStorage.getItem('mySessionData')
+  localStorage.setItem('mySessionData', false);
   useEffect(() => {
 
     const fetchData = async () => {       
@@ -84,15 +86,14 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const storedData = sessionStorage.getItem('mySessionData')
-      const val2=sessionStorage.getItem('login')
+      const storedData = localStorage.getItem('mySessionData')
+      const val2=localStorage.getItem('login')
       console.log("inadd"+log)
-      setIsLogged(storedData);
+      setIsLogged(localStorage.getItem('mySessionData'));
       setIsuserLogged(val2);
-      console.log("inside the app.js Logged :", isLogged);
       console.log("inside the app.js sessionvakue :", storedData);
       console.log("inside the app.js val2 :", val2);
-      console.log("inside the app.js Logged 2:", isuserLogged);
+      console.log("inside the app.js Logged 2:", isLogged);
           
     
   };
@@ -103,8 +104,8 @@ const App = () => {
 
   const handleLogin = () => {
   
-    const val=sessionStorage.getItem('mySessionData')
-    const val2=sessionStorage.getItem('login')
+    const val=localStorage.getItem('mySessionData')
+    const val2=localStorage.getItem('login')
     setIsLogged(val);
     setIsuserLogged(val2);
     console.log("inside the app.js val :", val);
@@ -118,7 +119,7 @@ const App = () => {
     <div >
        {/* <Router> */}
         <Routes>
-          <Route path='/' element={<Home handleLogin={handleLogin} />} />
+          <Route path='/' element={<Home  />} />
           <Route path='MoviesPage' element={<MoviesPage />} />
           <Route path='VideoHomescreen' element={<VideoHomescreen />} />
           {/* <Route path='Homescreen' element={<Videosam />} /> */}
@@ -134,57 +135,53 @@ const App = () => {
           <Route path='UserProfileScreen' element ={<UserProfileScreen />} />
           <Route path='AdminSignin' element ={<AdminSignin />} />
 
-          <Route path='admin' element={<Login handleLogin={handleLogin}/>}  >
-            <Route path='dashboard' element={<PrivateRoute isAuthenticated={isLogged} element={<Dashboard />} />}/>
-            <Route path='addUser'   element={<PrivateRoute isAuthenticated={isLogged} element={<AddUser/>} />} />
-            <Route path='profile' element={<PrivateRoute isAuthenticated={isLogged} element={<Profile/>} />}/>
-            <Route path='video' element={<PrivateRoute isAuthenticated={isLogged} element={<Video/>} />}/>
-            <Route path='addVideo' element={<PrivateRoute isAuthenticated={isLogged} element={<AddVideo/>} />}/>
-            <Route path='audio' element={<PrivateRoute isAuthenticated={isLogged} element={<Audio/>} />}/>
-            <Route path='addAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<AddAudio/>} />}/>
-            <Route path='addCategory'element={<PrivateRoute isAuthenticated={isLogged} element={<AddCategory/>} />}/>
-            <Route path='addCastCrew' element={<PrivateRoute isAuthenticated={isLogged} element={<AddCastCrew/>} />}/>
-            <Route path='subscriptionPayments' element={<PrivateRoute isAuthenticated={isLogged} element={<SubscriptionPayments/>} />}/>
-            <Route path='setting' element={<PrivateRoute isAuthenticated={isLogged} element={<Setting/>} />}/>
-            <Route path='Video_setting' element={<PrivateRoute isAuthenticated={isLogged} element={<Video_setting/>} />}/>
-            <Route path='Setting_sidebar' element={<PrivateRoute isAuthenticated={isLogged} element={<Setting_sidebar/>} />}/>
-            <Route path='Social_setting' element={<PrivateRoute isAuthenticated={isLogged} element={<Social_setting/>} />}/>
-            <Route path='Payment_setting' element={<PrivateRoute isAuthenticated={isLogged} element={<Payment_setting/>} />}/>
-            <Route path='Email_setting' element={<PrivateRoute isAuthenticated={isLogged} element={<Email_setting/>} />}/>
-            <Route path='Siteurl_setting' element={<PrivateRoute isAuthenticated={isLogged} element={<Siteurl_setting/>} />}/>
-            <Route path='Other_setting' element={<PrivateRoute isAuthenticated={isLogged} element={<Other_setting/>} />}/>
-            <Route path='Contact_setting' element={<PrivateRoute isAuthenticated={isLogged} element={<Contact_setting/>} />}/>
-            <Route path='SEO_setting' element={<PrivateRoute isAuthenticated={isLogged} element={<SEO_setting/>} />}/>
-            <Route path='Mobile_setting' element={<PrivateRoute isAuthenticated={isLogged} element={<Mobile_setting/>} />}/>
-            <Route path='ViewCategory' element={<PrivateRoute isAuthenticated={isLogged} element={<ViewCategory/>} />}/>
-            <Route path='AddLanguage' element={<PrivateRoute isAuthenticated={isLogged} element={<AddLanguage/>} />}/>
-            <Route path='ViewLanguage' element={<PrivateRoute isAuthenticated={isLogged} element={<ViewLanguage/>} />}/>
-            <Route path='EditCategory' element={<PrivateRoute isAuthenticated={isLogged} element={<EditCategory/>} />}/>
-            <Route path='AddCertificate' element={<PrivateRoute isAuthenticated={isLogged} element={<AddCertificate/>} />}/>
-            <Route path='EditCertificate' element={<PrivateRoute isAuthenticated={isLogged} element={<EditCertificate/>} />}/>
-            <Route path='ViewCertificate' element={<PrivateRoute isAuthenticated={isLogged} element={<ViewCertificate/>} />}/>
-            <Route path='Watch' element={<PrivateRoute isAuthenticated={isLogged} element={<Watch/>} />}/>
-            <Route path='EditAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<Editaudio1/>} />}/>
-            <Route path='ViewAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<ViewAudio/>} />}/>
-            <Route path='ListAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<ListAudio/>} />}/>
-            <Route path='EditTag' element={<PrivateRoute isAuthenticated={isLogged} element={<EditTag/>} />}/>
-            <Route path='ViewTag' element={<PrivateRoute isAuthenticated={isLogged} element={<ViewTag/>} />}/>
-            <Route path='AddTag' element={<PrivateRoute isAuthenticated={isLogged} element={<AddTag/>} />}/>
-            <Route path='EditLanguage' element={<PrivateRoute isAuthenticated={isLogged} element={<EditLanguage/>} />}/>
-            <Route path='AddAud' element={<PrivateRoute isAuthenticated={isLogged} element={<AddAud/>} />}/>
-            <Route path='EditVideo' element={<PrivateRoute isAuthenticated={isLogged} element={<EditVideo/>} />}/>
-            <Route path='ViewAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<ViewAudio/>} />}/>
-            <Route path='EditAudio' element={<PrivateRoute isAuthenticated={isLogged} element={<EditAudio/>} />}/>
-            <Route path='EditComponent' element={<PrivateRoute isAuthenticated={isLogged} element={<EditComponent/>} />}/>
-            
-            {/* <Route path='EditComponent' element={<PrivateRoute isAuthenticated={isLogged} element={<EditComponent/>} />}/> */}
-            {/* <Route path='EditComponent' element={< EditComponent />} /> */}
-            {/* <Route path='Navbar' element={< Navbar />} /> */}
-            {/* 
-            
-       
-            
-            */}
+          <Route path='admin' element={<Login/>}  >
+             <Route element={<PrivateRoutes />}>
+             <Route path='ViewCategory' element={<ViewCategory/>} />
+            <Route path='AddLanguage' element={<AddLanguage/>} />
+            <Route path='ViewLanguage' element={<ViewLanguage/>} />
+            <Route path='EditCategory' element={<EditCategory/>} />
+            <Route path='AddCertificate' element={<AddCertificate/>} />
+            <Route path='EditCertificate' element={<EditCertificate/>} />
+            <Route path='ViewCertificate' element={<ViewCertificate/>} />
+            <Route path='Watch' element={<Watch/>} />
+            <Route path='EditAudio' element={<Editaudio1/>} />
+            <Route path='ViewAudio' element={<ViewAudio/>} />
+            <Route path='ListAudio' element={<ListAudio/>} />
+            <Route path='EditTag' element={<EditTag/>} />
+            <Route path='ViewTag' element={<ViewTag/>} />
+            <Route path='AddTag' element={<AddTag/>} />
+            <Route path='EditLanguage' element={<EditLanguage/>} />
+            <Route path='AddAud' element={<AddAud/>} />
+            <Route path='EditVideo' element={<EditVideo/>} />
+            <Route path='ViewAudio' element={<ViewAudio/>} />
+            <Route path='EditAudio' element={<EditAudio/>} />
+            <Route path='EditComponent' element={<EditComponent/>} />
+            <Route path='About_us' element={<About_us/>} />
+            <Route path='dashboard' element={<Dashboard />} />
+            <Route path='addUser'   element={<AddUser/>} />
+            <Route path='profile' element={<Profile/>} />
+            <Route path='video' element= {<Video/>} />
+            <Route path='addVideo' element= {<AddVideo/>} />
+            <Route path='audio' element= {<Audio/>} />
+            <Route path='addAudio' element= {<AddAudio/>} />
+            <Route path='addCategory'element= {<AddCategory/>} />
+            <Route path='addCastCrew' element= {<AddCastCrew/>} />
+            <Route path='subscriptionPayments' element= {<SubscriptionPayments/>} />
+            <Route path='setting' element= {<Setting/>} />
+            <Route path='Video_setting' element= {<Video_setting/>} />
+            <Route path='Setting_sidebar' element= {<Setting_sidebar/>} />
+            <Route path='Social_setting' element= {<Social_setting/>} />
+            <Route path='Payment_setting' element= {<Payment_setting/>} />
+            <Route path='Email_setting' element= {<Email_setting/>} />
+            <Route path='Siteurl_setting' element= {<Siteurl_setting/>} />
+            <Route path='Other_setting' element= {<Other_setting/>} />
+            <Route path='Contact_setting' element= {<Contact_setting/>} />
+            <Route path='SEO_setting' element= {<SEO_setting/>} />
+            <Route path='Mobile_setting' element= {<Mobile_setting/>} />
+
+
+             </Route>
           </Route>
           <Route path='licence' element={<Licence/>} />
 

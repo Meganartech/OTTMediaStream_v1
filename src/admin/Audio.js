@@ -49,34 +49,34 @@ const Audio = () => {
   
 
 
-  // const handleDelete = async (audioId) => {
-  //   const  audId=audioId
-  //   console.log(audId)
-  //   try {
-  //     const response = await fetch(`${API_URL}/api/v2/audio/${audioId}`);
+  const handleDelete = async (audioId) => {
+    const  audId=audioId
+    console.log(audId)
+    try {
+      const response = await fetch(`${API_URL}/api/v2/audio/${audioId}`);
   
-  //     if (response.ok) {
-  //       // fetchAudios();
-  //       // setDeleteStatus('Audio deleted successfully');
-  //     // setGetall((prevGetAll) => {
-  //     //   const updatedGetAll = [...prevGetAll];
-  //     //   updatedGetAll.splice(index, 1);
-  //     //   return updatedGetAll;
-  //     // });
-  //     fetchAudios();
-  //       console.log('deleteStatus');
+      if (response.ok) {
+        // fetchAudios();
+        // setDeleteStatus('Audio deleted successfully');
+      // setGetall((prevGetAll) => {
+      //   const updatedGetAll = [...prevGetAll];
+      //   updatedGetAll.splice(index, 1);
+      //   return updatedGetAll;
+      // });
+      fetchAudios();
+        console.log('deleteStatus');
        
-  //     } else {
-  //       // setDeleteStatus('Error deleting audio');
-  //       console.log('deleteStatus');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //     // setDeleteStatus('Error deleting audio');
-  //     console.log("deleteStatus");
-  //   }
+      } else {
+        // setDeleteStatus('Error deleting audio');
+        console.log('deleteStatus');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      // setDeleteStatus('Error deleting audio');
+      console.log("deleteStatus");
+    }
     
-  // };
+  };
 
 
   

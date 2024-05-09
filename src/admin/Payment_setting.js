@@ -15,7 +15,12 @@ const Payment_setting = () => {
   const [userIdToDelete, setUserIdToDelete] = useState('');
   const [users, setUsers] = useState([]);
   const name = sessionStorage.getItem('username');
+  const data=sessionStorage.getItem("type");
+  const [valid, setValid] = useState(true);
 
+  useEffect(() => {
+  data==="false"?setValid(false):setValid(true)
+}, []);
   //===========================================API--G================================================================
   const [Paypal_Id, setPaypal_Id] = useState('');
   const changePaypal_IdHandler = (event) => {
@@ -189,11 +194,13 @@ const Payment_setting = () => {
                          </div>
                       </div>
                       <div className="col-md-12">
-                       
+                      {valid?
                           <div className="form-group">
                           <input type="submit" className="btn btn-info" name="submit" value="Submit" onClick={save} />
                          
                         </div>
+                         :<div></div>
+                        }
                       </div>
                     </div>
                   </form>
