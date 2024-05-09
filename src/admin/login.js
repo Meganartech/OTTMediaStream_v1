@@ -73,7 +73,7 @@ const Login = () => {
     if (userFound ) {
       hide();
 
-      handleLogin();
+      // handleLogin();
       sessionStorage.setItem('username', user.username);
 
       navigate('/admin/Dashboard');

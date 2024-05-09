@@ -1,3 +1,5 @@
+
+// ---------------------------------------------------------------------
 // import React, { useState } from 'react';
 import axios from 'axios';
 import Navbar from './navbar';
@@ -5,7 +7,6 @@ import Sidebar from './sidebar';
 import { Link } from 'react-router-dom';
 import Employee from './Employee';
 import API_URL from '../Config';
-import Swal from "sweetalert2";
 import "../css/Sidebar.css";
 
 import "../App.css"
@@ -26,8 +27,6 @@ const AddVideo = () => {
   const [thumbnail, setThumbnail] = useState(null);
   const [selected, setSelected] = useState(false); 
 
-
-  
   // const fetchData = async () => {
     useEffect(() => {
    
@@ -158,6 +157,48 @@ const AddVideo = () => {
   
   
 
+  // const save = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //   const formData = new FormData();
+  //   const audioData = {
+        
+  //     thumbnail: thumbnail,
+  //   };
+  //   console.log("audioData")
+  //   console.log(audioData)
+  //   const Addvideo = { Movie_name: Movie_name, tags: TagId, description: Description,category: categoryId,certificate: certificateId,Language: LanguageId,Duration:Duration,Year:Year,thumbnail:thumbnail,video:file, paid: selected ? 1 : 0,};
+  //   console.log(Addvideo);
+
+
+  //   for (const key in Addvideo) {
+  //     formData.append(key, Addvideo[key]);
+  //   }
+
+  //   const response = await axios.post(`${API_URL}/api/uploaddescriprion`, formData, {
+  //       headers: {
+  //         'Content-Type': 'multipart/form-data',
+  //       },
+  //       onUploadProgress: (progressEvent) => {
+  //         const progress = Math.round((progressEvent.loaded / progressEvent.total) * 100);
+  //         setUploadProgress(progress);
+  //       }
+  //     });
+  //       console.log(response.data);
+  //     console.log("video updated successfully");
+  //   } catch (error) {
+  //     console.error('Error uploading audio:', error);
+  //     // Handle error, e.g., show an error message to the user
+  //   }
+   
+  //   // Employee.setVideo(Addvideo).then(res => {
+  //   //   // handleUpload();
+  //   //   setMovie_name('');
+  //   //   setTags('');
+  //   //   setDescription('');
+  //   // })
+  // }
   const save = async (e) => {
     e.preventDefault();
     try {
@@ -207,10 +248,8 @@ const AddVideo = () => {
        } catch (error) {
          console.error('Error ', error);
        }
-      thumbnail: thumbnail,
-    };
+  
     console.log("audioData")
-    console.log(audioData)
     const Addvideo = { Movie_name: Movie_name, tags: TagId, description: Description,category: categoryId,certificate: certificateId,Language: LanguageId,Duration:Duration,Year:Year,thumbnail:thumbnail,video:file, paid: selected ? 1 : 0,};
     console.log(Addvideo);
 
@@ -481,7 +520,6 @@ const AddVideo = () => {
 }
 
 export default AddVideo;
-
 
 
 
