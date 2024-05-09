@@ -65,8 +65,6 @@ const Dashboard = () => {
   const username = sessionStorage.getItem('username');
   const userid =sessionStorage.getItem('id');
   console.log('Retrieved username:', username);
-  const name = sessionStorage.getItem('username');
-  const userid =sessionStorage.getItem('id');
   console.log('Retrieved username:', name);
   const [all, setall] = useState(null);
   const [getall, setGetall] = useState(null);
