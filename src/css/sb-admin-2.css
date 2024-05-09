@@ -105,6 +105,27 @@ address {
   font-style: normal;
   line-height: inherit;
 }
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-content {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 10s linear infinite;
+  font-size: larger;
+  font-weight: 700;
+}
+
+.marquee-container:hover .marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(200%); }
+  100% { transform: translateX(-100%); }
+}
 
 ol,
 ul,
